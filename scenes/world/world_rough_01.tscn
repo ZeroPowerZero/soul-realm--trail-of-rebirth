@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://p8hyyenfp1yf"]
 
-[ext_resource type="Texture2D" uid="uid://2iy8weuaf8be" path="res://assets/textures/kenney_grids/Light/texture_07.png" id="1_jdmcp"]
+[ext_resource type="Texture2D" uid="uid://2iy8weuaf8be" path="res://assets/textures/kenney_grids/Light/texture_07.png" id="1_2q354"]
+[ext_resource type="PackedScene" uid="uid://3v50xo6wlir3" path="res://scenes/player/player.tscn" id="2_ks47n"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fdo8o"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -17,7 +18,7 @@ glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fdo8o"]
 albedo_color = Color(0.32172796, 0.32172796, 0.32172796, 1)
-albedo_texture = ExtResource("1_jdmcp")
+albedo_texture = ExtResource("1_2q354")
 uv1_triplanar = true
 
 [node name="world_rough_01" type="Node3D" unique_id=145907840]
@@ -59,3 +60,11 @@ size = Vector3(3, 3, 3)
 transform = Transform3D(0.12154446, 0.89712083, 0.42473677, -0.9407354, 0.24060985, -0.23900624, -0.3166132, -0.3705151, 0.8731979, 3.528325, -0.2738657, -0.89702034)
 use_collision = true
 size = Vector3(3, 3, 3)
+
+[node name="player" parent="." unique_id=1891982654 instance=ExtResource("2_ks47n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0568309, -3.5762787e-07, 2.3150563)
+
+[node name="Book" parent="player/head/Camera3D/view_model" parent_id_path=PackedInt32Array(1891982654, 442719824) index="2" unique_id=2121856210]
+transform = Transform3D(16.799551, 94.437164, 28.27354, -53.649174, -15.303069, 82.991425, 82.70151, -29.11073, 48.09394, -0.79905796, -0.5986273, -1.3137145)
+
+[editable path="player"]

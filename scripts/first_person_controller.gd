@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 @onready var head = $head
-@onready var animation_player: AnimationPlayer = $head/Camera3D/view_model/AnimationPlayer
+
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -25,15 +25,6 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-	
-	if Input.is_action_just_pressed("left_mouse"):
-		animation_player.play("swing_01")
-		
-	if Input.is_action_just_pressed("right_mouse"):
-		animation_player.play("swing_02")
-		
-	if !animation_player.is_playing():
-		animation_player.play("idle")
 	
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
