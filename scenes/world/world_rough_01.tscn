@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://p8hyyenfp1yf"]
+
+[ext_resource type="Texture2D" uid="uid://2iy8weuaf8be" path="res://assets/textures/kenney_grids/Light/texture_07.png" id="1_jdmcp"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fdo8o"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_ie1pn"]
+sky_material = SubResource("ProceduralSkyMaterial_fdo8o")
+
+[sub_resource type="Environment" id="Environment_dif88"]
+background_mode = 2
+sky = SubResource("Sky_ie1pn")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fdo8o"]
+albedo_color = Color(0.32172796, 0.32172796, 0.32172796, 1)
+albedo_texture = ExtResource("1_jdmcp")
+uv1_triplanar = true
+
+[node name="world_rough_01" type="Node3D" unique_id=145907840]
+
+[node name="env" type="Node" parent="." unique_id=364713149]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="env" unique_id=952001313]
+environment = SubResource("Environment_dif88")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="env" unique_id=1175831819]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="stage" type="CSGCombiner3D" parent="." unique_id=52867147]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+material_override = SubResource("StandardMaterial3D_fdo8o")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="stage" unique_id=1965188142]
+use_collision = true
+size = Vector3(100, 1, 100)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="stage" unique_id=1803221018]
+transform = Transform3D(0.7924961, -0.1428275, -0.5929167, 0.14000095, 0.9888335, -0.05107373, 0.5935906, -0.042533197, 0.8036425, 4.418614, -0.4122107, 3.8735237)
+use_collision = true
+size = Vector3(3, 3, 3)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="stage" unique_id=315325115]
+transform = Transform3D(0.8247228, -0.14035594, -0.54784346, -0.119673535, 0.90346354, -0.41162124, 0.5527301, 0.4050358, 0.7283099, -2.5988266, -0.5407593, -4.4750695)
+use_collision = true
+size = Vector3(3, 3, 3)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="stage" unique_id=215639968]
+transform = Transform3D(-0.9186721, 0.056438513, 0.39096847, -0.119673535, 0.90346354, -0.4116212, -0.3764571, -0.42493346, -0.8232323, -2.115626, -0.54075885, 4.219141)
+use_collision = true
+size = Vector3(3, 3, 3)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="stage" unique_id=1427341812]
+transform = Transform3D(0.12154446, 0.89712083, 0.42473677, -0.9407354, 0.24060985, -0.23900624, -0.3166132, -0.3705151, 0.8731979, 3.528325, -0.2738657, -0.89702034)
+use_collision = true
+size = Vector3(3, 3, 3)
