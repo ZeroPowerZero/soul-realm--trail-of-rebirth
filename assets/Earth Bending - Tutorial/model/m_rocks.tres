@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bu5acir2aq0ft"]
+
+[ext_resource type="Texture2D" uid="uid://brbwcirykm8o5" path="res://assets/Earth Bending - Tutorial/texture/T_rocks_A_color.png" id="1_q8vbx"]
+
+[resource]
+resource_name = "m_rocks"
+cull_mode = 2
+diffuse_mode = 3
+albedo_texture = ExtResource("1_q8vbx")
