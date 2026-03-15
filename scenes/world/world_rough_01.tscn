@@ -2,6 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://2iy8weuaf8be" path="res://assets/textures/kenney_grids/Light/texture_07.png" id="1_2q354"]
 [ext_resource type="PackedScene" uid="uid://3v50xo6wlir3" path="res://scenes/player/player.tscn" id="2_ks47n"]
+[ext_resource type="Script" uid="uid://d1u7ll7nr8mp0" path="res://scripts/pen.gd" id="3_ucst3"]
+[ext_resource type="Texture2D" uid="uid://o5nfl11ncwsi" path="res://assets/textures/spellframe.png" id="4_bhr3g"]
+[ext_resource type="Script" uid="uid://en0mli6lspcj" path="res://scripts/spell_drawing_controller.gd" id="4_l0ghi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fdo8o"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -20,6 +23,17 @@ glow_enabled = true
 albedo_color = Color(0.32172796, 0.32172796, 0.32172796, 1)
 albedo_texture = ExtResource("1_2q354")
 uv1_triplanar = true
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_2q354"]
+viewport_path = NodePath("DrawingCanvas/MarginContainer/SubViewportContainer/SubViewport")
+
+[sub_resource type="Theme" id="Theme_ucst3"]
+
+[sub_resource type="Theme" id="Theme_l0ghi"]
+
+[sub_resource type="Gradient" id="Gradient_l0ghi"]
+offsets = PackedFloat32Array(0, 0.5308642, 1)
+colors = PackedColorArray(0.18041608, 0.85662913, 0.99999994, 1, 0.6021793, 0.21665728, 1, 1, 1, 0, 1, 1)
 
 [node name="world_rough_01" type="Node3D" unique_id=145907840]
 
@@ -66,5 +80,92 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0568309, -3.5762787e-07, 2
 
 [node name="Book" parent="player/head/Camera3D/view_model" parent_id_path=PackedInt32Array(1891982654, 442719824) index="2" unique_id=2121856210]
 transform = Transform3D(16.799551, 94.437164, 28.27354, -53.649174, -15.303069, 82.991425, 82.70151, -29.11073, 48.09394, -0.79905796, -0.5986273, -1.3137145)
+
+[node name="Pen_0" parent="player/head/Camera3D/view_model" parent_id_path=PackedInt32Array(1891982654, 442719824) index="3" unique_id=1835925237 node_paths=PackedStringArray("spell_billboard")]
+transform = Transform3D(0.07973878, 0.0010829219, -0.0063681193, -0.0064476193, 0.008554214, -0.07927958, -0.00039224466, 0.07953396, 0.00861356, 0.5078861, -0.49209106, -1.1932557)
+script = ExtResource("3_ucst3")
+spell_billboard = NodePath("../SpellBillboard")
+
+[node name="SpellBillboard" type="Sprite3D" parent="player/head/Camera3D/view_model" parent_id_path=PackedInt32Array(1891982654, 442719824) index="4" unique_id=53064134]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23885453, -0.17744231, -1.603149)
+pixel_size = 0.005
+texture = SubResource("ViewportTexture_2q354")
+
+[node name="DrawingCanvas" type="Control" parent="." unique_id=552998821]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_bottom = 256.0
+grow_horizontal = 0
+mouse_filter = 1
+
+[node name="TextureRect" type="TextureRect" parent="DrawingCanvas" unique_id=802434833]
+layout_mode = 0
+offset_left = -36.0
+offset_top = -7.0
+offset_right = 264.0
+offset_bottom = 273.0
+texture = ExtResource("4_bhr3g")
+expand_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DrawingCanvas" unique_id=606071790]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_ucst3")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="DrawingCanvas/MarginContainer" unique_id=1473965367]
+layout_mode = 2
+theme = SubResource("Theme_l0ghi")
+
+[node name="SubViewport" type="SubViewport" parent="DrawingCanvas/MarginContainer/SubViewportContainer" unique_id=1929567725]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+
+[node name="SpellDrawingController" type="Control" parent="DrawingCanvas/MarginContainer/SubViewportContainer/SubViewport" unique_id=1632002383]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 256.0
+offset_bottom = 256.0
+mouse_filter = 1
+script = ExtResource("4_l0ghi")
+
+[node name="Drawing" type="Line2D" parent="DrawingCanvas/MarginContainer/SubViewportContainer/SubViewport/SpellDrawingController" unique_id=516053898]
+width = 5.0
+default_color = Color(1.3863964, 0.5306603, 2.2327187, 1)
+gradient = SubResource("Gradient_l0ghi")
+
+[node name="Label" type="Label" parent="DrawingCanvas" unique_id=1394807949]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 255.0
+offset_right = 255.0
+offset_bottom = 308.0
+
+[node name="HelpUI" type="Control" parent="." unique_id=23901850]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 318.0
+offset_bottom = 319.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HelpUI" unique_id=1476165805]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 15.0
+offset_right = 308.0
+offset_bottom = 291.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HelpUI/VBoxContainer" unique_id=720851006]
+layout_mode = 2
+text = "Press F to Cast a Spell
+"
+fit_content = true
+
+[connection signal="drawing_state_changed" from="DrawingCanvas/MarginContainer/SubViewportContainer/SubViewport/SpellDrawingController" to="player/head/Camera3D/view_model/Pen_0" method="_on_spell_drawing_controller_drawing_state_changed"]
+[connection signal="pen_moved" from="DrawingCanvas/MarginContainer/SubViewportContainer/SubViewport/SpellDrawingController" to="player/head/Camera3D/view_model/Pen_0" method="_on_spell_drawing_controller_pen_moved"]
 
 [editable path="player"]
