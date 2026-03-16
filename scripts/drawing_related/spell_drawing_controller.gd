@@ -12,6 +12,7 @@ extends Control
 # ====== SIGNALS ======
 signal pen_moved(canvas_pos: Vector2, canvas_size: Vector2)
 signal drawing_state_changed(is_drawing: bool)
+signal spell_manager_call(spell_name: String)
 
 # ====== CONFIGURATION ======
 const NUM_POINTS: int = 64            # Number of points after resampling
@@ -27,7 +28,7 @@ var stroke_points: Array[Vector2] = []
 var is_drawing: bool = false
 
 @export var is_recording_mode: bool = false
-@export var spell_name_to_record: String = "Fireball"
+@export var spell_name_to_record: String = "fireball"
 
 # ==========================================================
 # INPUT SYSTEM (Event Driven)
@@ -105,6 +106,7 @@ func _handle_gesture_result(normalized_gesture: Array[Vector2]) -> void:
 		
 		label.text = recognized_spell
 		if not recognized_spell.begins_with("Spell Failed"):
+			spell_manager_call.emit(recognized_spell)
 			trigger_toggle_spell_mode()
 #################################################################
 func trigger_toggle_spell_mode():

@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://3v50xo6wlir3"]
 
-[ext_resource type="Script" uid="uid://bxs3r7wdcltp8" path="res://scripts/first_person_controller.gd" id="1_8afob"]
+[ext_resource type="Script" uid="uid://bxs3r7wdcltp8" path="res://scripts/player/first_person_controller.gd" id="1_8afob"]
 [ext_resource type="Texture2D" uid="uid://c1ldc2d6jmg5o" path="res://assets/book/spell_book (1)_0.png" id="2_75vfm"]
 [ext_resource type="Texture2D" uid="uid://dwoa478224lj5" path="res://assets/book/spell_book (1)_2.png" id="3_0owmy"]
 [ext_resource type="Texture2D" uid="uid://b7l1iulupaotd" path="res://assets/book/spell_book (1)_1.png" id="4_qek5x"]

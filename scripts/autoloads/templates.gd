@@ -7,6 +7,7 @@ const MATCH_THRESHOLD: float = 60.0 # Adjust this: lower is stricter, higher is 
 var saved_spells: Dictionary = {}
 
 func _ready() -> void:
+	#print(ProjectSettings.globalize_path("user://spell_templates.json"))
 	load_spells()
 
 # ==========================================================

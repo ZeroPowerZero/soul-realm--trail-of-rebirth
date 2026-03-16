@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ba7wjkme2r5v1"]
+
+[ext_resource type="PackedScene" uid="uid://cg56y7vcqaal4" path="res://scenes/spells/fire_ball/projectile_model.glb" id="1_ev0nb"]
+[ext_resource type="Script" uid="uid://bihgodfq04lq2" path="res://scripts/spells/fire_ball.gd" id="2_7kqhp"]
+[ext_resource type="Shader" uid="uid://c1ufbpu8trh0s" path="res://scenes/spells/fire_ball/projectile.gdshader" id="3_dd5tk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rhtut"]
+render_priority = 0
+shader = ExtResource("3_dd5tk")
+shader_parameter/tail_color = Color(0.788203, 0.488427, 0.208224, 1)
+shader_parameter/head_color = Color(0.721086, 0.279896, 0.210597, 1)
+
+[node name="fire_ball" unique_id=1659041512 instance=ExtResource("1_ev0nb")]
+transform = Transform3D(-4.3711385e-08, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, -4.3711385e-08, 0, 0, 0)
+script = ExtResource("2_7kqhp")
+
+[node name="Projectile" parent="." index="0" unique_id=770198065]
+material_override = SubResource("ShaderMaterial_rhtut")

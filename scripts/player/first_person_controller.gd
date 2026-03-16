@@ -34,7 +34,10 @@ func _input(event):
 		rotate_y(deg_to_rad(-event.relative.x * mouse_sens))
 		head.rotate_x(deg_to_rad(-event.relative.y * mouse_sens))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
-
+	
+	if event.is_action_pressed("escape"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		
 func _clamp_mouse_to_canvas():
 	var mouse_pos = get_viewport().get_mouse_position()
 	var rect = drawing_container.get_global_rect()
