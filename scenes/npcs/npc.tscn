@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://drfsqdfnkvntv"]
+
+[ext_resource type="Script" uid="uid://dip0477yqqn20" path="res://scenes/npcs/npc_controller.gd" id="1_m5fb5"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_evfc8"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_tqkno"]
+
+[node name="NPC" type="CharacterBody3D" unique_id=653790378]
+script = ExtResource("1_m5fb5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=405399720]
+shape = SubResource("SphereShape3D_evfc8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1011436493]
+mesh = SubResource("CapsuleMesh_tqkno")
+
+[node name="SpellBillboard" type="Sprite3D" parent="." unique_id=1192703985]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23885453, -0.17744231, -1.603149)
+pixel_size = 0.005
