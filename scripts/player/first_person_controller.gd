@@ -72,5 +72,6 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_spell_drawing_controller_spell_manager_call(spell_name: String) -> void:
+	if spell_name == "Fireball":
 		var dir = -camera.global_transform.basis.z
 		spell_manager.cast_fireball(pen_0, dir)
