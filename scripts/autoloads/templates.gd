@@ -1,73 +1,67 @@
 extends Node
 
-const SAVE_PATH: String = "user://spell_templates.json"
+const SAVE_PATH: String = "user://spells_manager.res"
 const MATCH_THRESHOLD: float = 60.0 # Adjust this: lower is stricter, higher is more forgiving
 
-# Stores our loaded spells: { "Fireball": [Vector2, Vector2...], "Shield": [...] }
-var saved_spells: Dictionary = {}
+var spell_manager: SpellsManager
 
 func _ready() -> void:
-	#print(ProjectSettings.globalize_path("user://spell_templates.json"))
 	load_spells()
 
 # ==========================================================
 # SAVE & LOAD SYSTEM
 # ==========================================================
-func save_new_spell(spell_name: String, normalized_points: Array[Vector2]) -> void:
-	saved_spells[spell_name] = normalized_points
-	_save_to_disk()
-	print("Spell saved: ", spell_name)
-
-func _save_to_disk() -> void:
-	var data_to_save: Dictionary = {}
+func save_new_spell(resource: SpellData, coords: Array[Vector2]):
+	spell_manager.new_spell_driver(resource, coords)
 	
-	# Convert Vector2 arrays into standard dictionaries for JSON saving
-	for spell_name in saved_spells:
-		var points_array: Array[Dictionary] = []
-		for p in saved_spells[spell_name]:
-			points_array.append({"x": p.x, "y": p.y})
-		data_to_save[spell_name] = points_array
-		
-	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
-	if file:
-		file.store_string(JSON.stringify(data_to_save, "\t"))
-
-func load_spells() -> void:
-	if not FileAccess.file_exists(SAVE_PATH):
-		return
-	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
-	var data = JSON.parse_string(file.get_as_text())
+	print("spells: ", spell_manager.get_spells())
+	var error = ResourceSaver.save(spell_manager, SAVE_PATH)
 	
-	if data and typeof(data) == TYPE_DICTIONARY:
-		saved_spells.clear()
-		# Convert JSON dictionaries back into Vector2 arrays
-		for spell_name in data:
-			var points: Array[Vector2] = []
-			for p_dict in data[spell_name]:
-				points.append(Vector2(p_dict["x"], p_dict["y"]))
-			saved_spells[spell_name] = points
-		print("Loaded ", saved_spells.size(), " spells from disk.")
+	if error != OK:
+		print("Couldn't save: ", error)
+	else:
+		print("saved succesfully: ", spell_manager)
 
-# ==========================================================
-# RECOGNITION SYSTEM
-# ==========================================================
-func recognize_spell(drawn_points: Array[Vector2]) -> String:
-	if saved_spells.is_empty():
-		return "No spells learned yet!"
-		
-	var best_match: String = ""
+func load_spells():
+	var current_game_data = load_data(SAVE_PATH) as SpellsManager
+	
+	if current_game_data != null:
+		spell_manager = current_game_data
+		print("file loaded succesfully: ", spell_manager.get_spells())
+	else:
+		print("File couldn't find, please create one.")
+		spell_manager = SpellsManager.new()
+
+func load_data(file_path: String) -> Resource:
+	if !FileAccess.file_exists(file_path):
+		return null
+	
+	var loaded_resource = ResourceLoader.load(file_path)
+	
+	if loaded_resource != null:
+		return loaded_resource
+	else:
+		printerr("File is broken or unreadable!")
+		return null
+
+
+func recognize_spell(drawn_points: Array[Vector2]) -> SpellDriver:
+	if spell_manager.get_spells().is_empty():
+		return null
+	
+	var best_match: SpellDriver
 	var best_score: float = INF
 	
-	for spell_name in saved_spells:
-		var score = _calculate_average_distance(drawn_points, saved_spells[spell_name])
+	for spell in spell_manager.get_spells():
+		var score = _calculate_average_distance(drawn_points, spell.get_coords())
 		if score < best_score:
 			best_score = score
-			best_match = spell_name
-			
+			best_match = spell
+	
 	if best_score <= MATCH_THRESHOLD:
 		return best_match
 	else:
-		return "Spell Failed (Score: " + str(snapped(best_score, 0.1)) + ")"
+		return null
 
 func _calculate_average_distance(points1: Array[Vector2], points2: Array[Vector2]) -> float:
 	# Compares the distance between each corresponding point in the two normalized arrays
@@ -76,5 +70,5 @@ func _calculate_average_distance(points1: Array[Vector2], points2: Array[Vector2
 	
 	for i in range(point_count):
 		total_distance += points1[i].distance_to(points2[i])
-		
+	
 	return total_distance / point_count
