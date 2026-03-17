@@ -12,7 +12,7 @@ extends Control
 # ====== SIGNALS ======
 signal pen_moved(canvas_pos: Vector2, canvas_size: Vector2)
 signal drawing_state_changed(is_drawing: bool)
-signal spell_manager_call(spell_name: String)
+signal create_new_spell(spell_driver: SpellDriver)
 
 # ====== CONFIGURATION ======
 const NUM_POINTS: int = 64            # Number of points after resampling
@@ -28,7 +28,7 @@ var stroke_points: Array[Vector2] = []
 var is_drawing: bool = false
 
 @export var is_recording_mode: bool = false
-@export var spell_name_to_record: String = "fireball"
+@export var spell_resource_to_record: SpellData
 
 # ==========================================================
 # INPUT SYSTEM (Event Driven)
@@ -54,25 +54,23 @@ func _gui_input(event: InputEvent) -> void:
 # ==========================================================
 # STROKE CONTROL
 # ==========================================================
-func _start_stroke(position: Vector2) -> void:
+func _start_stroke(pos: Vector2) -> void:
 	is_drawing = true
 	drawing_state_changed.emit(true)
 	
 	stroke_points.clear()
 	drawing.clear_points()
 	
-	stroke_points.append(position)
-	drawing.add_point(position)
-	pen_moved.emit(position, size)
+	stroke_points.append(pos)
+	drawing.add_point(pos)
+	pen_moved.emit(pos, size)
 
-func _update_stroke(position: Vector2) -> void:
+func _update_stroke(pos: Vector2) -> void:
 	var last_point = stroke_points.back()
 	
 	# Interpolate to avoid gaps if moving too fast
-	if last_point.distance_to(position) > LINE_INTERPOLATION_STEP:
-		_interpolate_line(last_point, position)
-	else:
-		_add_point(position)
+	if last_point.distance_to(pos) > LINE_INTERPOLATION_STEP:
+		_add_point(pos)
 
 func _end_stroke() -> void:
 	is_drawing = false
@@ -93,21 +91,23 @@ func _end_stroke() -> void:
 		print("[SpellSystem] Clearing canvas.")
 		drawing.clear_points()
 		stroke_points.clear()
-		
+
 ###################### LOGIC HERE #####################################
 func _handle_gesture_result(normalized_gesture: Array[Vector2]) -> void:
 	if is_recording_mode:
 		# Save it automatically to the Templates Autoload
-		Templates.save_new_spell(spell_name_to_record, normalized_gesture)
-		print("[SpellSystem] RECORD MODE: Saved gesture as -> ", spell_name_to_record)
+		Templates.save_new_spell(spell_resource_to_record, normalized_gesture)
+		print("[SpellSystem] RECORD MODE: Saved gesture as -> ", spell_resource_to_record)
 	else:
 		var recognized_spell = Templates.recognize_spell(normalized_gesture)
 		print("[SpellSystem] CAST MODE: System recognized -> ", recognized_spell)
 		
-		label.text = recognized_spell
-		if not recognized_spell.begins_with("Spell Failed"):
-			spell_manager_call.emit(recognized_spell)
+		if recognized_spell != null:
+			label.text = recognized_spell.get_data().name
+			create_new_spell.emit(recognized_spell)
 			trigger_toggle_spell_mode()
+		else:
+			label.text = "Couldn't find a spell"
 #################################################################
 func trigger_toggle_spell_mode():
 	# 1. Create the event object
@@ -131,16 +131,10 @@ func trigger_toggle_spell_mode():
 # ==========================================================
 # DRAWING HELPERS
 # ==========================================================
-func _add_point(position: Vector2) -> void:
-	if stroke_points.is_empty() or stroke_points.back().distance_to(position) > MIN_POINT_DISTANCE:
-		stroke_points.append(position)
-		drawing.add_point(position)
-
-func _interpolate_line(from: Vector2, to: Vector2) -> void:
-	var current = from
-	while current.distance_to(to) > 1.0:
-		current = current.move_toward(to, LINE_INTERPOLATION_STEP)
-		_add_point(current)
+func _add_point(pos: Vector2) -> void:
+	if stroke_points.is_empty() or stroke_points.back().distance_to(pos) > MIN_POINT_DISTANCE:
+		stroke_points.append(pos)
+		drawing.add_point(pos)
 
 # ==========================================================
 # GESTURE NORMALIZATION PIPELINE
@@ -210,7 +204,7 @@ func _translate_to_origin(points: Array[Vector2]) -> Array[Vector2]:
 		new_points.append(p - centroid)
 	return new_points
 
-func _scale_to_square(points: Array[Vector2], size: float) -> Array[Vector2]:
+func _scale_to_square(points: Array[Vector2], _size: float) -> Array[Vector2]:
 	var min_x = INF
 	var max_x = -INF
 	var min_y = INF
@@ -224,9 +218,9 @@ func _scale_to_square(points: Array[Vector2], size: float) -> Array[Vector2]:
 	
 	var width = max_x - min_x
 	var height = max_y - min_y
-	var scale = size / max(width, height) if max(width, height) != 0 else 1.0
+	var _scale = _size / max(width, height) if max(width, height) != 0 else 1.0
 	
 	var new_points: Array[Vector2] = []
 	for p in points:
-		new_points.append(p * scale)
+		new_points.append(p * _scale)
 	return new_points

@@ -1,26 +1,24 @@
-extends Node3D
+extends Area3D
 
-@export var speed : float = 25.0
-@export var max_distance : float = 40.0
+@export var life_time: float = 3
+var _time: float
 
-var direction : Vector3
-var start_position : Vector3
+@onready var throw_spell: ThrowSpell = $throw_spell
 
+var _controller: SpellController
 
-func initialize(dir:Vector3):
+func _ready() -> void:
+	var new_basis = _controller.get_basis()
+	basis = new_basis
+	
+	throw_spell.change_owner(self)
 
-	direction = dir.normalized()
-	start_position = global_position
-
-	# make fireball face direction
-	#look_at(global_position + direction)
-
-
-func _physics_process(delta):
-
-	global_position += direction * speed * delta
-
-	var travelled = start_position.distance_to(global_position)
-
-	if travelled >= max_distance:
+func _physics_process(delta: float) -> void:
+	throw_spell.move(delta)
+	
+	_time += delta
+	if _time > life_time:
 		queue_free()
+
+func set_controller(who: SpellController):
+	_controller = who
