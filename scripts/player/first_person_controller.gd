@@ -2,6 +2,9 @@ extends CharacterBody3D
 
 @onready var head = $head
 @onready var drawing_container: Control = $"../DrawingCanvas/MarginContainer/SubViewportContainer"
+@onready var camera: Camera3D = $head/Camera3D
+@onready var pen_0: Node3D = $head/Camera3D/view_model/Pen_0
+@onready var spell_manager: SpellManager = $SpellManager
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -35,7 +38,7 @@ func _input(event):
 		head.rotate_x(deg_to_rad(-event.relative.y * mouse_sens))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 	
-	if event.is_action_pressed("escape"):
+	if event.is_action_pressed("escape_mouse"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		
 func _clamp_mouse_to_canvas():
@@ -66,3 +69,8 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+
+
+func _on_spell_drawing_controller_spell_manager_call(spell_name: String) -> void:
+		var dir = -camera.global_transform.basis.z
+		spell_manager.cast_fireball(pen_0, dir)

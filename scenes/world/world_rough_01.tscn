@@ -174,6 +174,6 @@ fit_content = true
 
 [connection signal="drawing_state_changed" from="DrawingCanvas/MarginContainer/SubViewportContainer/SubViewport/SpellDrawingController" to="player/head/Camera3D/view_model/Pen_0" method="_on_spell_drawing_controller_drawing_state_changed"]
 [connection signal="pen_moved" from="DrawingCanvas/MarginContainer/SubViewportContainer/SubViewport/SpellDrawingController" to="player/head/Camera3D/view_model/Pen_0" method="_on_spell_drawing_controller_pen_moved"]
-[connection signal="spell_manager_call" from="DrawingCanvas/MarginContainer/SubViewportContainer/SubViewport/SpellDrawingController" to="player/SpellManager" method="_on_spell_drawing_controller_spell_manager_call"]
+[connection signal="spell_manager_call" from="DrawingCanvas/MarginContainer/SubViewportContainer/SubViewport/SpellDrawingController" to="player" method="_on_spell_drawing_controller_spell_manager_call"]
 
 [editable path="player"]

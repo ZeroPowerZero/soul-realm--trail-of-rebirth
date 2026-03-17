@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var speed : float = 2.0
+@export var speed : float = 25.0
 @export var max_distance : float = 40.0
 
 var direction : Vector3
