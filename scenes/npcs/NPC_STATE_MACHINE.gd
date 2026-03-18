@@ -1,6 +1,7 @@
 extends Node
 
-enum states {
-	IDLE = 0,
-	ATTACK = 1 << 0
+enum Npc_States {
+	IDLE,
+	ATTACK,
+	FOLLOW
 }
