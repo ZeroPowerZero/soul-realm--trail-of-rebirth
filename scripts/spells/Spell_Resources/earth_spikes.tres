@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SpellData" format=3 uid="uid://du3fy7qlems00"]
+
+[ext_resource type="Script" uid="uid://ds2evghd4d04i" path="res://scripts/spells/Spell_Resources/spell_data.gd" id="1_omuig"]
+[ext_resource type="PackedScene" uid="uid://gu0lwv3tyi3v" path="res://scenes/spells/rock_spikes/vfx_earth_spikes.tscn" id="2_71f1a"]
+
+[resource]
+script = ExtResource("1_omuig")
+name = "earth_spikes"
+spell_scene = ExtResource("2_71f1a")
+metadata/_custom_type_script = "uid://ds2evghd4d04i"

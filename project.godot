@@ -25,7 +25,8 @@ NpcStateMachine="*uid://cdwqop543yhsg"
 folder_colors={
 "res://assets/": "purple",
 "res://scenes/": "orange",
-"res://scripts/": "green"
+"res://scripts/": "green",
+"res://textures/": "yellow"
 }
 
 [input]

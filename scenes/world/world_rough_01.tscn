@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://d1u7ll7nr8mp0" path="res://scripts/book&pen/pen.gd" id="3_ucst3"]
 [ext_resource type="Texture2D" uid="uid://o5nfl11ncwsi" path="res://assets/textures/spellframe.png" id="4_bhr3g"]
 [ext_resource type="Script" uid="uid://en0mli6lspcj" path="res://scripts/drawing_related/spell_drawing_controller.gd" id="4_l0ghi"]
-[ext_resource type="Resource" uid="uid://frxdjisr2hme" path="res://scripts/spells/Spell_Resources/fire_ball.tres" id="8_fcwsn"]
+[ext_resource type="Resource" uid="uid://du3fy7qlems00" path="res://scripts/spells/Spell_Resources/earth_spikes.tres" id="6_bhr3g"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fdo8o"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -134,7 +134,7 @@ offset_right = 256.0
 offset_bottom = 256.0
 mouse_filter = 1
 script = ExtResource("4_l0ghi")
-spell_resource_to_record = ExtResource("8_fcwsn")
+spell_resource_to_record = ExtResource("6_bhr3g")
 
 [node name="Drawing" type="Line2D" parent="DrawingCanvas/MarginContainer/SubViewportContainer/SubViewport/SpellDrawingController" unique_id=516053898]
 width = 5.0
