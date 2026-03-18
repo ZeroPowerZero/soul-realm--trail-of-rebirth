@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cksbt2g5rysp"]
+
+[ext_resource type="Script" uid="uid://dhom2gpnh1onu" path="res://scenes/npcs/npc_area.gd" id="1_48vys"]
+[ext_resource type="Script" uid="uid://1x772kariexi" path="res://scenes/npcs/npc_resources/npc_resources.gd" id="2_nd15y"]
+[ext_resource type="Resource" uid="uid://dhyqaw1fw84sw" path="res://scenes/npcs/npc_resources/apprentice_mage.tres" id="3_cxuyc"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_seqbp"]
+radius = 7.0
+
+[node name="NPC_AREA" type="Area3D" unique_id=496244198]
+script = ExtResource("1_48vys")
+enemies = Array[ExtResource("2_nd15y")]([ExtResource("3_cxuyc")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1623373701]
+shape = SubResource("SphereShape3D_seqbp")
