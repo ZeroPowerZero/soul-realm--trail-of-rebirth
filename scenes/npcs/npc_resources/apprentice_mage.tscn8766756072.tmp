@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://drfsqdfnkvntv"]
+
+[ext_resource type="Script" uid="uid://dip0477yqqn20" path="res://scenes/npcs/npc_resources/apprentice_mage.gd" id="1_m5fb5"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ivh6b"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_tqkno"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ivh6b"]
+top_radius = 0.3
+bottom_radius = 0.3
+height = 0.3
+
+[node name="ApprenticeMage" type="CharacterBody3D" unique_id=653790378]
+script = ExtResource("1_m5fb5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=405399720]
+shape = SubResource("CapsuleShape3D_ivh6b")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1011436493]
+mesh = SubResource("CapsuleMesh_tqkno")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=150988993]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.5, -0.4)
+mesh = SubResource("CylinderMesh_ivh6b")
+
+[node name="SpellBillboard" type="Sprite3D" parent="." unique_id=1192703985]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23885453, -0.17744231, -1.603149)
+pixel_size = 0.005
