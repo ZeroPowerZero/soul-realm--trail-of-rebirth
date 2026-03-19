@@ -2,9 +2,18 @@
 
 [ext_resource type="Script" uid="uid://bxs3r7wdcltp8" path="res://scripts/player/player.gd" id="1_8afob"]
 [ext_resource type="Texture2D" uid="uid://c1ldc2d6jmg5o" path="res://assets/book/spell_book (1)_0.png" id="2_75vfm"]
+[ext_resource type="Script" uid="uid://cretl3pk3p3ns" path="res://scripts/health_component_settings.gd" id="2_h17s1"]
 [ext_resource type="Texture2D" uid="uid://dwoa478224lj5" path="res://assets/book/spell_book (1)_2.png" id="3_0owmy"]
 [ext_resource type="Texture2D" uid="uid://b7l1iulupaotd" path="res://assets/book/spell_book (1)_1.png" id="4_qek5x"]
 [ext_resource type="Texture2D" uid="uid://xy8toul5atte" path="res://assets/book/spell_book (1)_3.png" id="5_5gtgg"]
+[ext_resource type="Script" uid="uid://d1u7ll7nr8mp0" path="res://scripts/book&pen/pen.gd" id="6_qek5x"]
+[ext_resource type="Texture2D" uid="uid://o5nfl11ncwsi" path="res://assets/textures/spellframe.png" id="7_5gtgg"]
+[ext_resource type="Script" uid="uid://en0mli6lspcj" path="res://scripts/drawing_related/spell_drawing_controller.gd" id="8_h17s1"]
+[ext_resource type="Resource" uid="uid://du3fy7qlems00" path="res://scripts/spells/Spell_Resources/earth_spikes.tres" id="9_5gtgg"]
+
+[sub_resource type="Resource" id="Resource_je7p5"]
+script = ExtResource("2_h17s1")
+metadata/_custom_type_script = "uid://cretl3pk3p3ns"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ernxy"]
 
@@ -350,26 +359,38 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ve020")
 
-[node name="player" type="CharacterBody3D" unique_id=1891982654 groups=["Player"]]
-script = ExtResource("1_8afob")
+[sub_resource type="ViewportTexture" id="ViewportTexture_2q354"]
+viewport_path = NodePath("DrawingCanvas/MarginContainer/SubViewportContainer/SubViewport")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1282762829]
+[sub_resource type="Theme" id="Theme_ucst3"]
+
+[sub_resource type="Theme" id="Theme_l0ghi"]
+
+[sub_resource type="Gradient" id="Gradient_l0ghi"]
+offsets = PackedFloat32Array(0, 0.5308642, 1)
+colors = PackedColorArray(0.18041608, 0.85662913, 0.99999994, 1, 0.6021793, 0.21665728, 1, 1, 1, 0, 1, 1)
+
+[node name="player" type="CharacterBody3D" unique_id=978608411 groups=["Player"]]
+script = ExtResource("1_8afob")
+health_component_settings = SubResource("Resource_je7p5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=544272122]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_ernxy")
 
-[node name="head" type="Node3D" parent="." unique_id=580270561]
+[node name="head" type="Node3D" parent="." unique_id=1323639554]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 
-[node name="Camera3D" type="Camera3D" parent="head" unique_id=1317838171]
+[node name="Camera3D" type="Camera3D" parent="head" unique_id=477634669]
 
-[node name="view_model" type="Node3D" parent="head/Camera3D" unique_id=442719824]
+[node name="view_model" type="Node3D" parent="head/Camera3D" unique_id=1616138960]
 
-[node name="right_arm" type="Node3D" parent="head/Camera3D/view_model" unique_id=181510402]
+[node name="right_arm" type="Node3D" parent="head/Camera3D/view_model" unique_id=1021830467]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.4818008, -0.35909355, 0)
 
-[node name="Armature" type="Node3D" parent="head/Camera3D/view_model/right_arm" unique_id=730202619]
+[node name="Armature" type="Node3D" parent="head/Camera3D/view_model/right_arm" unique_id=890788496]
 
-[node name="Skeleton3D" type="Skeleton3D" parent="head/Camera3D/view_model/right_arm/Armature" unique_id=610849312]
+[node name="Skeleton3D" type="Skeleton3D" parent="head/Camera3D/view_model/right_arm/Armature" unique_id=717083665]
 bones/0/name = "Bone"
 bones/0/parent = -1
 bones/0/rest = Transform3D(0, 1, -3.5527137e-15, -1, 0, 7.549791e-08, 7.549791e-08, -3.5527137e-15, 1, 0, 0, 0)
@@ -399,12 +420,12 @@ bones/3/position = Vector3(0, 0.38748765, 0)
 bones/3/rotation = Quaternion(0.0026261332, -2.9251172e-08, 0.007444685, 0.9999688)
 bones/3/scale = Vector3(0.99999994, 1, 1)
 
-[node name="Cube" type="MeshInstance3D" parent="head/Camera3D/view_model/right_arm/Armature/Skeleton3D" unique_id=1137312361]
+[node name="Cube" type="MeshInstance3D" parent="head/Camera3D/view_model/right_arm/Armature/Skeleton3D" unique_id=2007378576]
 mesh = SubResource("ArrayMesh_dwwgc")
 skin = SubResource("Skin_a5qyb")
 skeleton = NodePath("..")
 
-[node name="TwoBoneIK3D" type="TwoBoneIK3D" parent="head/Camera3D/view_model/right_arm/Armature/Skeleton3D" unique_id=148334508]
+[node name="TwoBoneIK3D" type="TwoBoneIK3D" parent="head/Camera3D/view_model/right_arm/Armature/Skeleton3D" unique_id=999499674]
 setting_count = 1
 settings/0/target_node = NodePath("../../../../Pen_0/pen")
 settings/0/pole_node = NodePath("../../pole")
@@ -420,15 +441,15 @@ settings/0/extend_end_bone = true
 settings/0/end_bone/direction = 6
 settings/0/end_bone/length = 0.084
 
-[node name="pole" type="Marker3D" parent="head/Camera3D/view_model/right_arm/Armature" unique_id=1836229133]
+[node name="pole" type="Marker3D" parent="head/Camera3D/view_model/right_arm/Armature" unique_id=1970179199]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1.314, 0.693)
 
-[node name="left_arm" type="Node3D" parent="head/Camera3D/view_model" unique_id=1202757807]
+[node name="left_arm" type="Node3D" parent="head/Camera3D/view_model" unique_id=1967747467]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.527637, -0.35909355, 0)
 
-[node name="Armature" type="Node3D" parent="head/Camera3D/view_model/left_arm" unique_id=1358288557]
+[node name="Armature" type="Node3D" parent="head/Camera3D/view_model/left_arm" unique_id=1455782285]
 
-[node name="Skeleton3D" type="Skeleton3D" parent="head/Camera3D/view_model/left_arm/Armature" unique_id=878319880]
+[node name="Skeleton3D" type="Skeleton3D" parent="head/Camera3D/view_model/left_arm/Armature" unique_id=1140969400]
 bones/0/name = "Bone"
 bones/0/parent = -1
 bones/0/rest = Transform3D(0, 1, -3.5527137e-15, -1, 0, 7.549791e-08, 7.549791e-08, -3.5527137e-15, 1, 0, 0, 0)
@@ -458,12 +479,12 @@ bones/3/position = Vector3(0, 0.38748765, 0)
 bones/3/rotation = Quaternion(0.0026261332, -2.9251172e-08, 0.007444685, 0.9999688)
 bones/3/scale = Vector3(0.99999994, 1, 1)
 
-[node name="Cube" type="MeshInstance3D" parent="head/Camera3D/view_model/left_arm/Armature/Skeleton3D" unique_id=1996525741]
+[node name="Cube" type="MeshInstance3D" parent="head/Camera3D/view_model/left_arm/Armature/Skeleton3D" unique_id=409022055]
 mesh = SubResource("ArrayMesh_dwwgc")
 skin = SubResource("Skin_a5qyb")
 skeleton = NodePath("..")
 
-[node name="TwoBoneIK3D" type="TwoBoneIK3D" parent="head/Camera3D/view_model/left_arm/Armature/Skeleton3D" unique_id=580381492]
+[node name="TwoBoneIK3D" type="TwoBoneIK3D" parent="head/Camera3D/view_model/left_arm/Armature/Skeleton3D" unique_id=907352793]
 setting_count = 1
 settings/0/target_node = NodePath("../../../../Book/book_target")
 settings/0/pole_node = NodePath("../../pole")
@@ -479,39 +500,108 @@ settings/0/extend_end_bone = true
 settings/0/end_bone/direction = 6
 settings/0/end_bone/length = 0.105
 
-[node name="pole" type="Marker3D" parent="head/Camera3D/view_model/left_arm/Armature" unique_id=754367836]
+[node name="pole" type="Marker3D" parent="head/Camera3D/view_model/left_arm/Armature" unique_id=832176807]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7420001, -1.2975048, -0.64725065)
 
-[node name="Book" type="Node3D" parent="head/Camera3D/view_model" unique_id=2121856210]
-transform = Transform3D(16.799555, 94.437164, 28.273542, -48.302452, -17.116442, 85.87139, 85.93397, -28.08284, 42.740005, -0.799058, -0.5986273, -1.3137145)
+[node name="Book" type="Node3D" parent="head/Camera3D/view_model" unique_id=672367236]
+transform = Transform3D(16.799551, 94.437164, 28.27354, -53.649174, -15.303069, 82.991425, 82.70151, -29.11073, 48.09394, -0.79905796, -0.5986273, -1.3137145)
 
-[node name="Book_Book_0" type="MeshInstance3D" parent="head/Camera3D/view_model/Book" unique_id=1884981690]
+[node name="Book_Book_0" type="MeshInstance3D" parent="head/Camera3D/view_model/Book" unique_id=1762585189]
 transform = Transform3D(0.004, 0, 0, 0, 0.004, 0, 0, 0, 0.004, 0, 0, 0)
 mesh = SubResource("ArrayMesh_tmhi8")
 
-[node name="book_target" type="Marker3D" parent="head/Camera3D/view_model/Book" unique_id=2030702297]
+[node name="book_target" type="Marker3D" parent="head/Camera3D/view_model/Book" unique_id=924456316]
 transform = Transform3D(0.0016633989, 0.00019605248, 0.009858732, 0.009736968, 0.0015460993, -0.0016736025, -0.0015570675, 0.009877807, 6.628153e-05, 0.0018872669, -5.7987498e-05, -0.0015502551)
 
-[node name="Pen_0" type="Node3D" parent="head/Camera3D/view_model" unique_id=1835925237]
-transform = Transform3D(0.07973878, 0.0010829219, -0.0063681193, -0.0064476193, 0.008554214, -0.07927958, -0.00039224466, 0.07953396, 0.00861356, 0.32538325, -0.49209106, -1.0303329)
+[node name="Pen_0" type="Node3D" parent="head/Camera3D/view_model" unique_id=2074288736 node_paths=PackedStringArray("spell_billboard")]
+transform = Transform3D(0.07973877, 0.0010829215, -0.0063681183, -0.006383633, 0.0011556875, -0.079736516, -0.0009873635, 0.07998431, 0.0012383251, 0.5078861, -0.49209106, -1.1932557)
+script = ExtResource("6_qek5x")
+spell_billboard = NodePath("../SpellBillboard")
 
-[node name="Object_4" type="MeshInstance3D" parent="head/Camera3D/view_model/Pen_0" unique_id=1538379805]
+[node name="Object_4" type="MeshInstance3D" parent="head/Camera3D/view_model/Pen_0" unique_id=180775373]
 mesh = SubResource("ArrayMesh_kgluo")
 
-[node name="Object_5" type="MeshInstance3D" parent="head/Camera3D/view_model/Pen_0" unique_id=1849927258]
+[node name="Object_5" type="MeshInstance3D" parent="head/Camera3D/view_model/Pen_0" unique_id=1071900733]
 mesh = SubResource("ArrayMesh_m2vjw")
 
-[node name="Object_6" type="MeshInstance3D" parent="head/Camera3D/view_model/Pen_0" unique_id=1667415181]
+[node name="Object_6" type="MeshInstance3D" parent="head/Camera3D/view_model/Pen_0" unique_id=1317093514]
 mesh = SubResource("ArrayMesh_dpr7h")
 
-[node name="Object_7" type="MeshInstance3D" parent="head/Camera3D/view_model/Pen_0" unique_id=374155941]
+[node name="Object_7" type="MeshInstance3D" parent="head/Camera3D/view_model/Pen_0" unique_id=7448350]
 mesh = SubResource("ArrayMesh_0vm2p")
 
-[node name="Object_8" type="MeshInstance3D" parent="head/Camera3D/view_model/Pen_0" unique_id=144865811]
+[node name="Object_8" type="MeshInstance3D" parent="head/Camera3D/view_model/Pen_0" unique_id=351236728]
 mesh = SubResource("ArrayMesh_qeb01")
 
-[node name="Object_9" type="MeshInstance3D" parent="head/Camera3D/view_model/Pen_0" unique_id=919213508]
+[node name="Object_9" type="MeshInstance3D" parent="head/Camera3D/view_model/Pen_0" unique_id=1149698550]
 mesh = SubResource("ArrayMesh_gm7au")
 
-[node name="pen" type="Marker3D" parent="head/Camera3D/view_model/Pen_0" unique_id=1388450134]
+[node name="pen" type="Marker3D" parent="head/Camera3D/view_model/Pen_0" unique_id=239511625]
 transform = Transform3D(12.491454, 0.45785737, -0.061287798, 0.011592563, 1.3472139, 12.427183, 0.46179575, -12.418751, 1.3458692, 0.30569577, -0.635664, 0.33442116)
+
+[node name="SpellBillboard" type="Sprite3D" parent="head/Camera3D/view_model" unique_id=1059923137]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23885453, -0.17744231, -1.603149)
+pixel_size = 0.005
+texture = SubResource("ViewportTexture_2q354")
+
+[node name="DrawingCanvas" type="Control" parent="." unique_id=449350108]
+layout_mode = 3
+anchor_left = 0.75
+anchor_right = 1.0
+anchor_bottom = 0.43
+mouse_filter = 1
+
+[node name="TextureRect" type="TextureRect" parent="DrawingCanvas" unique_id=1879415806]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_5gtgg")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="DrawingCanvas" unique_id=162082696]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 1.0
+anchor_right = 0.9
+anchor_bottom = 1.2
+offset_right = -1.5258789e-05
+offset_bottom = -0.08242798
+size_flags_vertical = 1
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="DrawingCanvas" unique_id=2065789119]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.11
+anchor_right = 0.85
+anchor_bottom = 0.88
+theme = SubResource("Theme_ucst3")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="DrawingCanvas/MarginContainer" unique_id=36962897]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_l0ghi")
+script = ExtResource("8_h17s1")
+spell_resource_to_record = ExtResource("9_5gtgg")
+
+[node name="SubViewport" type="SubViewport" parent="DrawingCanvas/MarginContainer/SubViewportContainer" unique_id=1782757346]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(200, 200)
+render_target_update_mode = 4
+
+[node name="Drawing" type="Line2D" parent="DrawingCanvas/MarginContainer/SubViewportContainer/SubViewport" unique_id=483633188]
+width = 5.0
+default_color = Color(1.3863964, 0.5306603, 2.2327187, 1)
+gradient = SubResource("Gradient_l0ghi")
+
+[connection signal="create_new_spell" from="DrawingCanvas/MarginContainer/SubViewportContainer" to="." method="_create_new_spell"]
+[connection signal="drawing_state_changed" from="DrawingCanvas/MarginContainer/SubViewportContainer" to="head/Camera3D/view_model/Pen_0" method="_on_spell_drawing_controller_drawing_state_changed"]
+[connection signal="pen_moved" from="DrawingCanvas/MarginContainer/SubViewportContainer" to="head/Camera3D/view_model/Pen_0" method="_on_spell_drawing_controller_pen_moved"]

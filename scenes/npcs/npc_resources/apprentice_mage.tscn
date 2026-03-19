@@ -1,7 +1,16 @@
 [gd_scene format=3 uid="uid://drfsqdfnkvntv"]
 
 [ext_resource type="Script" uid="uid://dip0477yqqn20" path="res://scenes/npcs/npc_resources/apprentice_mage.gd" id="1_m5fb5"]
-[ext_resource type="Script" uid="uid://dyqxtgkehfwx5" path="res://scripts/health_component.gd" id="2_g5s24"]
+[ext_resource type="Script" uid="uid://dgt7mn604gf80" path="res://scenes/npcs/ai_movement_settings.gd" id="2_g5s24"]
+[ext_resource type="Script" uid="uid://cretl3pk3p3ns" path="res://scripts/health_component_settings.gd" id="3_cbtj4"]
+
+[sub_resource type="Resource" id="Resource_cbtj4"]
+script = ExtResource("2_g5s24")
+metadata/_custom_type_script = "uid://dgt7mn604gf80"
+
+[sub_resource type="Resource" id="Resource_643we"]
+script = ExtResource("3_cbtj4")
+metadata/_custom_type_script = "uid://cretl3pk3p3ns"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ivh6b"]
 
@@ -17,6 +26,8 @@ radius = 4.0
 
 [node name="ApprenticeMage" type="CharacterBody3D" unique_id=653790378 groups=["Enemy"]]
 script = ExtResource("1_m5fb5")
+ai_movement_settings = SubResource("Resource_cbtj4")
+health_component_settings = SubResource("Resource_643we")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=405399720]
 shape = SubResource("CapsuleShape3D_ivh6b")
@@ -36,7 +47,3 @@ shape = SubResource("SphereShape3D_g5s24")
 [node name="SpellBillboard" type="Sprite3D" parent="." unique_id=1192703985]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23885453, -0.17744231, -1.603149)
 pixel_size = 0.005
-
-[node name="HealthComponent" type="Node" parent="." unique_id=969651265]
-script = ExtResource("2_g5s24")
-metadata/_custom_type_script = "uid://dyqxtgkehfwx5"

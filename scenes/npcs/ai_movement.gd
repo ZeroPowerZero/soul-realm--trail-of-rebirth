@@ -1,27 +1,24 @@
+@tool
 class_name AIMOVEMENT
 extends Node
 
-var _npc_manager: NPCMANAGER
-var _controller: CharacterBody3D
+@export var settings: AIMOVEMENTSETTINGS:
+	set(value):
+		settings = value
+		set_settings(value)
 
-var _coord: Vector3
-var _current_coord: Vector3
+var _settings
 
-var _acceleration_vector: float = 0
 var _max_speed: float
 var _acceleration: float
 var _friction: float
 var _turn_speed: float
 
+var _controller: CharacterBody3D
+var _coord: Vector3
+var _current_coord: Vector3
+var _acceleration_vector: float = 0
 var _newyawquat: Quaternion
-
-func set_manager(npc_manager: NPCMANAGER):
-	_npc_manager = npc_manager
-	
-	_max_speed = _npc_manager.get_max_speed()
-	_acceleration = _npc_manager.get_acceleration()
-	_friction = _npc_manager.get_friction()
-	_turn_speed = _npc_manager.get_resource().turn_speed
 
 func _ready() -> void:
 	set_physics_process(false)
@@ -62,3 +59,10 @@ func _physics_process(delta: float) -> void:
 			set_physics_process(false)
 	
 	_controller.move_and_slide()
+
+func set_settings(new_settings: AIMOVEMENTSETTINGS):
+	_settings = new_settings
+	_max_speed = _settings.max_speed
+	_acceleration = _settings.acceleration
+	_friction = _settings.friction
+	_turn_speed = _settings.turn_speed

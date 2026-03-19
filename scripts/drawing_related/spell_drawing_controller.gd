@@ -1,4 +1,4 @@
-extends Control
+extends SubViewportContainer
 # Professional Spell Drawing System
 # ----------------------------------
 # • Full screen drawing board
@@ -6,8 +6,8 @@ extends Control
 # • Emits position to sync with a 3D Pen
 # • Gesture normalization (Resample → Center → Scale)
 # • Debug Logging enabled
-# Label 
-@onready var label: Label = $"../../../../Label"
+@onready var label: Label = $"../../Label"
+@onready var drawing: Line2D = $SubViewport/Drawing
 
 # ====== SIGNALS ======
 signal pen_moved(canvas_pos: Vector2, canvas_size: Vector2)
@@ -19,9 +19,6 @@ const NUM_POINTS: int = 64            # Number of points after resampling
 const SQUARE_SIZE: float = 250.0      # Normalized bounding size
 const MIN_POINT_DISTANCE: float = 4.0 # Minimum distance before adding new stroke point
 const LINE_INTERPOLATION_STEP: float = 6.0
-
-# ====== NODES ======
-@onready var drawing: Line2D = $Drawing
 
 # ====== STATE ======
 var stroke_points: Array[Vector2] = []
