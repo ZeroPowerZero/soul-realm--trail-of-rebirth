@@ -1,10 +1,14 @@
 extends CharacterBody3D
 
 @onready var head = $head
-@onready var drawing_container: Control = $"../DrawingCanvas/MarginContainer/SubViewportContainer"
+@onready var drawing_container: Control = $DrawingCanvas/MarginContainer/SubViewportContainer
 @onready var camera: Camera3D = $head/Camera3D
 @onready var pen_0: Node3D = $head/Camera3D/view_model/Pen_0
-@onready var spell_controller: SpellController
+
+@export var health_component_settings: HealthComponentSettings
+
+var health_component: HealthComponent
+var spell_controller: SpellController
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -16,7 +20,9 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	spell_controller = SpellController.new()
+	health_component = HealthComponent.new()
 	spell_controller.set_basis_node(camera)
+	health_component.set_settings(health_component_settings)
 	add_child(spell_controller)
 
 func _process(_delta):

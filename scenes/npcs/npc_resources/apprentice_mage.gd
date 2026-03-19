@@ -1,30 +1,31 @@
 class_name ApprenticeMage
 extends CharacterBody3D
 
-@export var random_point_timer: float = 5
-
 @onready var area: Area3D = $Area3D
 
-var tres_file: NPC_RESOURCE = load("res://scenes/npcs/npc_resources/apprentice_mage.tres")
+@export var state: NpcStateMachine.Npc_States = NpcStateMachine.Npc_States.IDLE
+@export var random_point_timer: float = 5
+@export var ai_movement_settings: AIMOVEMENTSETTINGS
+@export var health_component_settings: HealthComponentSettings
 
-var npc_manager: NPCMANAGER
 var ai_movement: AIMOVEMENT
+var health_component: HealthComponent
 var spell_controller: SpellController
 
 var _time: float
-
 var _target: Node3D
 var _in_npc_area: Array[Node3D]
 var _in_self_area: Array[Node3D]
 
 func _ready() -> void:
-	npc_manager = NPCMANAGER.new(tres_file)
-	
-	ai_movement = AIMOVEMENT.new()
-	ai_movement.set_manager(npc_manager)
 	spell_controller = SpellController.new()
+	ai_movement = AIMOVEMENT.new()
+	health_component = HealthComponent.new()
 	spell_controller.set_basis_node(self)
+	ai_movement.set_settings(ai_movement_settings)
+	health_component.set_settings(health_component_settings)
 	add_child(ai_movement)
+	add_child(health_component)
 	add_child(spell_controller)
 	
 	area.connect("body_entered", _on_body_entered)
@@ -32,7 +33,7 @@ func _ready() -> void:
 
 var random_effect: float = randf_range(-3, 3)
 func _process(delta: float) -> void:
-	match npc_manager.get_state():
+	match state:
 		NpcStateMachine.Npc_States.IDLE:
 			_time += delta
 			
@@ -51,7 +52,7 @@ func go_random_points():
 	ai_movement.go_to(new_coord)
 
 func see_target(who: Node3D):
-	npc_manager.set_state(NpcStateMachine.Npc_States.ATTACK)
+	state = NpcStateMachine.Npc_States.ATTACK
 	_in_npc_area.append(who)
 func forget_target(who: Node3D):
 	if _in_npc_area.has(who):
@@ -59,11 +60,11 @@ func forget_target(who: Node3D):
 		
 		if _in_self_area.is_empty() and _in_npc_area.is_empty():
 			_target = null
-			npc_manager.set_state(NpcStateMachine.Npc_States.IDLE)
+			state = NpcStateMachine.Npc_States.IDLE
 
 func _on_body_entered(body: Node3D):
 	if body.is_in_group("Player"):
-		npc_manager.set_state(NpcStateMachine.Npc_States.ATTACK)
+		state = NpcStateMachine.Npc_States.ATTACK
 		_in_self_area.append(body)
 func _on_body_exited(body: Node3D):
 	if body.is_in_group("Player") and _in_self_area.has(body):
@@ -71,4 +72,4 @@ func _on_body_exited(body: Node3D):
 		
 		if _in_self_area.is_empty() and _in_npc_area.is_empty():
 			_target = null
-			npc_manager.set_state(NpcStateMachine.Npc_States.IDLE)
+			state = NpcStateMachine.Npc_States.IDLE

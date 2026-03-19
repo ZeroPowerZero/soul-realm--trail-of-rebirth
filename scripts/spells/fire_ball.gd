@@ -1,9 +1,9 @@
 extends Area3D
 
+@onready var throw_spell: ThrowSpell = $throw_spell
+
 @export var life_time: float = 3
 var _time: float
-
-@onready var throw_spell: ThrowSpell = $throw_spell
 
 var _controller: SpellController
 
