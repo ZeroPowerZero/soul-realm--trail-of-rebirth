@@ -22,6 +22,7 @@ func _ready():
 	spell_controller = SpellController.new()
 	health_component = HealthComponent.new()
 	spell_controller.set_basis_node(camera)
+	spell_controller.set_spawn_node(pen_0)
 	health_component.set_settings(health_component_settings)
 	add_child(spell_controller)
 

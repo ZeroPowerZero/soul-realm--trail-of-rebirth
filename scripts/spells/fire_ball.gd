@@ -7,9 +7,11 @@ var _time: float
 
 var _controller: SpellController
 
-func _ready() -> void:
-	var new_basis = _controller.get_basis()
-	basis = new_basis
+func _ready():
+	global_position = _controller.get_spawn_position()
+	
+	var dir = _controller.get_forward_direction()
+	look_at(global_position + dir, Vector3.UP)
 	
 	throw_spell.change_owner(self)
 
