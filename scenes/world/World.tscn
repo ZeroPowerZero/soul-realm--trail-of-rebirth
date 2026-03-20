@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://p8hyyenfp1yf"]
 
-[ext_resource type="Texture2D" uid="uid://2iy8weuaf8be" path="res://assets/textures/kenney_grids/Light/texture_07.png" id="1_2q354"]
-[ext_resource type="PackedScene" uid="uid://3v50xo6wlir3" path="res://scenes/player/player.tscn" id="2_ks47n"]
+[ext_resource type="Texture2D" uid="uid://2iy8weuaf8be" path="res://assets/textures/kenney_grids/Light/texture_07.png" id="1_1oml7"]
+[ext_resource type="PackedScene" uid="uid://3v50xo6wlir3" path="res://scenes/player/player.tscn" id="2_6eebf"]
+[ext_resource type="PackedScene" uid="uid://cksbt2g5rysp" path="res://scenes/npcs/npc_area.tscn" id="3_6eebf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fdo8o"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -18,10 +19,10 @@ glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fdo8o"]
 albedo_color = Color(0.32172796, 0.32172796, 0.32172796, 1)
-albedo_texture = ExtResource("1_2q354")
+albedo_texture = ExtResource("1_1oml7")
 uv1_triplanar = true
 
-[node name="world_rough_01" type="Node3D" unique_id=145907840]
+[node name="World" type="Node3D" unique_id=145907840]
 
 [node name="env" type="Node" parent="." unique_id=364713149]
 
@@ -61,7 +62,7 @@ transform = Transform3D(0.12154446, 0.89712083, 0.42473677, -0.9407354, 0.240609
 use_collision = true
 size = Vector3(3, 3, 3)
 
-[node name="player" parent="." unique_id=978608411 instance=ExtResource("2_ks47n")]
+[node name="player" parent="." unique_id=978608411 instance=ExtResource("2_6eebf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0568309, -3.5762787e-07, 2.3150563)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1619831602]
@@ -87,3 +88,6 @@ layout_mode = 2
 text = "Press F to Cast a Spell
 "
 fit_content = true
+
+[node name="NPC_AREA" parent="." unique_id=496244198 instance=ExtResource("3_6eebf")]
+spawn_interval = 5.0

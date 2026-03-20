@@ -2,18 +2,14 @@
 
 [ext_resource type="Script" uid="uid://bxs3r7wdcltp8" path="res://scripts/player/player.gd" id="1_8afob"]
 [ext_resource type="Texture2D" uid="uid://c1ldc2d6jmg5o" path="res://assets/book/spell_book (1)_0.png" id="2_75vfm"]
-[ext_resource type="Script" uid="uid://cretl3pk3p3ns" path="res://scripts/health_component_settings.gd" id="2_h17s1"]
+[ext_resource type="Script" uid="uid://dyqxtgkehfwx5" path="res://scripts/health_component.gd" id="2_h17s1"]
 [ext_resource type="Texture2D" uid="uid://dwoa478224lj5" path="res://assets/book/spell_book (1)_2.png" id="3_0owmy"]
+[ext_resource type="Script" uid="uid://b8tl5pivwb6oy" path="res://scenes/player/input_movement.gd" id="3_je7p5"]
 [ext_resource type="Texture2D" uid="uid://b7l1iulupaotd" path="res://assets/book/spell_book (1)_1.png" id="4_qek5x"]
 [ext_resource type="Texture2D" uid="uid://xy8toul5atte" path="res://assets/book/spell_book (1)_3.png" id="5_5gtgg"]
 [ext_resource type="Script" uid="uid://d1u7ll7nr8mp0" path="res://scripts/book&pen/pen.gd" id="6_qek5x"]
 [ext_resource type="Texture2D" uid="uid://o5nfl11ncwsi" path="res://assets/textures/spellframe.png" id="7_5gtgg"]
 [ext_resource type="Script" uid="uid://en0mli6lspcj" path="res://scripts/drawing_related/spell_drawing_controller.gd" id="8_h17s1"]
-[ext_resource type="Resource" uid="uid://du3fy7qlems00" path="res://scripts/spells/Spell_Resources/earth_spikes.tres" id="9_5gtgg"]
-
-[sub_resource type="Resource" id="Resource_je7p5"]
-script = ExtResource("2_h17s1")
-metadata/_custom_type_script = "uid://cretl3pk3p3ns"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ernxy"]
 
@@ -372,11 +368,18 @@ colors = PackedColorArray(0.18041608, 0.85662913, 0.99999994, 1, 0.6021793, 0.21
 
 [node name="player" type="CharacterBody3D" unique_id=978608411 groups=["Player"]]
 script = ExtResource("1_8afob")
-health_component_settings = SubResource("Resource_je7p5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=544272122]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_ernxy")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=50387839]
+script = ExtResource("2_h17s1")
+metadata/_custom_type_script = "uid://dyqxtgkehfwx5"
+
+[node name="InputMovement" type="Node" parent="." unique_id=2084618789]
+script = ExtResource("3_je7p5")
+metadata/_custom_type_script = "uid://b8tl5pivwb6oy"
 
 [node name="head" type="Node3D" parent="." unique_id=1323639554]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
@@ -589,7 +592,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = SubResource("Theme_l0ghi")
 script = ExtResource("8_h17s1")
-spell_resource_to_record = ExtResource("9_5gtgg")
 
 [node name="SubViewport" type="SubViewport" parent="DrawingCanvas/MarginContainer/SubViewportContainer" unique_id=1782757346]
 transparent_bg = true

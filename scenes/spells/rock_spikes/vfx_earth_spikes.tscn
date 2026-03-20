@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://gu0lwv3tyi3v"]
 
 [ext_resource type="Material" uid="uid://bu5acir2aq0ft" path="res://assets/Earth Bending - Tutorial/model/m_rocks.tres" id="1_6olcu"]
-[ext_resource type="Script" uid="uid://df3msw5u8qnrx" path="res://scripts/spells/ground_type_spell/vfx_earth_spikes.gd" id="1_82jxp"]
+[ext_resource type="Script" uid="uid://df3msw5u8qnrx" path="res://scripts/spells/Spell_Resources/earth_spikes.gd" id="1_82jxp"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_robrj"]
 _surfaces = [{
