@@ -1,11 +1,5 @@
 extends SubViewportContainer
-# Professional Spell Drawing System
-# ----------------------------------
-# • Full screen drawing board
-# • Event-driven input bound to a specific action
-# • Emits position to sync with a 3D Pen
-# • Gesture normalization (Resample → Center → Scale)
-# • Debug Logging enabled
+
 @onready var label: Label = $"../../Label"
 @onready var drawing: Line2D = $SubViewport/Drawing
 
@@ -20,7 +14,6 @@ const SQUARE_SIZE: float = 250.0      # Normalized bounding size
 const MIN_POINT_DISTANCE: float = 4.0 # Minimum distance before adding new stroke point
 const LINE_INTERPOLATION_STEP: float = 6.0
 
-# ====== STATE ======
 var stroke_points: Array[Vector2] = []
 var is_drawing: bool = false
 
@@ -36,11 +29,9 @@ func _gui_input(event: InputEvent) -> void:
 		if event.is_pressed() and not is_drawing:
 			# Safety check to ensure the event has a position property
 			if event is InputEventMouse or event is InputEventScreenTouch:
-				print("[SpellSystem] Input: Started drawing at ", event.position)
 				_start_stroke(event.position)
 				
 		elif event.is_released() and is_drawing:
-			print("[SpellSystem] Input: Stopped drawing.")
 			_end_stroke()
 	
 	# Mouse moved while pressed → continue stroke and move 3D pen
@@ -73,19 +64,13 @@ func _end_stroke() -> void:
 	is_drawing = false
 	drawing_state_changed.emit(false)
 	
-	print("[SpellSystem] Stroke ended. Raw point count: ", stroke_points.size())
-	
 	if stroke_points.size() > 10:
 		var normalized_gesture = _process_stroke(stroke_points)
 		_handle_gesture_result(normalized_gesture)
-	else:
-		print("[SpellSystem] Stroke too short to process (< 10 points). Ignored.")
-		
-	# Clear the visual line after a short delay so the player sees what they drew
+	
 	await get_tree().create_timer(0.5).timeout
 	
 	if not is_drawing:
-		print("[SpellSystem] Clearing canvas.")
 		drawing.clear_points()
 		stroke_points.clear()
 
@@ -94,10 +79,8 @@ func _handle_gesture_result(normalized_gesture: Array[Vector2]) -> void:
 	if is_recording_mode:
 		# Save it automatically to the Templates Autoload
 		Templates.save_new_spell(spell_resource_to_record, normalized_gesture)
-		print("[SpellSystem] RECORD MODE: Saved gesture as -> ", spell_resource_to_record)
 	else:
 		var recognized_spell = Templates.recognize_spell(normalized_gesture)
-		print("[SpellSystem] CAST MODE: System recognized -> ", recognized_spell)
 		
 		if recognized_spell != null:
 			label.text = recognized_spell.get_data().name
@@ -123,7 +106,6 @@ func trigger_toggle_spell_mode():
 	release_ev.action = "toggle_spell_mode"
 	release_ev.pressed = false
 	Input.parse_input_event(release_ev)
-	print("[InputSystem] Virtually triggered: toggle_spell_mode")
 
 # ==========================================================
 # DRAWING HELPERS
@@ -137,14 +119,9 @@ func _add_point(pos: Vector2) -> void:
 # GESTURE NORMALIZATION PIPELINE
 # ==========================================================
 func _process_stroke(points: Array[Vector2]) -> Array[Vector2]:
-	print("[SpellSystem] --- Normalization Pipeline Started ---")
 	var resampled = _resample(points, NUM_POINTS)
-	print("[SpellSystem] 1. Resampled stroke to ", resampled.size(), " points.")
 	var centered = _translate_to_origin(resampled)
-	print("[SpellSystem] 2. Translated points to origin (0,0).")
 	var scaled = _scale_to_square(centered, SQUARE_SIZE)
-	print("[SpellSystem] 3. Scaled gesture to fit square size: ", SQUARE_SIZE)
-	print("[SpellSystem] --- Normalization Pipeline Finished ---")
 	return scaled
 
 func _resample(points: Array[Vector2], n: int) -> Array[Vector2]:
@@ -174,7 +151,6 @@ func _resample(points: Array[Vector2], n: int) -> Array[Vector2]:
 		else:
 			D += d
 			i += 1
-			
 	while new_points.size() < n:
 		new_points.append(working.back())
 	return new_points

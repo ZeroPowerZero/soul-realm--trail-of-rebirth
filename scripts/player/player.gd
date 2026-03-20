@@ -1,13 +1,13 @@
+class_name Player
 extends CharacterBody3D
 
-@onready var head = $head
+@onready var head: Node3D = $head
 @onready var drawing_container: Control = $DrawingCanvas/MarginContainer/SubViewportContainer
 @onready var camera: Camera3D = $head/Camera3D
 @onready var pen_0: Node3D = $head/Camera3D/view_model/Pen_0
+@onready var health_component: HealthComponent = $HealthComponent
+@onready var input_movement: InputMovement = $InputMovement
 
-@export var health_component_settings: HealthComponentSettings
-
-var health_component: HealthComponent
 var spell_controller: SpellController
 
 const SPEED = 5.0
@@ -20,10 +20,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	spell_controller = SpellController.new()
-	health_component = HealthComponent.new()
 	spell_controller.set_basis_node(camera)
-	spell_controller.set_spawn_node(pen_0)
-	health_component.set_settings(health_component_settings)
 	add_child(spell_controller)
 
 func _process(_delta):
@@ -62,24 +59,7 @@ func _clamp_mouse_to_canvas():
 		get_viewport().warp_mouse(Vector2(clamped_x, clamped_y))
 
 func _physics_process(delta: float) -> void:
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-	
-	# Removed the spell check here so you can jump while drawing
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-	
-	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
-	
-	move_and_slide()
+	input_movement.move(delta)
 
 func _create_new_spell(spell_driver: SpellDriver):
 	spell_controller.create_spell(spell_driver)

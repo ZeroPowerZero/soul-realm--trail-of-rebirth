@@ -1,16 +1,13 @@
 extends Node
 
 const SAVE_PATH: String = "user://spells_manager.res"
-const MATCH_THRESHOLD: float = 60.0 # Adjust this: lower is stricter, higher is more forgiving
+const MATCH_THRESHOLD: float = 60.0
 
 var spell_manager: SpellsManager
 
 func _ready() -> void:
 	load_spells()
 
-# ==========================================================
-# SAVE & LOAD SYSTEM
-# ==========================================================
 func save_new_spell(resource: SpellData, coords: Array[Vector2]):
 	spell_manager.new_spell_driver(resource, coords)
 	
@@ -44,7 +41,6 @@ func load_data(file_path: String) -> Resource:
 		printerr("File is broken or unreadable!")
 		return null
 
-
 func recognize_spell(drawn_points: Array[Vector2]) -> SpellDriver:
 	if spell_manager.get_spells().is_empty():
 		return null
@@ -64,7 +60,6 @@ func recognize_spell(drawn_points: Array[Vector2]) -> SpellDriver:
 		return null
 
 func _calculate_average_distance(points1: Array[Vector2], points2: Array[Vector2]) -> float:
-	# Compares the distance between each corresponding point in the two normalized arrays
 	var total_distance: float = 0.0
 	var point_count = min(points1.size(), points2.size())
 	

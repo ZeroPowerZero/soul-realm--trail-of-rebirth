@@ -1,3 +1,4 @@
+class_name FireBall
 extends Area3D
 
 @onready var throw_spell: ThrowSpell = $throw_spell
@@ -8,10 +9,8 @@ var _time: float
 var _controller: SpellController
 
 func _ready():
-	global_position = _controller.get_spawn_position()
-	
-	var dir = _controller.get_forward_direction()
-	look_at(global_position + dir, Vector3.UP)
+	global_position = _controller.basis_node.global_position
+	global_basis = _controller.get_basis()
 	
 	throw_spell.change_owner(self)
 
