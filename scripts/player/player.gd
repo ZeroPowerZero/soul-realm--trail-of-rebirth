@@ -21,6 +21,7 @@ func _ready():
 	
 	spell_controller = SpellController.new()
 	spell_controller.set_basis_node(camera)
+	spell_controller.set_spawn_node(pen_0)
 	add_child(spell_controller)
 
 func _process(_delta):
