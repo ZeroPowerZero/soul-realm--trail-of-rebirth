@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbnomv3kj3tho"
-path.s3tc="res://.godot/imported/godot_grey.png-0db08a9651753922951b8954dde354e7.s3tc.ctex"
+uid="uid://b1n0xmck4op4m"
+path.s3tc="res://.godot/imported/T_Noise_HU85k.png-4fcc773c18f534bc8dd8e8889c78e6a6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/godot/godot_grey.png"
-dest_files=["res://.godot/imported/godot_grey.png-0db08a9651753922951b8954dde354e7.s3tc.ctex"]
+source_file="res://texture/Tornado Effect - Tutorial/T_Noise_HU85k.png"
+dest_files=["res://.godot/imported/T_Noise_HU85k.png-4fcc773c18f534bc8dd8e8889c78e6a6.s3tc.ctex"]
 
 [params]
 

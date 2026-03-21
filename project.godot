@@ -28,9 +28,11 @@ window/stretch/mode="canvas_items"
 
 folder_colors={
 "res://assets/": "purple",
+"res://enemies/": "red",
 "res://scenes/": "orange",
 "res://scripts/": "green",
-"res://textures/": "yellow"
+"res://shaders/": "blue",
+"res://texture/": "yellow"
 }
 
 [input]

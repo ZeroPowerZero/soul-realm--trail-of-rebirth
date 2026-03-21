@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://d1u7ll7nr8mp0" path="res://scripts/book&pen/pen.gd" id="6_qek5x"]
 [ext_resource type="Texture2D" uid="uid://o5nfl11ncwsi" path="res://assets/textures/spellframe.png" id="7_5gtgg"]
 [ext_resource type="Script" uid="uid://en0mli6lspcj" path="res://scripts/drawing_related/spell_drawing_controller.gd" id="8_h17s1"]
+[ext_resource type="Resource" uid="uid://dvhq15cd0py03" path="res://scripts/spells/Spell_Resources/instant_dash.tres" id="11_je7p5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ernxy"]
 
@@ -592,6 +593,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = SubResource("Theme_l0ghi")
 script = ExtResource("8_h17s1")
+spell_resource_to_record = ExtResource("11_je7p5")
 
 [node name="SubViewport" type="SubViewport" parent="DrawingCanvas/MarginContainer/SubViewportContainer" unique_id=1782757346]
 transparent_bg = true

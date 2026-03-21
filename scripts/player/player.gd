@@ -63,4 +63,40 @@ func _physics_process(delta: float) -> void:
 	input_movement.move(delta)
 
 func _create_new_spell(spell_driver: SpellDriver):
-	spell_controller.create_spell(spell_driver)
+	if spell_driver._data.name == "instant_dash":
+		execute_dash()
+	else:
+		spell_controller.create_spell(spell_driver)
+
+func execute_dash():
+	# 1. Get WASD input (2D Vector)
+	var input_vec = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
+	var dash_dir: Vector3
+	
+	if input_vec != Vector2.ZERO:
+		var forward = -global_transform.basis.z
+		var right = global_transform.basis.x
+		dash_dir = (forward * -input_vec.y + right * input_vec.x).normalized()
+	else:
+		dash_dir = -global_transform.basis.z
+
+	dash_dir.y = 0
+	dash_dir = dash_dir.normalized()
+
+	var dash_distance = 20.0
+	var space_state = get_world_3d().direct_space_state
+	var query = PhysicsRayQueryParameters3D.create(global_position, global_position + (dash_dir * dash_distance))
+	
+	var result = space_state.intersect_ray(query)
+	var final_target = global_position + (dash_dir * dash_distance)
+	
+	if result:
+		final_target = result.position - (dash_dir * 1.0)
+
+	var duration = 0.2
+	var tween = create_tween()
+	tween.tween_property(self, "global_position", final_target, duration)\
+		.set_trans(Tween.TRANS_QUINT)\
+		.set_ease(Tween.EASE_OUT)
+		
+	print("Dashing to: ", final_target)

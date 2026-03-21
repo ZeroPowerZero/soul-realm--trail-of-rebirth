@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5bfm1kxa4s2o"
-path.s3tc="res://.godot/imported/godot_red.png-5e5b7d0963853fa439632cb5694be865.s3tc.ctex"
+uid="uid://bbuou84kbq1q6"
+path.s3tc="res://.godot/imported/T_FirePanningCyl45.png-319a3086eef6ac12f16c931942d90a08.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/godot/godot_red.png"
-dest_files=["res://.godot/imported/godot_red.png-5e5b7d0963853fa439632cb5694be865.s3tc.ctex"]
+source_file="res://texture/Tornado Effect - Tutorial/T_FirePanningCyl45.png"
+dest_files=["res://.godot/imported/T_FirePanningCyl45.png-319a3086eef6ac12f16c931942d90a08.s3tc.ctex"]
 
 [params]
 
