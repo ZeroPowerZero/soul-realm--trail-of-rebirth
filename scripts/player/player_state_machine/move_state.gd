@@ -9,3 +9,7 @@ func physics_update(delta):
 		return
 
 	player.input_movement.move(delta)
+
+func update(delta):
+	player.apply_walk_visuals(delta, 1.0)
+	player.apply_walk_visuals(delta, 1.0)

@@ -11,6 +11,8 @@ func physics_update(delta):
 		player.velocity.z = 0
 
 func update(delta):
+	player.apply_walk_visuals(delta, 0.5)
+	player.apply_camera_tilt(delta * 0.5)
 	# if player exits drawing mode → switch state
 	if not player.is_drawing_spell:
 		var input_vec = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")

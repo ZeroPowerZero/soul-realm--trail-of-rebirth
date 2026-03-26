@@ -16,8 +16,22 @@ var spell_controller: SpellController
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 var mouse_sens = 0.3
-
+var gravity = 20
 var is_drawing_spell = false
+var pitch := 0.0
+
+# WALK BOB
+var bob_time := 0.0
+var bob_frequency := 1.0
+var bob_amplitude := 0.04
+var bob_side_amplitude := 0.04
+
+var bob_smooth := 10.0
+
+# CAMERA TILT
+var tilt_amount := 4.0 # degrees
+var tilt_speed := 6.0
+var current_tilt := 0.0
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -28,15 +42,23 @@ func _ready():
 	add_child(spell_controller)
 
 func _process(delta):
-	state_machine.update(delta)
+	state_machine._process(delta)
 	handle_spell_mode_toggle()
 
 func _input(event):
 	# Camera is still frozen during spell mode because of "and not is_drawing_spell"
 	if event is InputEventMouseMotion and not is_drawing_spell:
+		# Yaw (left/right)
 		rotate_y(deg_to_rad(-event.relative.x * mouse_sens))
-		head.rotate_x(deg_to_rad(-event.relative.y * mouse_sens))
-		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
+		
+		# 🔥 Pitch (up/down) — controlled manually
+		pitch -= event.relative.y * mouse_sens
+		pitch = clamp(pitch, -89.0, 89.0)
+		
+		head.rotation.x = deg_to_rad(pitch)
+		#rotate_y(deg_to_rad(-event.relative.x * mouse_sens))
+		#head.rotate_x(deg_to_rad(-event.relative.y * mouse_sens))
+		#head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 	
 	if event.is_action_pressed("escape_mouse"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -51,6 +73,11 @@ func _clamp_mouse_to_canvas():
 		get_viewport().warp_mouse(Vector2(clamped_x, clamped_y))
 
 func _physics_process(delta: float) -> void:
+	if not self.is_on_floor():
+		self.velocity.y -= gravity * delta
+	else:
+	# Optional: keep grounded stable
+		self.velocity.y = -1.0
 	state_machine.physics_update(delta)
 
 func _create_new_spell(spell_driver: SpellDriver):
@@ -117,3 +144,46 @@ func handle_spell_mode_toggle():
 
 	if is_drawing_spell and drawing_container:
 		_clamp_mouse_to_canvas()
+
+func apply_walk_visuals(delta, intensity := 1.0):
+	var vel = velocity
+	var horizontal_speed = Vector2(vel.x, vel.z).length()
+
+	# Normalize movement direction
+	var input = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
+
+	# Speed factor (0 → 1)
+	var speed_factor = clamp(horizontal_speed / input_movement.max_speed, 0, 1)
+
+	# Advance bob time only if moving
+	if speed_factor > 0.1:
+		bob_time += delta * bob_frequency * (0.5 + speed_factor)
+	else:
+		bob_time = 0.0
+
+	# 🎯 STEP-BASED BOB
+	var bob_y = abs(sin(bob_time)) * bob_amplitude * intensity * speed_factor
+	var bob_forward = cos(bob_time) * 0.02 * speed_factor * intensity
+	head.position.z = lerp(head.position.z, bob_forward, bob_smooth * delta)
+
+	# 🎯 SIDE SWAY (based on direction)
+	var side = input.x
+	var bob_x = sin(bob_time * 0.5) * bob_side_amplitude * side * intensity
+
+	## Smooth apply
+	#head.position.y = lerp(head.position.y, bob_y, bob_smooth * delta)
+	#head.position.x = lerp(head.position.x, bob_x, bob_smooth * delta)
+#
+	# 🔥 Pen motion (feels alive)
+	pen_0.position.x = lerp(pen_0.position.x, -bob_x * 1.5, 12 * delta)
+	pen_0.position.y = lerp(pen_0.position.y, -bob_y * 1.2, 12 * delta)
+
+func apply_camera_tilt(delta):
+	var input_x = Input.get_axis("move_left", "move_right")
+	var mouse_tilt = Input.get_last_mouse_velocity().x * 0.01
+
+	var target_tilt = -input_x * tilt_amount - mouse_tilt
+
+	current_tilt = lerp(current_tilt, target_tilt, tilt_speed * delta)
+
+	head.rotation.z = deg_to_rad(current_tilt)
