@@ -17,6 +17,7 @@ var _in_npc_area: Array[Node3D]
 var _in_self_area: Array[Node3D]
 
 func _ready() -> void:
+	health_component.set_health(health_component.get_max_health())
 	spell_controller = SpellController.new()
 	spell_controller.set_basis_node(self)
 	add_child(spell_controller)

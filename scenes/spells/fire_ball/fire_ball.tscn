@@ -63,3 +63,5 @@ shape = SubResource("SphereShape3D_yppcp")
 [node name="throw_spell" type="Node" parent="." unique_id=1497487944]
 script = ExtResource("2_7kqhp")
 metadata/_custom_type_script = "uid://bihgodfq04lq2"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

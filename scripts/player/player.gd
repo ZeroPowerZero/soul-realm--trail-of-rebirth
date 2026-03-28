@@ -5,6 +5,7 @@ extends CharacterBody3D
 @onready var drawing_container: Control = $DrawingCanvas/MarginContainer/SubViewportContainer
 @onready var camera: Camera3D = $head/Camera3D
 @onready var pen_0: Node3D = $head/Camera3D/view_model/Pen_0
+@onready var spell_draw_limit_timer: Timer = $SpellDrawLimitTimer
 
 #components
 @onready var health_component: HealthComponent = $HealthComponent
@@ -14,6 +15,7 @@ extends CharacterBody3D
 var spell_controller: SpellController
 
 const SPEED = 5.0
+const SPELL_DRAW_TIME_LIMIT = 3 #sec
 const JUMP_VELOCITY = 4.5
 var mouse_sens = 0.3
 var gravity = 20
@@ -34,6 +36,7 @@ var tilt_speed := 6.0
 var current_tilt := 0.0
 
 func _ready():
+	spell_draw_limit_timer.timeout.connect(trigger_toggle_spell_mode)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	spell_controller = SpellController.new()
@@ -73,19 +76,23 @@ func _clamp_mouse_to_canvas():
 		get_viewport().warp_mouse(Vector2(clamped_x, clamped_y))
 
 func _physics_process(delta: float) -> void:
-	if not self.is_on_floor():
-		self.velocity.y -= gravity * delta
+	
+	if not is_on_floor():
+		velocity.y -= gravity * delta
 	else:
 	# Optional: keep grounded stable
-		self.velocity.y = -1.0
+		velocity.y = -1.0
 	state_machine.physics_update(delta)
-
+	 
 func _create_new_spell(spell_driver: SpellDriver):
+	#increases level
+	spell_driver.set_exp(spell_driver.get_exp() + 10) 
+	Templates.save_spells()
 	if spell_driver._data.name == "instant_dash":
 		state_machine.change_state("DashState")
 	else:
 		spell_controller.create_spell(spell_driver)
-
+		
 func execute_dash():
 	# 1. Get WASD input (2D Vector)
 	var input_vec = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
@@ -120,12 +127,12 @@ func execute_dash():
 	print("Dashing to: ", final_target)
 
 func handle_spell_mode_toggle():
-	if Input.is_action_just_pressed("toggle_spell_mode"):
+	if Input.is_action_just_pressed("toggle_spell_mode") :
 		is_drawing_spell = not is_drawing_spell
-		
 		if is_drawing_spell:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			
+			spell_draw_limit_timer.start(SPELL_DRAW_TIME_LIMIT)
+		
 			if drawing_container:
 				var rect = drawing_container.get_global_rect()
 				var center_pos = rect.position + (rect.size / 2.0)
@@ -134,7 +141,7 @@ func handle_spell_mode_toggle():
 			state_machine.change_state("SpellState")
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			
+			spell_draw_limit_timer.stop()
 			# decide where to go
 			var input_vec = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 			if input_vec == Vector2.ZERO:
@@ -193,3 +200,21 @@ func apply_camera_tilt(delta):
 	current_tilt = lerp(current_tilt, target_tilt, tilt_speed * delta)
 
 	head.rotation.z = deg_to_rad(current_tilt)
+
+func trigger_toggle_spell_mode():
+	# 1. Create the event object
+	var ev = InputEventAction.new()
+	# 2. Set the action name (must match your Input Map exactly)
+	ev.action = "toggle_spell_mode"
+	# 3. Simulate the "Pressed" state
+	ev.pressed = true
+	Input.parse_input_event(ev)
+	# 4. Simulate the "Released" state immediately 
+	# to prevent the action from being stuck "down"
+	var release_ev = InputEventAction.new()
+	release_ev.action = "toggle_spell_mode"
+	release_ev.pressed = false
+	Input.parse_input_event(release_ev)
+	
+func _exit_tree() -> void:
+	Templates.save_spells()

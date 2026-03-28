@@ -12,10 +12,10 @@
 [ext_resource type="Script" uid="uid://en0mli6lspcj" path="res://scripts/drawing_related/spell_drawing_controller.gd" id="8_h17s1"]
 [ext_resource type="Script" uid="uid://d0ervkjhd3qc2" path="res://scripts/player/player_state_machine/state_machine.gd" id="9_gx1jg"]
 [ext_resource type="Script" uid="uid://c3yll8fdlfeaj" path="res://scripts/player/player_state_machine/idle_state.gd" id="10_ugbui"]
-[ext_resource type="Resource" uid="uid://dvhq15cd0py03" path="res://scripts/spells/Spell_Resources/instant_dash.tres" id="11_je7p5"]
 [ext_resource type="Script" uid="uid://diuxkg1w3xw" path="res://scripts/player/player_state_machine/move_state.gd" id="11_ugbui"]
 [ext_resource type="Script" uid="uid://dmptsh5uta0ei" path="res://scripts/player/player_state_machine/spell_state.gd" id="12_myrg7"]
 [ext_resource type="Script" uid="uid://ddpmaxwb2kj7d" path="res://scripts/player/player_state_machine/dash_state.gd" id="13_kvlxm"]
+[ext_resource type="Resource" uid="uid://frxdjisr2hme" path="res://scripts/spells/Spell_Resources/fire_ball.tres" id="16_myrg7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ernxy"]
 
@@ -128,6 +128,8 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_2puei")
+
+[sub_resource type="ImageTexture" id="ImageTexture_myrg7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xi76d"]
 resource_name = "material"
@@ -364,6 +366,14 @@ shadow_mesh = SubResource("ArrayMesh_ve020")
 [sub_resource type="ViewportTexture" id="ViewportTexture_2q354"]
 viewport_path = NodePath("DrawingCanvas/MarginContainer/SubViewportContainer/SubViewport")
 
+[sub_resource type="InputEventKey" id="InputEventKey_myrg7"]
+device = -1
+keycode = 82
+unicode = 114
+
+[sub_resource type="Shortcut" id="Shortcut_kvlxm"]
+events = [SubResource("InputEventKey_myrg7")]
+
 [sub_resource type="Theme" id="Theme_ucst3"]
 
 [sub_resource type="Theme" id="Theme_l0ghi"]
@@ -514,6 +524,10 @@ mesh = SubResource("ArrayMesh_tmhi8")
 [node name="book_target" type="Marker3D" parent="head/Camera3D/view_model/Book" unique_id=924456316]
 transform = Transform3D(0.0016633989, 0.00019605248, 0.009858732, 0.009736968, 0.0015460993, -0.0016736025, -0.0015570675, 0.009877807, 6.628153e-05, 0.0018872669, -5.7987498e-05, -0.0015502551)
 
+[node name="Sprite3D" type="Sprite3D" parent="head/Camera3D/view_model/Book" unique_id=1254362332]
+transform = Transform3D(0.9999996, 5.9604645e-08, -1.4901161e-07, 2.9802322e-08, 1, 1.4901161e-08, 2.9802322e-08, 1.4901161e-08, 0.99999976, -0.0005733296, -0.00016353745, 0.00088689616)
+texture = SubResource("ImageTexture_myrg7")
+
 [node name="Pen_0" type="Node3D" parent="head/Camera3D/view_model" unique_id=2074288736 node_paths=PackedStringArray("spell_billboard")]
 transform = Transform3D(0.07973877, 0.0010829215, -0.0063681183, -0.006383633, 0.0011556875, -0.079736516, -0.0009873635, 0.07998431, 0.0012383251, 0.5078861, -0.49209106, -1.1932557)
 script = ExtResource("6_qek5x")
@@ -576,28 +590,47 @@ anchor_right = 1.0
 anchor_bottom = 0.43
 mouse_filter = 1
 
+[node name="FireControl" type="Control" parent="DrawingCanvas" unique_id=618269741]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -30.640015
+offset_bottom = 10.359985
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="FireButton" type="Button" parent="DrawingCanvas/FireControl" unique_id=578878180]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -104.0
+offset_top = -7.0
+offset_right = 99.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 21
+shortcut = SubResource("Shortcut_kvlxm")
+text = "Draw the Spell"
+
 [node name="TextureRect" type="TextureRect" parent="DrawingCanvas" unique_id=1879415806]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -3.0
+offset_right = -1.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_5gtgg")
 expand_mode = 2
-
-[node name="Label" type="Label" parent="DrawingCanvas" unique_id=162082696]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 1.0
-anchor_right = 0.9
-anchor_bottom = 1.2
-offset_right = -1.5258789e-05
-offset_bottom = -0.08242798
-size_flags_vertical = 1
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="DrawingCanvas" unique_id=2065789119]
 layout_mode = 1
@@ -614,7 +647,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = SubResource("Theme_l0ghi")
 script = ExtResource("8_h17s1")
-spell_resource_to_record = ExtResource("11_je7p5")
+spell_resource_to_record = ExtResource("16_myrg7")
 
 [node name="SubViewport" type="SubViewport" parent="DrawingCanvas/MarginContainer/SubViewportContainer" unique_id=1782757346]
 transparent_bg = true
@@ -627,6 +660,9 @@ width = 5.0
 default_color = Color(1.3863964, 0.5306603, 2.2327187, 1)
 gradient = SubResource("Gradient_l0ghi")
 
+[node name="SpellDrawLimitTimer" type="Timer" parent="." unique_id=2109057128]
+
+[connection signal="pressed" from="DrawingCanvas/FireControl/FireButton" to="DrawingCanvas/MarginContainer/SubViewportContainer" method="_on_fire_button_pressed"]
 [connection signal="create_new_spell" from="DrawingCanvas/MarginContainer/SubViewportContainer" to="." method="_create_new_spell"]
 [connection signal="drawing_state_changed" from="DrawingCanvas/MarginContainer/SubViewportContainer" to="head/Camera3D/view_model/Pen_0" method="_on_spell_drawing_controller_drawing_state_changed"]
 [connection signal="pen_moved" from="DrawingCanvas/MarginContainer/SubViewportContainer" to="head/Camera3D/view_model/Pen_0" method="_on_spell_drawing_controller_pen_moved"]

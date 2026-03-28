@@ -1,3 +1,9 @@
 [gd_resource type="Theme" format=3 uid="uid://coml3g5ux6dks"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tccg3"]
+bg_color = Color(0.50956357, 0.29748532, 1, 0.314)
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+
 [resource]
+Button/styles/normal = SubResource("StyleBoxFlat_tccg3")

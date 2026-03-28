@@ -1,8 +1,10 @@
 extends SubViewportContainer
 
-@onready var label: Label = $"../../Label"
 @onready var drawing: Line2D = $SubViewport/Drawing
-
+@onready var fire_button: Button = $"../../FireControl/FireButton"
+# ====== ACTIVE RESOURCES ======
+var selected_spell_resource:SpellDriver = null;
+var castes_before_reset:int = 0
 # ====== SIGNALS ======
 signal pen_moved(canvas_pos: Vector2, canvas_size: Vector2)
 signal drawing_state_changed(is_drawing: bool)
@@ -83,24 +85,22 @@ func _handle_gesture_result(normalized_gesture: Array[Vector2]) -> void:
 		var recognized_spell = Templates.recognize_spell(normalized_gesture)
 		
 		if recognized_spell != null:
-			label.text = recognized_spell.get_data().name
-			create_new_spell.emit(recognized_spell)
+			fire_button.text = "Caste : " + recognized_spell.get_data().name + " "+ str(recognized_spell.get_level()) 
+			selected_spell_resource = recognized_spell
+			castes_before_reset = recognized_spell.get_level();
 			trigger_toggle_spell_mode()
 		else:
-			label.text = "Couldn't find a spell"
+			fire_button.text = "Caste Failed"	
 #################################################################
 func trigger_toggle_spell_mode():
 	# 1. Create the event object
 	var ev = InputEventAction.new()
-	
 	# 2. Set the action name (must match your Input Map exactly)
 	ev.action = "toggle_spell_mode"
-	
 	# 3. Simulate the "Pressed" state
 	ev.pressed = true
 	Input.parse_input_event(ev)
-	
-	# 4. (Optional but recommended) Simulate the "Released" state immediately 
+	# 4. Simulate the "Released" state immediately 
 	# to prevent the action from being stuck "down"
 	var release_ev = InputEventAction.new()
 	release_ev.action = "toggle_spell_mode"
@@ -197,3 +197,12 @@ func _scale_to_square(points: Array[Vector2], _size: float) -> Array[Vector2]:
 	for p in points:
 		new_points.append(p * _scale)
 	return new_points
+
+
+func _on_fire_button_pressed() -> void:
+	if selected_spell_resource != null and castes_before_reset != 0:
+		create_new_spell.emit(selected_spell_resource)
+		castes_before_reset-=1
+		if castes_before_reset == 0 :
+			selected_spell_resource = null
+			fire_button.text = "Re Draw to Caste"

@@ -7,6 +7,7 @@ var spawn_node: Node3D
 func create_spell(spell_driver: SpellDriver):
 	var new_spell = spell_driver.get_data().spell_scene.instantiate()
 	new_spell.set_controller(self)
+	new_spell.set_driver(spell_driver);
 	get_tree().current_scene.add_child(new_spell)
 
 # Getter And Setter Functions

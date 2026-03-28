@@ -19,6 +19,14 @@ func save_new_spell(resource: SpellData, coords: Array[Vector2]):
 	else:
 		print("saved succesfully: ", spell_manager)
 
+func save_spells():
+	print("spells: ", spell_manager.get_spells())
+	var error = ResourceSaver.save(spell_manager, SAVE_PATH)
+	if error != OK:
+		print("Couldn't save: ", error)
+	else:
+		print("saved succesfully: ", spell_manager)
+
 func load_spells():
 	var current_game_data = load_data(SAVE_PATH) as SpellsManager
 	
@@ -32,7 +40,6 @@ func load_spells():
 func load_data(file_path: String) -> Resource:
 	if !FileAccess.file_exists(file_path):
 		return null
-	
 	var loaded_resource = ResourceLoader.load(file_path)
 	
 	if loaded_resource != null:
