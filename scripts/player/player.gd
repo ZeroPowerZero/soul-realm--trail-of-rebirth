@@ -168,12 +168,18 @@ func apply_walk_visuals(delta, intensity := 1.0):
 
 	# 🎯 SIDE SWAY (based on direction)
 	var side = input.x
-	var bob_x = sin(bob_time * 0.5) * bob_side_amplitude * side * intensity
+	var bob_x = sin(bob_time * 0.5) * bob_side_amplitude * side * intensity 
 
 	## Smooth apply
 	#head.position.y = lerp(head.position.y, bob_y, bob_smooth * delta)
 	#head.position.x = lerp(head.position.x, bob_x, bob_smooth * delta)
 #
+	#var head_target := head.position
+	#if is_on_floor():
+		#head_target = Vector3(sin(bob_time * 0.5) * bob_side_amplitude * input.x * intensity,abs(sin(bob_time)) * bob_amplitude * intensity * speed_factor,cos(bob_time) * 0.02 * intensity * speed_factor)
+	#
+	#head.position = lerp(head.position, head_target, bob_smooth * delta)
+	
 	# 🔥 Pen motion (feels alive)
 	pen_0.position.x = lerp(pen_0.position.x, -bob_x * 1.5, 12 * delta)
 	pen_0.position.y = lerp(pen_0.position.y, -bob_y * 1.2, 12 * delta)
