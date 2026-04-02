@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8rcn57yccadp"
-path.s3tc="res://.godot/imported/T_rocks_C_color.png-e09f97e0bed6f9e888afa27da8f4cf96.s3tc.ctex"
+uid="uid://ckqlrjit26yv0"
+path.s3tc="res://.godot/imported/free_-_skybox_in_the_cloud_0.jpg-1323462f4c7cded50a5dad2a3e32f687.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "4506d078fbd25908c3b67139beb059fe"
+}
 
 [deps]
 
-source_file="res://assets/Earth Bending - Tutorial/texture/T_rocks_C_color.png"
-dest_files=["res://.godot/imported/T_rocks_C_color.png-e09f97e0bed6f9e888afa27da8f4cf96.s3tc.ctex"]
+source_file="res://assets/Earth Bending - Tutorial/texture/free_-_skybox_in_the_cloud_0.jpg"
+dest_files=["res://.godot/imported/free_-_skybox_in_the_cloud_0.jpg-1323462f4c7cded50a5dad2a3e32f687.s3tc.ctex"]
 
 [params]
 

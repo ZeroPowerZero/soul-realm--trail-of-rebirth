@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://diuxkg1w3xw" path="res://scripts/player/player_state_machine/move_state.gd" id="11_ugbui"]
 [ext_resource type="Script" uid="uid://dmptsh5uta0ei" path="res://scripts/player/player_state_machine/spell_state.gd" id="12_myrg7"]
 [ext_resource type="Script" uid="uid://ddpmaxwb2kj7d" path="res://scripts/player/player_state_machine/dash_state.gd" id="13_kvlxm"]
-[ext_resource type="Resource" uid="uid://frxdjisr2hme" path="res://scripts/spells/Spell_Resources/fire_ball.tres" id="16_myrg7"]
+[ext_resource type="Resource" uid="uid://cj6t2dthog6pf" path="res://scripts/spells/elements/ice/ice_spikes_data.tres" id="16_myrg7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ernxy"]
 

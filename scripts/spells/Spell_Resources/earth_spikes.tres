@@ -6,5 +6,6 @@
 [resource]
 script = ExtResource("1_omuig")
 name = "earth_spikes"
+spell_type = 1
 spell_scene = ExtResource("2_71f1a")
 metadata/_custom_type_script = "uid://ds2evghd4d04i"

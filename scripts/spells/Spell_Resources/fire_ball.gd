@@ -146,6 +146,9 @@ func spawn_extra_fireballs():
 func spawn_delayed(delay: float):
 	await get_tree().create_timer(delay).timeout
 	
+	if not is_instance_valid(_controller):
+		return
+	
 	var new_spell = _driver.get_data().spell_scene.instantiate()
 	new_spell.set_controller(_controller)
 	new_spell.set_driver(_driver, true)  # prevent recursion

@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8rcn57yccadp"
-path.s3tc="res://.godot/imported/T_rocks_C_color.png-e09f97e0bed6f9e888afa27da8f4cf96.s3tc.ctex"
+uid="uid://cnorse7ydmq34"
+path.s3tc="res://.godot/imported/ice_cluster2_free_1.png-d9de0af8818cab863686a677242a4a0c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "e36143b2c6b44b02a30170a81537dde1"
+}
 
 [deps]
 
-source_file="res://assets/Earth Bending - Tutorial/texture/T_rocks_C_color.png"
-dest_files=["res://.godot/imported/T_rocks_C_color.png-e09f97e0bed6f9e888afa27da8f4cf96.s3tc.ctex"]
+source_file="res://assets/Earth Bending - Tutorial/texture/ice_cluster2_free_1.png"
+dest_files=["res://.godot/imported/ice_cluster2_free_1.png-d9de0af8818cab863686a677242a4a0c.s3tc.ctex"]
 
 [params]
 

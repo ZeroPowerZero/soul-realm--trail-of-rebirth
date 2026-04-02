@@ -61,6 +61,7 @@ func _on_body_entered(body: Node3D):
 	if body.is_in_group("Player"):
 		for enemy in instantiated_enemies:
 			enemy.see_target(body)
+
 func _on_body_exited(body: Node3D):
 	if body.is_in_group("Player"):
 		for enemy in instantiated_enemies:

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://drfsqdfnkvntv"]
 
-[ext_resource type="Script" uid="uid://dip0477yqqn20" path="res://scenes/npcs/npc_resources/apprentice_mage.gd" id="1_m5fb5"]
+[ext_resource type="Script" uid="uid://dvyofb2pce6lm" path="res://scripts/enemies/apprentice_mage.gd" id="1_cbtj4"]
 [ext_resource type="Script" uid="uid://cv27kgmhkduwv" path="res://scenes/npcs/ai_movement.gd" id="2_cbtj4"]
 [ext_resource type="Script" uid="uid://dyqxtgkehfwx5" path="res://scripts/health_component.gd" id="3_643we"]
 
@@ -17,7 +17,7 @@ height = 0.3
 radius = 4.0
 
 [node name="ApprenticeMage" type="CharacterBody3D" unique_id=653790378 groups=["Enemy"]]
-script = ExtResource("1_m5fb5")
+script = ExtResource("1_cbtj4")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=482136504]
 script = ExtResource("3_643we")
