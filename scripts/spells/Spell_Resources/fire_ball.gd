@@ -67,6 +67,11 @@ func _ready() -> void:
 	var dir = _controller.get_forward_direction()
 	look_at(global_position + dir, Vector3.UP)
 	
+	# Add the aim assist component dynamically
+	var aim_assist = AimAssistComponent.new()
+	add_child(aim_assist)
+	aim_assist.setup(self, dir)
+	
 	throw_spell.change_owner(self)
 
 	setup_from_level()

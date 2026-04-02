@@ -17,7 +17,8 @@ func move(delta, speed_multiplier := 1.0):
 
 	var target_speed = max_speed * speed_multiplier
 	if Input.is_action_pressed("jump") and _controller.is_on_floor():
-		_controller.velocity.y=_controller.JUMP_VELOCITY;
+		_controller.velocity.y=_controller.JUMP_VELOCITY
+		
 	# X axis
 	if !is_equal_approx(direction.x, 0):
 		_controller.velocity.x = move_toward(
