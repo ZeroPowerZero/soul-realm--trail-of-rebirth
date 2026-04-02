@@ -86,15 +86,19 @@ func apply_damage(body: Node3D):
 
 func apply_slow(body: Node3D):
 	# Assuming enemies have a movement_speed property
-	if "movement_speed" in body:
+	if "movement_speed" in body and not body.has_meta("is_slowed"):
+		body.set_meta("is_slowed", true)
 		var original_speed = body.movement_speed
 		body.movement_speed *= speed_reduction_factor
 		
 		# Reset speed after duration
 		var timer = get_tree().create_timer(slow_duration)
 		timer.timeout.connect(func():
-			if is_instance_valid(body) and "movement_speed" in body:
-				body.movement_speed = original_speed
+			if is_instance_valid(body):
+				if "movement_speed" in body:
+					body.movement_speed = original_speed
+				if body.has_meta("is_slowed"):
+					body.remove_meta("is_slowed")
 		)
 
 func check_multi_cast():

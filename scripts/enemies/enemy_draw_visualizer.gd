@@ -6,6 +6,7 @@ var bg_rect: ColorRect
 var line: Line2D
 var sprite: Sprite3D
 
+@export var target_sprite: Sprite3D
 @export var draw_color: Color = Color(1.0, 0.4, 0.0, 1.0)
 @export var draw_thickness: float = 12.0
 
@@ -38,15 +39,19 @@ func _ready() -> void:
 	line.modulate = Color(1.5, 1.5, 1.5, 1.0)
 	viewport.add_child(line)
 	
-	sprite = Sprite3D.new()
-	sprite.billboard = BaseMaterial3D.BILLBOARD_ENABLED
-	sprite.texture = viewport.get_texture()
-	sprite.transparent = true
-	sprite.shaded = false
-	sprite.double_sided = true
-	sprite.pixel_size = 0.005 # Total size: 2.56 meters
-	sprite.position = Vector3(0, 3.0, 0) # Higher above head
-	add_child(sprite)
+	if target_sprite:
+		target_sprite.texture = viewport.get_texture()
+	else:
+		sprite = Sprite3D.new()
+		sprite.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+		sprite.texture = viewport.get_texture()
+		sprite.transparent = true
+		sprite.shaded = false
+		sprite.double_sided = true
+		sprite.pixel_size = 0.005
+		sprite.position = Vector3(0, 3.0, 0)
+		add_child(sprite)
+		target_sprite = sprite
 
 func start_drawing(points: Array[Vector2], duration: float) -> void:
 	line.clear_points()

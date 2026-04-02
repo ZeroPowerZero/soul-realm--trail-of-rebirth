@@ -1,4 +1,4 @@
-class_name ApprenticeMage
+class_name Apprentice_Mage
 extends CharacterBody3D
 
 @onready var area: Area3D = $Area3D

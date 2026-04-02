@@ -40,6 +40,11 @@ func _ready() -> void:
 	# Setup Visualizer
 	drawing_visualizer = EnemyDrawVisualizer.new()
 	drawing_visualizer.name = "DrawingVisualizer"
+	
+	var billboard_node = find_child("SpellBillboard", true, false)
+	if billboard_node and billboard_node is Sprite3D:
+		drawing_visualizer.target_sprite = billboard_node
+		
 	add_child(drawing_visualizer)
 
 func find_player() -> Node3D:
