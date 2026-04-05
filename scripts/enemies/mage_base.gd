@@ -14,6 +14,10 @@ var drawing_visualizer: EnemyDrawVisualizer
 var is_casting: bool = false
 var target_player: Node3D = null
 
+# Physics & Navigation
+var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+var nav_agent: NavigationAgent3D
+
 func _ready() -> void:
 	add_to_group("Enemy")
 	
@@ -46,6 +50,13 @@ func _ready() -> void:
 		drawing_visualizer.target_sprite = billboard_node
 		
 	add_child(drawing_visualizer)
+	
+	# Setup Navigation
+	nav_agent = NavigationAgent3D.new()
+	nav_agent.name = "NavigationAgent"
+	# Avoid using avoidance for now to keep things simple and prevent drifting
+	nav_agent.avoidance_enabled = false
+	add_child(nav_agent)
 
 func find_player() -> Node3D:
 	var players = get_tree().get_nodes_in_group("Player")
@@ -105,3 +116,19 @@ func see_target(body: Node3D) -> void:
 func forget_target(body: Node3D) -> void:
 	if target_player == body:
 		target_player = null
+
+func has_line_of_sight(target: Node3D) -> bool:
+	if not is_instance_valid(target):
+		return false
+	var space_state = get_world_3d().direct_space_state
+	# Cast from body center to target body center
+	var origin_pos = global_position + Vector3.UP * 1.0
+	var target_pos = target.global_position + Vector3.UP * 1.0
+	
+	var query = PhysicsRayQueryParameters3D.create(origin_pos, target_pos)
+	query.exclude = [self]
+	
+	var result = space_state.intersect_ray(query)
+	if result and result.collider == target:
+		return true
+	return false

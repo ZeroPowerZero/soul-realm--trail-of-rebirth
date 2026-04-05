@@ -1,0 +1,193 @@
+"filename", "language", "GDResource", "GDScript", "GDScene", "gdshader", "Python", "XML", "comment", "blank", "total"
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\Earth Bending - Tutorial\model\m_rocks.tres", "GDResource", 7, 0, 0, 0, 0, 0, 0, 3, 10
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\Earth Bending - Tutorial\model\sm_rocks.glb.import", "GDResource", 45, 0, 0, 0, 0, 0, 0, 6, 51
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\Earth Bending - Tutorial\texture\T_rocks_A_color.png.import", "GDResource", 36, 0, 0, 0, 0, 0, 0, 6, 42
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\Earth Bending - Tutorial\texture\T_rocks_B_color.png.import", "GDResource", 36, 0, 0, 0, 0, 0, 0, 6, 42
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\Earth Bending - Tutorial\texture\T_rocks_C_color.png.import", "GDResource", 36, 0, 0, 0, 0, 0, 0, 6, 42
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\Earth Bending - Tutorial\texture\T_rocks_C_emissive.png.import", "GDResource", 36, 0, 0, 0, 0, 0, 0, 6, 42
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\Earth Bending - Tutorial\texture\free_-_skybox_in_the_cloud.glb.import", "GDResource", 37, 0, 0, 0, 0, 0, 0, 6, 43
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\Earth Bending - Tutorial\texture\free_-_skybox_in_the_cloud_0.jpg.import", "GDResource", 39, 0, 0, 0, 0, 0, 0, 6, 45
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\Earth Bending - Tutorial\texture\ice_cluster2_free.glb.import", "GDResource", 37, 0, 0, 0, 0, 0, 0, 6, 43
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\Earth Bending - Tutorial\texture\ice_cluster2_free_0.png.import", "GDResource", 39, 0, 0, 0, 0, 0, 0, 6, 45
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\Earth Bending - Tutorial\texture\ice_cluster2_free_1.png.import", "GDResource", 39, 0, 0, 0, 0, 0, 0, 6, 45
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\Earth Bending - Tutorial\texture\ice_cluster2_free_2.png.import", "GDResource", 39, 0, 0, 0, 0, 0, 0, 6, 45
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\HDRI\kloofendal_48d_partly_cloudy_puresky_4k.hdr.import", "GDResource", 36, 0, 0, 0, 0, 0, 0, 6, 42
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\book\spell_book (1).glb.import", "GDResource", 37, 0, 0, 0, 0, 0, 0, 6, 43
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\book\spell_book (1)_0.png.import", "GDResource", 39, 0, 0, 0, 0, 0, 0, 6, 45
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\book\spell_book (1)_1.png.import", "GDResource", 39, 0, 0, 0, 0, 0, 0, 6, 45
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\book\spell_book (1)_2.png.import", "GDResource", 39, 0, 0, 0, 0, 0, 0, 6, 45
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\book\spell_book (1)_3.png.import", "GDResource", 39, 0, 0, 0, 0, 0, 0, 6, 45
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\book\spell_book.glb.import", "GDResource", 37, 0, 0, 0, 0, 0, 0, 6, 43
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\book\spell_book_0.jpg.import", "GDResource", 39, 0, 0, 0, 0, 0, 0, 6, 45
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\book\spell_book_1.png.import", "GDResource", 39, 0, 0, 0, 0, 0, 0, 6, 45
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\book\spell_book_10.png.import", "GDResource", 39, 0, 0, 0, 0, 0, 0, 6, 45
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\book\spell_book_11.png.import", "GDResource", 39, 0, 0, 0, 0, 0, 0, 6, 45
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\book\spell_book_2.png.import", "GDResource", 39, 0, 0, 0, 0, 0, 0, 6, 45
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\book\spell_book_3.jpg.import", "GDResource", 39, 0, 0, 0, 0, 0, 0, 6, 45
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\book\spell_book_4.png.import", "GDResource", 39, 0, 0, 0, 0, 0, 0, 6, 45
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\book\spell_book_5.png.import", "GDResource", 39, 0, 0, 0, 0, 0, 0, 6, 45
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\book\spell_book_6.jpg.import", "GDResource", 39, 0, 0, 0, 0, 0, 0, 6, 45
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\book\spell_book_7.png.import", "GDResource", 39, 0, 0, 0, 0, 0, 0, 6, 45
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\book\spell_book_8.png.import", "GDResource", 39, 0, 0, 0, 0, 0, 0, 6, 45
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\book\spell_book_9.jpg.import", "GDResource", 39, 0, 0, 0, 0, 0, 0, 6, 45
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\models\IK_arm.glb.import", "GDResource", 37, 0, 0, 0, 0, 0, 0, 6, 43
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\models\IK_arm_pallet.png.import", "GDResource", 39, 0, 0, 0, 0, 0, 0, 6, 45
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\models\IK_character.glb.import", "GDResource", 37, 0, 0, 0, 0, 0, 0, 6, 43
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\models\IK_character_animation.glb.import", "GDResource", 2096, 0, 0, 0, 0, 0, 0, 6, 2102
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\models\IK_viewmodel.glb.import", "GDResource", 37, 0, 0, 0, 0, 0, 0, 6, 43
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\rough\gem_pen.glb.import", "GDResource", 37, 0, 0, 0, 0, 0, 0, 6, 43
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Dark\texture_01.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Dark\texture_02.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Dark\texture_03.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Dark\texture_04.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Dark\texture_05.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Dark\texture_06.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Dark\texture_07.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Dark\texture_08.png.import", "GDResource", 36, 0, 0, 0, 0, 0, 0, 6, 42
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Dark\texture_09.png.import", "GDResource", 36, 0, 0, 0, 0, 0, 0, 6, 42
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Dark\texture_10.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Dark\texture_11.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Dark\texture_12.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Dark\texture_13.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Green\texture_01.png.import", "GDResource", 36, 0, 0, 0, 0, 0, 0, 6, 42
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Green\texture_02.png.import", "GDResource", 36, 0, 0, 0, 0, 0, 0, 6, 42
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Green\texture_03.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Green\texture_04.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Green\texture_05.png.import", "GDResource", 36, 0, 0, 0, 0, 0, 0, 6, 42
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Green\texture_06.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Green\texture_07.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Green\texture_08.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Green\texture_09.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Green\texture_10.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Green\texture_11.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Green\texture_12.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Green\texture_13.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Light\texture_01.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Light\texture_02.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Light\texture_03.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Light\texture_04.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Light\texture_05.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Light\texture_06.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Light\texture_07.png.import", "GDResource", 36, 0, 0, 0, 0, 0, 0, 6, 42
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Light\texture_08.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Light\texture_09.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Light\texture_10.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Light\texture_11.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Light\texture_12.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Light\texture_13.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Orange\texture_01.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Orange\texture_02.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Orange\texture_03.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Orange\texture_04.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Orange\texture_05.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Orange\texture_06.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Orange\texture_07.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Orange\texture_08.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Orange\texture_09.png.import", "GDResource", 36, 0, 0, 0, 0, 0, 0, 6, 42
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Orange\texture_10.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Orange\texture_11.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Orange\texture_12.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Orange\texture_13.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Purple\texture_01.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Purple\texture_02.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Purple\texture_03.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Purple\texture_04.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Purple\texture_05.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Purple\texture_06.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Purple\texture_07.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Purple\texture_08.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Purple\texture_09.png.import", "GDResource", 36, 0, 0, 0, 0, 0, 0, 6, 42
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Purple\texture_10.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Purple\texture_11.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Purple\texture_12.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Purple\texture_13.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Red\texture_01.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Red\texture_02.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Red\texture_03.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Red\texture_04.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Red\texture_05.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Red\texture_06.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Red\texture_07.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Red\texture_08.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Red\texture_09.png.import", "GDResource", 36, 0, 0, 0, 0, 0, 0, 6, 42
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Red\texture_10.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Red\texture_11.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Red\texture_12.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\kenney_grids\Red\texture_13.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\normal_maps\seamless_water_normals.jpeg.import", "GDResource", 36, 0, 0, 0, 0, 0, 0, 6, 42
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\assets\textures\spellframe.png.import", "GDResource", 35, 0, 0, 0, 0, 0, 0, 6, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\enemies\flying_ghost_01.tscn", "GDScene", 0, 0, 72, 0, 0, 0, 0, 14, 86
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\generate_spells.py", "Python", 0, 0, 0, 0, 24, 0, 8, 6, 38
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\global_theme.tres", "GDResource", 7, 0, 0, 0, 0, 0, 0, 3, 10
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\icon.svg", "XML", 0, 0, 0, 0, 0, 1, 0, 1, 2
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\icon.svg.import", "GDResource", 38, 0, 0, 0, 0, 0, 0, 6, 44
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\project.godot", "GDResource", 69, 0, 0, 0, 0, 0, 7, 20, 96
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scenes\book&pen\book.tscn", "GDScene", 0, 0, 57, 0, 0, 0, 0, 7, 64
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scenes\book&pen\pen_0.tscn", "GDScene", 0, 0, 229, 0, 0, 0, 0, 26, 255
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scenes\npcs\NPC_STATE_MACHINE.gd", "GDScript", 0, 6, 0, 0, 0, 0, 0, 2, 8
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scenes\npcs\ai_movement.gd", "GDScript", 0, 44, 0, 0, 0, 0, 0, 15, 59
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scenes\npcs\npc_area.gd", "GDScript", 0, 61, 0, 0, 0, 0, 0, 17, 78
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scenes\npcs\npc_area.tscn", "GDScene", 0, 0, 16, 0, 0, 0, 0, 6, 22
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scenes\npcs\npc_resources\apprentice_mage.gd", "GDScript", 0, 91, 0, 0, 0, 0, 0, 16, 107
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scenes\npcs\npc_resources\apprentice_mage.tres", "GDResource", 8, 0, 0, 0, 0, 0, 0, 3, 11
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scenes\npcs\npc_resources\apprentice_mage.tscn", "GDScene", 0, 0, 33, 0, 0, 0, 0, 15, 48
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scenes\npcs\npc_resources\npc_resources.gd", "GDScript", 0, 4, 0, 0, 0, 0, 0, 2, 6
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scenes\player\input_movement.gd", "GDScript", 0, 42, 0, 0, 0, 0, 2, 10, 54
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scenes\player\player.tscn", "GDScene", 0, 0, 587, 0, 0, 0, 0, 82, 669
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scenes\spells\fire_ball\fire_ball.tscn", "GDScene", 0, 0, 56, 0, 0, 0, 0, 12, 68
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scenes\spells\fire_ball\projectile.gdshader", "gdshader", 0, 0, 0, 11, 0, 0, 0, 4, 15
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scenes\spells\fire_ball\projectile_model.glb.import", "GDResource", 37, 0, 0, 0, 0, 0, 0, 6, 43
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scenes\spells\ice\ice_spikes.tscn", "GDScene", 0, 0, 55, 0, 0, 0, 0, 11, 66
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scenes\spells\instant_dash.tscn", "GDScene", 0, 0, 2, 0, 0, 0, 0, 2, 4
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scenes\spells\rock_spikes\vfx_earth_spikes.tscn", "GDScene", 0, 0, 497, 0, 0, 0, 0, 29, 526
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scenes\world\World.tscn", "GDScene", 0, 0, 72, 0, 0, 0, 0, 22, 94
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\autoloads\player_stats.gd", "GDScript", 0, 4, 0, 0, 0, 0, 0, 3, 7
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\autoloads\templates.gd", "GDScript", 0, 58, 0, 0, 0, 0, 0, 19, 77
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\book&pen\pen.gd", "GDScript", 0, 39, 0, 0, 0, 0, 14, 17, 70
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\drawing_related\spell_drawing_controller.gd", "GDScript", 0, 147, 0, 0, 0, 0, 27, 35, 209
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\enemies\apprentice_mage.gd", "GDScript", 0, 33, 0, 0, 0, 0, 5, 10, 48
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\enemies\counter_mage.gd", "GDScript", 0, 50, 0, 0, 0, 0, 4, 13, 67
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\enemies\enemy_draw_visualizer.gd", "GDScript", 0, 79, 0, 0, 0, 0, 0, 16, 95
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\enemies\mage_base.gd", "GDScript", 0, 72, 0, 0, 0, 0, 12, 24, 108
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\health_component.gd", "GDScript", 0, 16, 0, 0, 0, 0, 1, 7, 24
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\player\player.gd", "GDScript", 0, 142, 0, 0, 0, 0, 33, 46, 221
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\player\player_stat_res.gd", "GDScript", 0, 3, 0, 0, 0, 0, 0, 2, 5
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\player\player_state_machine\dash_state.gd", "GDScript", 0, 9, 0, 0, 0, 0, 0, 5, 14
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\player\player_state_machine\idle_state.gd", "GDScript", 0, 13, 0, 0, 0, 0, 0, 4, 17
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\player\player_state_machine\move_state.gd", "GDScript", 0, 11, 0, 0, 0, 0, 0, 5, 16
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\player\player_state_machine\spell_state.gd", "GDScript", 0, 17, 0, 0, 0, 0, 2, 5, 24
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\player\player_state_machine\state.gd", "GDScript", 0, 14, 0, 0, 0, 0, 0, 8, 22
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\player\player_state_machine\state_machine.gd", "GDScript", 0, 27, 0, 0, 0, 0, 3, 11, 41
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\spells\Spell_Resources\earth_spikes.gd", "GDScript", 0, 19, 0, 0, 0, 0, 0, 9, 28
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\spells\Spell_Resources\earth_spikes.tres", "GDResource", 9, 0, 0, 0, 0, 0, 0, 3, 12
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\spells\Spell_Resources\fire_ball.gd", "GDScript", 0, 74, 0, 0, 0, 0, 40, 43, 157
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\spells\Spell_Resources\fire_ball.tres", "GDResource", 8, 0, 0, 0, 0, 0, 0, 3, 11
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\spells\Spell_Resources\instant_dash.tres", "GDResource", 6, 0, 0, 0, 0, 0, 0, 3, 9
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\spells\Spell_Resources\spell_controller.gd", "GDScript", 0, 19, 0, 0, 0, 0, 1, 7, 27
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\spells\Spell_Resources\spell_data.gd", "GDScript", 0, 6, 0, 0, 0, 0, 0, 3, 9
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\spells\Spell_Resources\spell_driver.gd", "GDScript", 0, 41, 0, 0, 0, 0, 2, 8, 51
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\spells\Spell_Resources\spells_manager.gd", "GDScript", 0, 10, 0, 0, 0, 0, 0, 4, 14
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\spells\Spell_Resources\throw_ball.gd", "GDScript", 0, 8, 0, 0, 0, 0, 0, 5, 13
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\spells\aim_assist_component.gd", "GDScript", 0, 37, 0, 0, 0, 0, 5, 12, 54
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\spells\elements\base_spell.gd", "GDScript", 0, 14, 0, 0, 0, 0, 1, 5, 20
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\spells\elements\earth\stone_throw_data.tres", "GDResource", 7, 0, 0, 0, 0, 0, 0, 3, 10
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\spells\elements\fire\flames_data.tres", "GDResource", 7, 0, 0, 0, 0, 0, 0, 3, 10
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\spells\elements\ice\frost_attack_data.tres", "GDResource", 7, 0, 0, 0, 0, 0, 0, 3, 10
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\spells\elements\ice\ice_spikes.gd", "GDScript", 0, 85, 0, 0, 0, 0, 8, 31, 124
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\spells\elements\ice\ice_spikes_data.tres", "GDResource", 9, 0, 0, 0, 0, 0, 0, 3, 12
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\spells\elements\shield\front_shield_data.tres", "GDResource", 7, 0, 0, 0, 0, 0, 0, 3, 10
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\spells\elements\shield\full_shield_data.tres", "GDResource", 7, 0, 0, 0, 0, 0, 0, 3, 10
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\spells\elements\shield\invisibility_cloak_data.tres", "GDResource", 7, 0, 0, 0, 0, 0, 0, 3, 10
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\spells\elements\wind\push_back_data.tres", "GDResource", 7, 0, 0, 0, 0, 0, 0, 3, 10
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\scripts\spells\elements\wind\tornado_data.tres", "GDResource", 7, 0, 0, 0, 0, 0, 0, 3, 10
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\shaders\shader_tornado.tres", "GDResource", 75, 0, 0, 0, 0, 0, 0, 14, 89
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\texture\Tornado Effect - Tutorial\T_FirePanningCyl45.png.import", "GDResource", 36, 0, 0, 0, 0, 0, 0, 6, 42
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\texture\Tornado Effect - Tutorial\T_Noise1_nk.png.import", "GDResource", 36, 0, 0, 0, 0, 0, 0, 6, 42
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\texture\Tornado Effect - Tutorial\T_Noise_HU85k.png.import", "GDResource", 36, 0, 0, 0, 0, 0, 0, 6, 42
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\texture\Tornado Effect - Tutorial\T_VFX_WindNoise1.png.import", "GDResource", 36, 0, 0, 0, 0, 0, 0, 6, 42
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\texture\godot\godot_blue.png.import", "GDResource", 36, 0, 0, 0, 0, 0, 0, 6, 42
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\texture\godot\godot_green.png.import", "GDResource", 36, 0, 0, 0, 0, 0, 0, 6, 42
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\texture\godot\godot_grey.png.import", "GDResource", 36, 0, 0, 0, 0, 0, 0, 6, 42
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\texture\godot\godot_orange.png.import", "GDResource", 36, 0, 0, 0, 0, 0, 0, 6, 42
+"c:\Users\sharm\OneDrive\Desktop\soul-realm--trail-of-rebirth\texture\godot\godot_red.png.import", "GDResource", 36, 0, 0, 0, 0, 0, 0, 6, 42
+"Total", "-", 6899, 1295, 1676, 11, 24, 1, 175, 1497, 11578

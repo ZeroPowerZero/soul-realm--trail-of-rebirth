@@ -70,9 +70,9 @@ func _ready() -> void:
 	# Add the aim assist component dynamically
 	var aim_assist = AimAssistComponent.new()
 	add_child(aim_assist)
-	aim_assist.setup(self, dir)
+	aim_assist.setup(self , dir)
 	
-	throw_spell.change_owner(self)
+	throw_spell.change_owner(self )
 
 	setup_from_level()
 	check_multi_cast()
@@ -85,7 +85,7 @@ func setup_from_level():
 	_max_hits = 1
 
 	if lvl >= 2:
-		_max_hits = 2  # penetration
+		_max_hits = 2 # penetration
 
 	if lvl >= 3:
 		_can_explode = true
@@ -101,7 +101,16 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node3D) -> void:
-	if body.is_in_group("Enemy"):
+	var caster = _controller
+	var is_caster_enemy = caster and caster.is_in_group("Enemy")
+	var is_caster_player = caster and caster.is_in_group("Player")
+	
+	if is_caster_enemy and body.is_in_group("Enemy"):
+		return
+	if is_caster_player and body.is_in_group("Player"):
+		return
+		
+	if body.is_in_group("Enemy") or body.is_in_group("Player"):
 		apply_damage(body)
 		
 		_hit_count += 1
@@ -114,8 +123,10 @@ func _on_body_entered(body: Node3D) -> void:
 func apply_damage(body):
 	var damage = _driver.get_damage()
 	print("Damage ", damage)
-	if body.health_component.has_method("take_damage"):
-		body.health_component.take_damage(damage )
+	if body.get("health_component") and body.health_component.has_method("take_damage"):
+		body.health_component.take_damage(damage)
+	# elif body.has_method("take_damage"):
+	# 	body.take_damage(damage)
 
 
 func trigger_explosion():
@@ -151,6 +162,6 @@ func spawn_delayed(delay: float):
 	
 	var new_spell = _driver.get_data().spell_scene.instantiate()
 	new_spell.set_controller(_controller)
-	new_spell.set_driver(_driver, true)  # prevent recursion
+	new_spell.set_driver(_driver, true) # prevent recursion
 	
 	get_tree().current_scene.add_child(new_spell)

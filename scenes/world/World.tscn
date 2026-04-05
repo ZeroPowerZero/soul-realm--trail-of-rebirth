@@ -17,6 +17,10 @@ sky = SubResource("Sky_ie1pn")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_6eebf"]
+vertices = PackedVector3Array(-4.25, 0.30710316, -6, -3, 0.30710316, -6.75, -3, 0.30710316, -49.5, -5, 0.30710316, -4.5, -49.5, 0.30710316, -49.5, -49.5, 0.30710316, -4.5, 0, 0.30710316, -4.75, -0.5, 0.30710316, -3.25, 1.25, 0.30710316, -2, 3.5, 0.30710316, -3.25, 4.5, 0.30710316, -3.25, 6, 0.30710316, -0.25, 49.5, 0.30710316, -0.25, 49.5, 0.30710316, -49.5, 3.5, 0.80710316, 0.5, 4.75, 1.0571032, 0.25, 4.75, 1.3071032, -0.25, -2, 1.3071032, 4.75, -1.25, 1.3071032, 4.75, -0.75, 0.80710316, 3.5, -3.25, 0.55710316, 3, -3.5, 1.0571032, 4, 4, 1.5571032, -1.75, 3.5, 1.5571032, -1.75, 2, 1.0571032, -1, 2.25, 0.55710316, 0.75, 0.75, 0.30710316, -1.75, -0.75, 0.30710316, -2.75, 1.75, 0.30710316, 3.75, 1.5, 0.30710316, 0.75, 0.75, 0.30710316, -0.5, -0.5250015, 0.30710316, 2.4749985, -1.5, 1.3071032, -4.25, -3, 1.3071032, -5.25, -4, 0.80710316, -4, -1.5, 0.55710316, -2.75, -5, 0.30710316, -4, -4.25, 0.30710316, 3, -4.75, 0.30710316, 4.5, -49.5, 0.30710316, 4.5, 3.5, 0.55710316, 1.25, 0.25, 0.30710316, 3.75, 6, 0.30710316, 0.75, 4.75, 0.30710316, 1.5, 6.75, 0.30710316, 2.75, 7, 0.30710316, 3.5, 49.5, 0.30710316, 3.5, 2.75, 0.80710316, 3.75, 4, 1.0571032, 5.25, 4.5, 1.0571032, 5.25, 5.75, 1.3071032, 3.75, 4, 0.80710316, 2.25, 6, 0.30710316, 5.5, 4.5, 0.30710316, 6.5, 4.5, 0.30710316, 49.5, 49.5, 0.30710316, 49.5, 1.75, 0.30710316, 4.75, -0.5, 0.30710316, 6, 3.5, 0.30710316, 6.25, -1.5, 0.30710316, 6.5, -1.5, 0.30710316, 49.5, -4.25, 0.30710316, 5.25, -49.5, 0.30710316, 49.5)
+polygons = [PackedInt32Array(0, 2, 1), PackedInt32Array(0, 3, 2), PackedInt32Array(2, 3, 5), PackedInt32Array(2, 5, 4), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(12, 11, 10), PackedInt32Array(10, 9, 6), PackedInt32Array(6, 1, 10), PackedInt32Array(10, 1, 2), PackedInt32Array(10, 2, 13), PackedInt32Array(10, 13, 12), PackedInt32Array(16, 15, 14), PackedInt32Array(18, 17, 19), PackedInt32Array(19, 17, 21), PackedInt32Array(19, 21, 20), PackedInt32Array(22, 16, 23), PackedInt32Array(23, 16, 14), PackedInt32Array(23, 14, 24), PackedInt32Array(24, 14, 25), PackedInt32Array(27, 7, 26), PackedInt32Array(26, 7, 8), PackedInt32Array(30, 31, 20), PackedInt32Array(20, 31, 19), PackedInt32Array(19, 31, 28), PackedInt32Array(28, 31, 29), PackedInt32Array(29, 31, 30), PackedInt32Array(33, 32, 34), PackedInt32Array(34, 32, 35), PackedInt32Array(5, 3, 36), PackedInt32Array(34, 35, 36), PackedInt32Array(36, 35, 30), PackedInt32Array(36, 30, 20), PackedInt32Array(36, 20, 37), PackedInt32Array(37, 38, 36), PackedInt32Array(36, 38, 39), PackedInt32Array(36, 39, 5), PackedInt32Array(25, 14, 40), PackedInt32Array(25, 40, 29), PackedInt32Array(29, 40, 28), PackedInt32Array(27, 26, 35), PackedInt32Array(35, 26, 30), PackedInt32Array(28, 41, 19), PackedInt32Array(44, 43, 42), PackedInt32Array(11, 44, 42), PackedInt32Array(44, 11, 45), PackedInt32Array(45, 11, 46), PackedInt32Array(46, 11, 12), PackedInt32Array(48, 47, 49), PackedInt32Array(49, 47, 50), PackedInt32Array(50, 47, 51), PackedInt32Array(52, 45, 46), PackedInt32Array(53, 52, 54), PackedInt32Array(54, 52, 55), PackedInt32Array(55, 52, 46), PackedInt32Array(41, 28, 56), PackedInt32Array(41, 56, 57), PackedInt32Array(57, 56, 58), PackedInt32Array(58, 53, 57), PackedInt32Array(57, 53, 59), PackedInt32Array(59, 53, 54), PackedInt32Array(59, 54, 60), PackedInt32Array(59, 60, 61), PackedInt32Array(61, 60, 38), PackedInt32Array(38, 60, 39), PackedInt32Array(39, 60, 62)]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fdo8o"]
 albedo_color = Color(0.32172796, 0.32172796, 0.32172796, 1)
 albedo_texture = ExtResource("1_1oml7")
@@ -33,31 +37,34 @@ environment = SubResource("Environment_dif88")
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
-[node name="stage" type="CSGCombiner3D" parent="." unique_id=52867147]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1209002455]
+navigation_mesh = SubResource("NavigationMesh_6eebf")
+
+[node name="stage" type="CSGCombiner3D" parent="NavigationRegion3D" unique_id=52867147]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 material_override = SubResource("StandardMaterial3D_fdo8o")
 use_collision = true
 
-[node name="CSGBox3D" type="CSGBox3D" parent="stage" unique_id=1965188142]
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/stage" unique_id=1965188142]
 use_collision = true
 size = Vector3(100, 1, 100)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="stage" unique_id=1803221018]
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/stage" unique_id=1803221018]
 transform = Transform3D(0.7924961, -0.1428275, -0.5929167, 0.14000095, 0.9888335, -0.05107373, 0.5935906, -0.042533197, 0.8036425, 4.418614, -0.4122107, 3.8735237)
 use_collision = true
 size = Vector3(3, 3, 3)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="stage" unique_id=315325115]
+[node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D/stage" unique_id=315325115]
 transform = Transform3D(0.8247228, -0.14035594, -0.54784346, -0.119673535, 0.90346354, -0.41162124, 0.5527301, 0.4050358, 0.7283099, -2.5988266, -0.5407593, -4.4750695)
 use_collision = true
 size = Vector3(3, 3, 3)
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="stage" unique_id=215639968]
+[node name="CSGBox3D5" type="CSGBox3D" parent="NavigationRegion3D/stage" unique_id=215639968]
 transform = Transform3D(-0.9186721, 0.056438513, 0.39096847, -0.119673535, 0.90346354, -0.4116212, -0.3764571, -0.42493346, -0.8232323, -2.115626, -0.54075885, 4.219141)
 use_collision = true
 size = Vector3(3, 3, 3)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="stage" unique_id=1427341812]
+[node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/stage" unique_id=1427341812]
 transform = Transform3D(0.12154446, 0.89712083, 0.42473677, -0.9407354, 0.24060985, -0.23900624, -0.3166132, -0.3705151, 0.8731979, 3.528325, -0.2738657, -0.89702034)
 use_collision = true
 size = Vector3(3, 3, 3)

@@ -9,6 +9,7 @@ func take_damage(value: float) -> void:
 	_health -= value
 	
 	if _health <= 0:
+		print("you died : bitch")
 		get_parent().queue_free()
 
 # Getter and Setter

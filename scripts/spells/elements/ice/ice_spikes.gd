@@ -69,7 +69,16 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 
 func _on_body_entered(body: Node3D) -> void:
-	if body.is_in_group("Enemy"):
+	var caster = _controller.get_basis_node() if _controller else null
+	var is_caster_enemy = caster and caster.is_in_group("Enemy")
+	var is_caster_player = caster and caster.is_in_group("Player")
+	
+	if is_caster_enemy and body.is_in_group("Enemy"):
+		return
+	if is_caster_player and body.is_in_group("Player"):
+		return
+		
+	if body.is_in_group("Enemy") or body.is_in_group("Player"):
 		apply_damage(body)
 		apply_slow(body)
 		
@@ -81,8 +90,10 @@ func _on_body_entered(body: Node3D) -> void:
 func apply_damage(body: Node3D):
 	# Lower damage than fireball
 	var damage = _driver.get_damage() * 0.7 
-	if body.health_component and body.health_component.has_method("take_damage"):
+	if body.get("health_component") and body.health_component.has_method("take_damage"):
 		body.health_component.take_damage(damage)
+	#elif body.has_method("take_damage"):
+		#body.take_damage(damage)
 
 func apply_slow(body: Node3D):
 	# Assuming enemies have a movement_speed property
