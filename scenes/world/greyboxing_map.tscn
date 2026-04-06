@@ -318,10 +318,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2118359, 1.8104777, 17.9661
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0393238, 1.7422756, 13.091945)
 spawn_interval = 5.0
 
-[node name="NPC_AREA2" parent="." unique_id=986981908 instance=ExtResource("4_dwe2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.35239, 7.1140943, -10.032682)
-spawn_interval = 5.0
-
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=518715573]
 navigation_mesh = SubResource("NavigationMesh_dwe2m")
 
@@ -333,3 +329,11 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/CSGBakedMeshInstance3D/StaticBody3D" unique_id=1849578754]
 shape = SubResource("ConcavePolygonShape3D_l1g5p")
+
+[node name="NPC_AREA3" parent="." unique_id=71866033 instance=ExtResource("4_dwe2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0393238, 1.7422756, 13.091945)
+spawn_interval = 5.0
+
+[node name="NPC_AREA2" parent="." unique_id=986981908 instance=ExtResource("4_dwe2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.35239, 7.1140943, -10.032682)
+spawn_interval = 5.0

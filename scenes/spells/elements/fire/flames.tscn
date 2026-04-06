@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://drnx62jfe5b8d"]
+
+[ext_resource type="Texture2D" uid="uid://bsovrp2x1mijd" path="res://texture/fire/T_fire01.png" id="1_2dq1r"]
+[ext_resource type="Script" uid="uid://bm5le25oqyjuw" path="res://scripts/spells/elements/fire/flames.gd" id="1_5i7p7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5i7p7"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("1_2dq1r")
+albedo_texture_force_srgb = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_2dq1r"]
+_data = [Vector2(0.6666667, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_74mfv"]
+texture_mode = 1
+curve = SubResource("Curve_2dq1r")
+
+[sub_resource type="Gradient" id="Gradient_74mfv"]
+offsets = PackedFloat32Array(0.09677419, 0.7903226)
+colors = PackedColorArray(0.56833357, 0.56833357, 0.56833357, 1, 0.14478345, 0.14478345, 0.14478345, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pisp2"]
+gradient = SubResource("Gradient_74mfv")
+
+[sub_resource type="Curve" id="Curve_74mfv"]
+_data = [Vector2(0, 0.5169811), 0.0, 0.0, 0, 0, Vector2(0.4, 0.90000004), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+metadata/_snap_enabled = true
+
+[sub_resource type="CurveTexture" id="CurveTexture_mqo5x"]
+curve = SubResource("Curve_74mfv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mqo5x"]
+lifetime_randomness = 0.28
+particle_flag_rotate_y = true
+angle_min = -179.99998
+angle_max = 180.00002
+direction = Vector3(0, 0, -3)
+initial_velocity_max = 1.0
+radial_velocity_min = -2.2351742e-05
+radial_velocity_max = 0.49997765
+gravity = Vector3(0, 0, -10)
+scale_min = 0.9
+scale_max = 1.4
+scale_curve = SubResource("CurveTexture_mqo5x")
+color = Color(2, 1.2, 0.5, 1)
+color_ramp = SubResource("GradientTexture1D_pisp2")
+alpha_curve = SubResource("CurveTexture_74mfv")
+
+[sub_resource type="QuadMesh" id="QuadMesh_37p6c"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_37p6c"]
+height = 6.6658325
+
+[node name="Flames" type="Area3D" unique_id=1076626223]
+script = ExtResource("1_5i7p7")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=381371053]
+material_override = SubResource("StandardMaterial3D_5i7p7")
+amount = 100
+lifetime = 1.2
+process_material = SubResource("ParticleProcessMaterial_mqo5x")
+draw_pass_1 = SubResource("QuadMesh_37p6c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1540755955]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.09347057, 1.01975004e-07, -2.710435)
+shape = SubResource("CapsuleShape3D_37p6c")

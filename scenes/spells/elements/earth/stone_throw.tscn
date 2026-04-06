@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ciqv0emp2y1qy"]
+
+[ext_resource type="Script" uid="uid://bwp6wbvnvoci8" path="res://scripts/spells/elements/earth/stone_throw.gd" id="1_2gtd1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_khwhd"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ylccf"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[node name="StoneThrow" type="Area3D" unique_id=744130359]
+script = ExtResource("1_2gtd1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1198106936]
+mesh = SubResource("BoxMesh_khwhd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1711237052]
+shape = SubResource("ConvexPolygonShape3D_ylccf")

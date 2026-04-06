@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="SpellData" format=3]
+[gd_resource type="Resource" script_class="SpellData" format=3 uid="uid://dq25pnni6wew1"]
 
 [ext_resource type="Script" uid="uid://ds2evghd4d04i" path="res://scripts/spells/Spell_Resources/spell_data.gd" id="1_m6gym"]
+[ext_resource type="PackedScene" uid="uid://dxj47c6dgbj75" path="res://scenes/spells/elements/ice/frost_attack.tscn" id="2_svncd"]
 
 [resource]
 script = ExtResource("1_m6gym")
 name = "Frost Attack"
 spell_type = 3
+spell_scene = ExtResource("2_svncd")
 metadata/_custom_type_script = "uid://ds2evghd4d04i"

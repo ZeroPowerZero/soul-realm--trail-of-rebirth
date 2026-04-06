@@ -9,7 +9,7 @@ extends Area3D
 @export var area_radius: float = 7:
 	set(value):
 		area_radius = value
-		collision.shape.radius = value
+		#collision.shape.radius = value
 @export var enemies: Array[NPC_RESOURCE]
 
 var instantiated_enemies: Array

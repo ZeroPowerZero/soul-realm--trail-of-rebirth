@@ -7,6 +7,7 @@ extends Area3D
 
 var _time: float
 var _controller: SpellController
+var _driver : SpellDriver
 
 func _ready() -> void:
 	global_position = _controller.basis_node.global_position-Vector3.UP
@@ -19,6 +20,9 @@ func _ready() -> void:
 
 func set_controller(who: SpellController):
 	_controller = who
+
+func set_driver(d : SpellDriver, _is_extra := false):
+	_driver = d
 
 func _process(delta: float) -> void:
 	_time += delta
