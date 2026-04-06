@@ -40,9 +40,9 @@ func _ready() -> void:
 	# Add the aim assist component dynamically
 	var aim_assist = AimAssistComponent.new()
 	add_child(aim_assist)
-	aim_assist.setup(self, dir)
+	aim_assist.setup(self , dir)
 	
-	throw_spell.change_owner(self)
+	throw_spell.change_owner(self )
 
 	setup_from_level()
 	check_multi_cast()
@@ -54,11 +54,11 @@ func setup_from_level():
 	_max_hits = 1
 
 	if lvl >= 2:
-		_max_hits = 3  # Pierce through more enemies since it's an ice spike
+		_max_hits = 3 # Pierce through more enemies since it's an ice spike
 
 	if lvl >= 3:
 		# Stronger slow effect at level 3
-		speed_reduction_factor = 0.25 
+		speed_reduction_factor = 0.25
 		slow_duration = 4.0
 
 func _physics_process(delta: float) -> void:
@@ -89,7 +89,7 @@ func _on_body_entered(body: Node3D) -> void:
 
 func apply_damage(body: Node3D):
 	# Lower damage than fireball
-	var damage = _driver.get_damage() * 0.7 
+	var damage = _driver.get_damage() * 0.7
 	if body.get("health_component") and body.health_component.has_method("take_damage"):
 		body.health_component.take_damage(damage)
 	#elif body.has_method("take_damage"):
