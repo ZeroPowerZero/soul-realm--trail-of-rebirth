@@ -1,3 +1,90 @@
+# Soul Realm - Developer Documentation & Architecture Guide
+
+Welcome to the Soul Realm developer manual. This document explains the primary framework and systems structuring the game, ensuring maintainable, modular, and scalable gameplay logic. 
+
+Our architecture heavily relies on **Component-Based Design**. Instead of writing monstrous god-scripts inside characters, logic is split into specialized reusable nodes (components) assigned as children to entities.
+
+---
+
+## 1. Core Entity Components
+
+These components are typically found under `res://scripts/components/`. 
+To use them, instance the component as a child node within any entity (Player, Enemy, Boss, Destructible Object) that requires the functionality.
+
+### **HealthComponent** (`health_component.gd`)
+* **Purpose:** Manages hit points, tracks damage taken, and handles the death routine.
+* **How it works:** Exposes a `max_health` variable. It encapsulates `_health` protecting it from external mutations. When `take_damage(amount)` is called, it subtracts the amount.
+* **Events/Signals:**
+  - `health_changed(new_health, max_health)`: Fired every time health is manipulated. UI elements (like target health bars or the Player HUD) should connect to this.
+  - `died`: Fired when health hits 0. The parent entity should connect to this to play death animations or drop loot. Usually, the component forcefully frees the parent node after emitting.
+* **Where to use:** Literally any entity that can be destroyed. The Player, Enemies, or even breakable pots.
+
+### **ManaComponent** (`mana_component.gd`)
+* **Purpose:** Handles the casting pool required for spells, and dictates automatic regeneration.
+* **How it works:** A strict mathematical node checking if `cost <= current_mana`. Use `spend(amount)` prior to executing a cast. It typically features a `_process` regeneration clock applying `regen_rate`.
+* **Where to use:** Only attached to entities that utilize the heavy Magic/Spellcasting systems and have limitations imposed on rapid-cast. Currently attached directly to the Player.
+
+### **UpgradeComponent** (`upgrade_component.gd`)
+* **Purpose:** Handles the processing of dynamic permanent modifications during Roguelite wave-clears or Level Ups.
+* **How to use it:** When the player picks an upgrade from the `UpgradeManager`, this component applies the mathematical change universally.
+* **How to add a new upgrade:** 
+  1. Right-click in the Godot file system -> Create New Resource -> Selected `StatUpgradeData`.
+  2. Set the stats visually in the inspector (e.g., +20% Cast Speed).
+  3. Push this resource to the Upgrade Manager pool. The UI reads it, and the UpgradeComponent executes it.
+
+---
+
+## 2. The Spell casting System
+
+The spellcasting system is data-driven, preventing the need to hardcode a million distinct object spawners. 
+
+### **SpellData** (`spell_data.gd`)
+* **Purpose:** A Godot Resource holding pure config data (Name, Type, Mana Cost, PackedScene).
+
+### **SpellDriver** (`spell_driver.gd`)
+* **Purpose:** The active conduit object translating a Player/Enemy's request to cast a specific spell. It acts as the pipeline combining `SpellData` and dynamic combat variables (`level`, `damage`, `drawn_coords`).
+
+### **SpellController** (`spell_controller.gd`)
+* **Purpose:** A universally attachable 3D node component used by both the Player and Enemies to correctly orient and instantiate the physics of a magical projectile/effect.
+* **How it works:** 
+  It requires two setups on `_ready()`:
+  - `set_basis_node()`: Defines the source of the forward viewpoint (For player, it's the `Camera3D`. For enemies, it's their entire body `self`).
+  - `set_spawn_node()`: Defines the visual coordinate source indicating where the spell emits from (For the player, the `pen_0` view-model point. For enemies, their chest).
+* **Where to use:** Whenever an entity needs the ability to spawn a spell physically into the world tree. 
+
+### **The Active Spells** (e.g., `flames.gd`, `stone_throw.gd`)
+* **Architecture:** Every spell is usually an `Area3D`. When instantiated by the `SpellController`, the controller is passed into the spell so the spell can read data relative to its creator.
+* **Usage rules:** A spell MUST use `get_spawn_node()` inside its `_physics_process` if it requires continuous tethering (like the Flamethrower constantly sticking to a wand tip). If it is a projectile, it only reads orientation data once on `_ready()` and uses manual movement logic thereafter.
+
+---
+
+## 3. The Enemy Framework
+
+### **MageBase** (`mage_base.gd`)
+* **Purpose:** The absolute foundational blueprint for any caster-type hostile unit.
+* **How it works:** 
+  - Instead of forcing you to build `HealthComponent` and `NavigationAgent3D` nodes in every single scene manually, `MageBase` automatically instantiates them internally through script upon `_ready()`.
+  - It handles dynamic 3D healthbar creation securely hovering over instances.
+  - It implements Line of Sight query physics parameters natively. Ensure logic relies on `has_line_of_sight()` prior to initiating attacks.
+* **Where to use:** If you want to make an aggressive Necromancer, simply create a new node extending `MageBase` and set `movement_speed` and its specific elemental spell.
+
+## Summary Checklist for Expanding Game:
+- Need to track a new variable? -> Write a Component, add it to the node.
+- Need to make a new enemy? -> Inherit `MageBase`, change variables, feed it new `SpellData`.
+- Spell not pushing damage? -> Confirm the collision layers align and `body.get('health_component')` is resolving correctly!
+
+---
+
+## 4. Upgrade Workflow (XP System)
+
+The upgrade pipeline creates the core roguelite loop for the game:
+1. **Gain XP:** The player gains XP whenever an enemy dies (triggered initially inside `base_mage._on_died()` passing to `GameManager.add_xp()`).
+2. **Dynamic Values:** Different enemies can organically grant varying amounts of XP based on their variables.
+3. **Level Up Trigger:** When the player's calculated XP bar fills entirely, a Level Up sequence initiates.
+4. **Pause & Present:** The required XP for the subsequent level increases dynamically, the system pauses the game physics, and the `Upgrade UI` pops up.
+5. **Applied Choice:** The player actively selects an upgrade from the randomized pool cards. That statistical buff is immediately distributed via `UpgradeComponent`, and the game resumes normal pacing.
+
+
 Whenever you want to add a new upgrade:
 
 Right-click in the Godot file system.

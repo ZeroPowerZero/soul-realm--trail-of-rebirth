@@ -1,39 +1,15 @@
 class_name UpgradeUI
 extends CanvasLayer
 
-var panel: PanelContainer
-var vbox: VBoxContainer
-var upgrade_buttons: VBoxContainer
+@onready var upgrade_buttons: VBoxContainer = $PanelContainer/CenterContainer/VBoxContainer/UpgradeButtons
 
 func _ready() -> void:
-	process_mode = Node.PROCESS_MODE_ALWAYS
-	layer = 100
-	
-	panel = PanelContainer.new()
-	panel.set_anchors_preset(Control.PRESET_FULL_RECT)
-	add_child(panel)
-	
-	var center = CenterContainer.new()
-	panel.add_child(center)
-	
-	vbox = VBoxContainer.new()
-	vbox.add_theme_constant_override("separation", 20)
-	center.add_child(vbox)
-	
-	var title = Label.new()
-	title.text = "LEVEL UP! Choose an Upgrade:"
-	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	vbox.add_child(title)
-	
-	upgrade_buttons = VBoxContainer.new()
-	upgrade_buttons.add_theme_constant_override("separation", 15)
-	vbox.add_child(upgrade_buttons)
-	
 	hide()
 	
 	if Engine.get_main_loop().root.has_node("GameManager"):
 		var gm = Engine.get_main_loop().root.get_node("GameManager")
-		gm.leveled_up.connect(show_upgrade_screen)
+		if not gm.leveled_up.is_connected(show_upgrade_screen):
+			gm.leveled_up.connect(show_upgrade_screen)
 
 func show_upgrade_screen(_level: int) -> void:
 	# Get Player

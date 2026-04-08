@@ -10,6 +10,7 @@ extends CharacterBody3D
 var health_component: Node
 var spell_controller: SpellController
 var drawing_visualizer: EnemyDrawVisualizer
+var progress_bar: ProgressBar
 
 # State
 var is_casting: bool = false
@@ -24,7 +25,7 @@ func _ready() -> void:
 	
 	# Setting up health component dynamically if not added in scene
 	if not has_node("HealthComponent"):
-		var HealthScript = load("res://scripts/health_component.gd")
+		var HealthScript = load("res://scripts/components/health_component.gd")
 		if HealthScript:
 			health_component = HealthScript.new()
 			health_component.name = "HealthComponent"
@@ -37,6 +38,10 @@ func _ready() -> void:
 	
 	if health_component.has_signal("died"):
 		health_component.connect("died", _on_died)
+
+	_setup_health_bar()
+	if health_component.has_signal("health_changed"):
+		health_component.connect("health_changed", _on_health_changed)
 	
 	# Setting up spell controller
 	spell_controller = SpellController.new()
@@ -61,6 +66,39 @@ func _ready() -> void:
 	# Avoid using avoidance for now to keep things simple and prevent drifting
 	nav_agent.avoidance_enabled = false
 	add_child(nav_agent)
+
+func _setup_health_bar() -> void:
+	var viewport = SubViewport.new()
+	viewport.transparent_bg = true
+	viewport.size = Vector2i(200, 30)
+	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+	
+	progress_bar = ProgressBar.new()
+	progress_bar.custom_minimum_size = Vector2(200, 30)
+	progress_bar.max_value = max_health
+	progress_bar.value = max_health
+	progress_bar.show_percentage = false
+	
+	var sb_bg = StyleBoxFlat.new()
+	sb_bg.bg_color = Color(0.2, 0.2, 0.2, 0.8)
+	var sb_fg = StyleBoxFlat.new()
+	sb_fg.bg_color = Color(0.9, 0.2, 0.2, 1.0)
+	progress_bar.add_theme_stylebox_override("background", sb_bg)
+	progress_bar.add_theme_stylebox_override("fill", sb_fg)
+	
+	viewport.add_child(progress_bar)
+	add_child(viewport)
+	
+	var health_sprite = Sprite3D.new()
+	health_sprite.name = "HealthBar3D"
+	health_sprite.texture = viewport.get_texture()
+	health_sprite.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	health_sprite.position = Vector3(0, 2.8, 0) # 2.8 units above center roughly head area
+	add_child(health_sprite)
+
+func _on_health_changed(new_health: float, _max_health: float) -> void:
+	if progress_bar:
+		progress_bar.value = new_health
 
 func find_player() -> Node3D:
 	var players = get_tree().get_nodes_in_group("Player")

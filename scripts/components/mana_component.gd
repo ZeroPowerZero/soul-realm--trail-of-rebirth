@@ -2,7 +2,7 @@ class_name ManaComponent
 extends Node
 
 @export var max_mana := 100
-var current_mana := 100
+var current_mana :float = 100
 @export var regen_rate := 5.0
 
 func _process(delta):

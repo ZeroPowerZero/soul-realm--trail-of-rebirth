@@ -24,3 +24,6 @@ func get_forward_direction() -> Vector3:
 
 func get_spawn_position() -> Vector3:
 	return spawn_node.global_position + get_forward_direction() * 1.0
+
+func get_spawn_node() -> Node3D:
+	return spawn_node

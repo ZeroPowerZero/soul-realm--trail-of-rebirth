@@ -17,6 +17,22 @@ func _ready() -> void:
 	global_basis = Basis(new_quat.normalized())
 	
 	anim_player.play("init")
+	body_entered.connect(_on_body_entered)
+
+func _on_body_entered(body: Node3D) -> void:
+	var caster = _controller.get_basis_node() if _controller else null
+	var is_caster_enemy = caster and caster.is_in_group("Enemy")
+	var is_caster_player = caster and caster.is_in_group("Player")
+	
+	if is_caster_enemy and body.is_in_group("Enemy"):
+		return
+	if is_caster_player and body.is_in_group("Player"):
+		return
+		
+	if body.is_in_group("Enemy") or body.is_in_group("Player"):
+		var damage_amount = _driver.get_damage() if (_driver and _driver.has_method("get_damage")) else damage
+		if body.get("health_component") and body.health_component.has_method("take_damage"):
+			body.health_component.take_damage(damage_amount)
 
 func set_controller(who: SpellController):
 	_controller = who

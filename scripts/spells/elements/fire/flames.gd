@@ -24,22 +24,6 @@ func _ready() -> void:
 		
 	setup_roguelike_level()
 
-	if _controller:
-		global_position = _controller.get_spawn_position()
-		var dir = _controller.get_forward_direction()
-		if dir.length_squared() > 0.01:
-			look_at(global_position + dir, Vector3.UP)
-			
-		# Optional: Attach flames to the caster so they move together
-		if _controller.has_method("get_basis_node"):
-			var caster = _controller.get_basis_node()
-			if is_instance_valid(caster):
-				get_parent().remove_child(self)
-				caster.add_child(self)
-				# Reset transform relative to caster
-				transform = Transform3D.IDENTITY
-				position = Vector3(0, 1, -1) # Slightly in front
-
 	var end_timer = get_tree().create_timer(_duration)
 	end_timer.timeout.connect(func(): queue_free())
 	
@@ -69,6 +53,14 @@ func setup_roguelike_level():
 		print("[Lvl 5] BLUE FLAMES! Ignores armor and triples damage.")
 
 func _physics_process(delta: float) -> void:
+	if is_instance_valid(_controller):
+		var spawner = _controller.get_spawn_node() if _controller.has_method("get_spawn_node") else null
+		if is_instance_valid(spawner):
+			global_position = spawner.global_position
+			var dir = _controller.get_forward_direction()
+			if dir.length_squared() > 0.01:
+				look_at(global_position + dir, Vector3.UP)
+
 	# Continuous damage thicks
 	_tick_timer += delta
 	if _tick_timer >= _tick_rate:
@@ -99,7 +91,9 @@ func apply_tick_damage():
 			continue
 		print("Flame tick damaged ", body.name)
 		
+		if body.get("health_component") and body.health_component.has_method("take_damage"):
+			var damage = _driver.get_damage() if (_driver and _driver.has_method("get_damage")) else 10.0
+			body.health_component.take_damage(damage)
+		
 		# Example logic:
-		# if body.get("health_component"):
-		#     body.health_component.take_damage(damage_amount)
-		#     if _level >= 4 and body is dead: trigger_explosion()
+		# if _level >= 4 and body is dead: trigger_explosion()

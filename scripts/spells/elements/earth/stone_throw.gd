@@ -134,6 +134,11 @@ func _on_body_entered(body: Node3D) -> void:
 func trigger_impact(direct_hit_body: Node3D = null):
 	print("Stone hit something!")
 	
+	if is_instance_valid(direct_hit_body):
+		var damage = _driver.get_damage() if (_driver and _driver.has_method("get_damage")) else 30.0
+		if direct_hit_body.get("health_component") and direct_hit_body.health_component.has_method("take_damage"):
+			direct_hit_body.health_component.take_damage(damage)
+	
 	if _level >= 2:
 		print("Triggering Splinter Explosion (AoE: ", _explosion_radius, ")")
 		# TODO: Instatiate explosion visual or Area3D check

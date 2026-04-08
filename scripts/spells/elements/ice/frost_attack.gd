@@ -15,8 +15,7 @@ func set_driver(d, _is_extra := false):
 	_driver = d
 
 func _ready() -> void:
-	if _controller:
-		global_position = _controller.get_spawn_position()
+
 	
 	if _driver and _driver.has_method("get_level"):
 		_level = _driver.get_level()
@@ -44,6 +43,14 @@ func setup_roguelike_level():
 		print("[Lvl 5] Shatter: Upon thawing or death, enemies explode with ice shards.")
 
 func _physics_process(delta: float) -> void:
+	if is_instance_valid(_controller):
+		var spawner = _controller.get_spawn_node() if _controller.has_method("get_spawn_node") else null
+		if is_instance_valid(spawner):
+			global_position = spawner.global_position
+			var dir = _controller.get_forward_direction()
+			if dir.length_squared() > 0.01:
+				look_at(global_position + dir, Vector3.UP)
+
 	_time += delta
 	if _time > _active_duration:
 		# Effect has lingered long enough to hit everyone in range
@@ -66,6 +73,10 @@ func apply_frost_effect(body: Node3D):
 		return
 		
 	print("Frost Nova hit ", body.name, "!")
+	
+	var damage = _driver.get_damage() if (_driver and _driver.has_method("get_damage")) else 20.0
+	if body.get("health_component") and body.health_component.has_method("take_damage"):
+		body.health_component.take_damage(damage)
 	
 	if _level >= 2:
 		print("Applying DEEP FREEZE to ", body.name)

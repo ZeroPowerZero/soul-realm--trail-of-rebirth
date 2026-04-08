@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://b8ojbk8bkhfg7"]
+
+[ext_resource type="Script" uid="uid://b221y62cq1dem" path="res://scripts/ui/player_hud.gd" id="1_phud"]
+
+[node name="PlayerHUD" type="CanvasLayer" unique_id=2132885046]
+script = ExtResource("1_phud")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1538286676]
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1140542847]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="HealthLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=998182077]
+layout_mode = 2
+text = "Health"
+
+[node name="HealthBar" type="ProgressBar" parent="MarginContainer/VBoxContainer" unique_id=171532462]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="ManaLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=280400954]
+layout_mode = 2
+text = "Mana"
+
+[node name="ManaBar" type="ProgressBar" parent="MarginContainer/VBoxContainer" unique_id=1965390483]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="XPLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=156692554]
+layout_mode = 2
+text = "XP"
+
+[node name="XPBar" type="ProgressBar" parent="MarginContainer/VBoxContainer" unique_id=1856209667]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2

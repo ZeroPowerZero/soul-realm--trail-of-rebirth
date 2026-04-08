@@ -41,7 +41,8 @@ var tilt_speed := 6.0
 var current_tilt := 0.0
 
 func _ready():
-	health_component.max_health = 15000
+	health_component.set_max_health(15000)
+	health_component.set_health(15000)
 	
 	spell_draw_limit_timer.timeout.connect(trigger_toggle_spell_mode)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -51,11 +52,13 @@ func _ready():
 	spell_controller.set_spawn_node(pen_0)
 	add_child(spell_controller)
 	
-	var hud = load("res://scripts/ui/player_hud.gd").new()
+	var hud_scene = load("res://scenes/ui/player_hud.tscn")
+	var hud = hud_scene.instantiate()
 	hud.setup(health_component, mana_component)
 	add_child(hud)
 	
-	var upgrade_ui = load("res://scripts/ui/upgrade_ui.gd").new()
+	var upgrade_ui_scene = load("res://scenes/ui/upgrade_ui.tscn")
+	var upgrade_ui = upgrade_ui_scene.instantiate()
 	add_child(upgrade_ui)
 
 func _process(delta):
