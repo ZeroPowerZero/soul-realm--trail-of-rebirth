@@ -1,4 +1,4 @@
-class_name UpgradeManager
+#class_name UpgradeManager
 extends Node
 
 @export var upgrade_pool: Array[UpgradeData] = []

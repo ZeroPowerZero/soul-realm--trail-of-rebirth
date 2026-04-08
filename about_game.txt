@@ -4,3 +4,10 @@ Right-click in the Godot file system.
 Create a new Resource and select StatUpgradeData (or any new subclasses we make).
 Set its variables in the inspector visually!
 Feed it to the UpgradeManager pool.
+
+## Upgrade Workflow (XP System)
+- The player gains XP when an enemy dies.
+- Different enemies can grant varying amounts of XP.
+- When the player's XP bar fills, they Level Up.
+- On Level Up, the required XP for the next level increases, the game pauses, and the Upgrade UI appears.
+- The player selects an upgrade, which is applied, and the game resumes.

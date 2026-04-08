@@ -50,6 +50,13 @@ func _ready():
 	spell_controller.set_basis_node(camera)
 	spell_controller.set_spawn_node(pen_0)
 	add_child(spell_controller)
+	
+	var hud = load("res://scripts/ui/player_hud.gd").new()
+	hud.setup(health_component, mana_component)
+	add_child(hud)
+	
+	var upgrade_ui = load("res://scripts/ui/upgrade_ui.gd").new()
+	add_child(upgrade_ui)
 
 func _process(delta):
 	state_machine._process(delta)

@@ -1,15 +1,21 @@
 class_name HealthComponent
 extends Node
 
+signal died
+
 @export var max_health: float = 50
 
 var _health: float
+
+func _ready() -> void:
+	_health = max_health
 
 func take_damage(value: float) -> void:
 	_health -= value
 	
 	if _health <= 0:
 		print("you died : bitch")
+		died.emit()
 		get_parent().queue_free()
 
 # Getter and Setter

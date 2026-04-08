@@ -4,6 +4,7 @@ extends CharacterBody3D
 @export var max_health: float = 100.0
 @export var movement_speed: float = 3.0
 @export var attack_range: float = 15.0
+@export var xp_value: float = 10.0
 
 # Node references
 var health_component: Node
@@ -33,6 +34,9 @@ func _ready() -> void:
 				health_component.max_health = max_health
 	else:
 		health_component = get_node("HealthComponent")
+	
+	if health_component.has_signal("died"):
+		health_component.connect("died", _on_died)
 	
 	# Setting up spell controller
 	spell_controller = SpellController.new()
@@ -132,3 +136,9 @@ func has_line_of_sight(target: Node3D) -> bool:
 	if result and result.collider == target:
 		return true
 	return false
+
+func _on_died() -> void:
+	if Engine.get_main_loop().root.has_node("GameManager"):
+		var gm = Engine.get_main_loop().root.get_node("GameManager")
+		if gm.has_method("add_xp"):
+			gm.add_xp(xp_value)
