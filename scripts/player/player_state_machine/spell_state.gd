@@ -5,7 +5,7 @@ func physics_update(delta):
 
 	if input_vec != Vector2.ZERO:
 		# slower movement
-		player.input_movement.move(delta, 0.4)
+		player.input_movement.move(delta, 0.9)
 	else:
 		player.velocity.x = 0
 		player.velocity.z = 0

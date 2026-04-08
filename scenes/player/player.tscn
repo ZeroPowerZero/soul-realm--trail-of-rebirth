@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bxs3r7wdcltp8" path="res://scripts/player/player.gd" id="1_8afob"]
 [ext_resource type="Texture2D" uid="uid://c1ldc2d6jmg5o" path="res://assets/book/spell_book (1)_0.png" id="2_75vfm"]
-[ext_resource type="Script" uid="uid://dyqxtgkehfwx5" path="res://scripts/health_component.gd" id="2_h17s1"]
+[ext_resource type="Script" uid="uid://dyqxtgkehfwx5" path="res://scripts/components/health_component.gd" id="2_h17s1"]
 [ext_resource type="Texture2D" uid="uid://dwoa478224lj5" path="res://assets/book/spell_book (1)_2.png" id="3_0owmy"]
 [ext_resource type="Script" uid="uid://b8tl5pivwb6oy" path="res://scenes/player/input_movement.gd" id="3_je7p5"]
 [ext_resource type="Texture2D" uid="uid://b7l1iulupaotd" path="res://assets/book/spell_book (1)_1.png" id="4_qek5x"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://o5nfl11ncwsi" path="res://assets/textures/spellframe.png" id="7_5gtgg"]
 [ext_resource type="Script" uid="uid://en0mli6lspcj" path="res://scripts/drawing_related/spell_drawing_controller.gd" id="8_h17s1"]
 [ext_resource type="Script" uid="uid://d0ervkjhd3qc2" path="res://scripts/player/player_state_machine/state_machine.gd" id="9_gx1jg"]
+[ext_resource type="Script" uid="uid://fvtlgn0hqp26" path="res://scripts/components/mana_component.gd" id="9_kvlxm"]
+[ext_resource type="Script" uid="uid://bhi0i5f5es57t" path="res://scripts/components/upgrade_component.gd" id="10_uf5tr"]
 [ext_resource type="Script" uid="uid://c3yll8fdlfeaj" path="res://scripts/player/player_state_machine/idle_state.gd" id="10_ugbui"]
 [ext_resource type="Script" uid="uid://diuxkg1w3xw" path="res://scripts/player/player_state_machine/move_state.gd" id="11_ugbui"]
 [ext_resource type="Script" uid="uid://dmptsh5uta0ei" path="res://scripts/player/player_state_machine/spell_state.gd" id="12_myrg7"]
@@ -566,6 +568,14 @@ metadata/_custom_type_script = "uid://b8tl5pivwb6oy"
 [node name="HealthComponent" type="Node" parent="." unique_id=50387839]
 script = ExtResource("2_h17s1")
 metadata/_custom_type_script = "uid://dyqxtgkehfwx5"
+
+[node name="ManaComponent" type="Node" parent="." unique_id=1636293012]
+script = ExtResource("9_kvlxm")
+metadata/_custom_type_script = "uid://fvtlgn0hqp26"
+
+[node name="UpgradeComponent" type="Node" parent="." unique_id=180742704]
+script = ExtResource("10_uf5tr")
+metadata/_custom_type_script = "uid://bhi0i5f5es57t"
 
 [node name="StateMachine" type="Node" parent="." unique_id=728484459]
 script = ExtResource("9_gx1jg")

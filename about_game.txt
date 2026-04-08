@@ -1,0 +1,6 @@
+Whenever you want to add a new upgrade:
+
+Right-click in the Godot file system.
+Create a new Resource and select StatUpgradeData (or any new subclasses we make).
+Set its variables in the inspector visually!
+Feed it to the UpgradeManager pool.

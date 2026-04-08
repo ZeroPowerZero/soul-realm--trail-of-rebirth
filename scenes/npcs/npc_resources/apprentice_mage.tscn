@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dvyofb2pce6lm" path="res://scripts/enemies/apprentice_mage.gd" id="1_cbtj4"]
 [ext_resource type="Script" uid="uid://cv27kgmhkduwv" path="res://scenes/npcs/ai_movement.gd" id="2_cbtj4"]
-[ext_resource type="Script" uid="uid://dyqxtgkehfwx5" path="res://scripts/health_component.gd" id="3_643we"]
+[ext_resource type="Script" uid="uid://dyqxtgkehfwx5" path="res://scripts/components/health_component.gd" id="3_643we"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ivh6b"]
 

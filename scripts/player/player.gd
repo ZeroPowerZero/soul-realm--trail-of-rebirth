@@ -11,6 +11,8 @@ extends CharacterBody3D
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var input_movement: InputMovement = $InputMovement
 @onready var state_machine: StateMachine = $StateMachine
+@onready var mana_component: ManaComponent = $ManaComponent
+@onready var upgrade_component: UpgradeComponent = $UpgradeComponent
 
 var spell_controller: SpellController
 
@@ -21,6 +23,9 @@ var mouse_sens = 0.3
 var gravity = 20
 var is_drawing_spell = false
 var pitch := 0.0
+
+var active_spell_driver: SpellDriver = null
+var can_shoot_spell: bool = true
 
 # WALK BOB
 var bob_time := 0.0
@@ -67,6 +72,10 @@ func _input(event):
 	
 	if event.is_action_pressed("escape_mouse"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		if not is_drawing_spell:
+			cast_active_spell()
 
 func _clamp_mouse_to_canvas():
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -87,13 +96,27 @@ func _physics_process(delta: float) -> void:
 	state_machine.physics_update(delta)
 	 
 func _create_new_spell(spell_driver: SpellDriver):
-	#increases level
-	spell_driver.set_exp(spell_driver.get_exp() + 10) 
-	Templates.save_spells()
-	if spell_driver._data.name == "instant_dash":
-		state_machine.change_state("DashState")
+	active_spell_driver = spell_driver
+	cast_active_spell()
+
+func cast_active_spell():
+	if not active_spell_driver or not can_shoot_spell:
+		return
+		
+	var cost = active_spell_driver._data.mana_cost if "mana_cost" in active_spell_driver._data else 10.0
+	var r_time = active_spell_driver._data.reload_time if "reload_time" in active_spell_driver._data else 1.0
+	
+	if mana_component.spend(cost):
+		Templates.save_spells()
+		if active_spell_driver._data.name == "instant_dash":
+			state_machine.change_state("DashState")
+		else:
+			spell_controller.create_spell(active_spell_driver)
+			
+		can_shoot_spell = false
+		get_tree().create_timer(r_time).timeout.connect(func(): can_shoot_spell = true)
 	else:
-		spell_controller.create_spell(spell_driver)
+		print("Not enough mana!")
 		
 func execute_dash():
 	# 1. Get WASD input (2D Vector)

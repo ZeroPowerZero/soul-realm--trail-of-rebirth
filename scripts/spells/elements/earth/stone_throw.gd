@@ -28,7 +28,7 @@ func _ready() -> void:
 	if _driver and _driver.has_method("get_level"):
 		_level = _driver.get_level()
 		
-	setup_roguelike_level()
+	setup_level()
 
 	# Find target and calculate arc
 	var target = find_nearest_target()
@@ -36,7 +36,7 @@ func _ready() -> void:
 	
 	body_entered.connect(_on_body_entered)
 
-func setup_roguelike_level():
+func setup_level():
 	print("--- Setup Stone Throw Level ", _level, " ---")
 	
 	if _level >= 1:
