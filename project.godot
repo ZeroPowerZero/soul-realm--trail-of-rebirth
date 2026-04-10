@@ -35,6 +35,7 @@ window/stretch/mode="canvas_items"
 folder_colors={
 "res://assets/": "purple",
 "res://enemies/": "red",
+"res://resources/": "gray",
 "res://scenes/": "orange",
 "res://scenes/spells/elements/": "gray",
 "res://scripts/": "green",
