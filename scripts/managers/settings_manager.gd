@@ -21,7 +21,7 @@ func _save_default_settings() -> void:
 	
 	# Audio
 	config.set_value("Audio", "master_volume", 1.0)
-	config.set_value("Audio", "music_volume", 1.0)
+	config.set_value("Audio", "music_volume", 0.0)
 	config.set_value("Audio", "sfx_volume", 1.0)
 	
 	# Controls

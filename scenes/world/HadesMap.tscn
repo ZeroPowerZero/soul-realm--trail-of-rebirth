@@ -1,0 +1,202 @@
+[gd_scene format=3 uid="uid://3lqh7d28o36o"]
+
+[ext_resource type="Script" uid="uid://b6lsikl1oxgh8" path="res://scenes/world/hades_map.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://3v50xo6wlir3" path="res://scenes/player/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://gk11tvc3h8s3" path="res://assets/models/map/GLB format/room-small.glb" id="3_room_small"]
+[ext_resource type="PackedScene" uid="uid://13n2c7qbigs7" path="res://assets/models/map/GLB format/gate-door-window.glb" id="4_gate_door"]
+[ext_resource type="PackedScene" uid="uid://bq07nhivkkx06" path="res://assets/models/map/GLB format/corridor.glb" id="5_corridor"]
+[ext_resource type="PackedScene" uid="uid://bpix5k7bq7j48" path="res://assets/models/map/GLB format/gate.glb" id="6_gate"]
+[ext_resource type="PackedScene" uid="uid://dphpdnbv7aqaa" path="res://assets/models/map/GLB format/room-large.glb" id="7_room_large"]
+[ext_resource type="PackedScene" uid="uid://ds457jjshripr" path="res://assets/models/map/GLB format/gate-metal-bars.glb" id="8_gate_bars"]
+[ext_resource type="PackedScene" uid="uid://c3c3k1ojnyqcr" path="res://assets/models/map/GLB format/corridor-wide.glb" id="9_corridor_wide"]
+[ext_resource type="PackedScene" uid="uid://gng15hitb1cx" path="res://assets/models/map/GLB format/room-wide.glb" id="10_room_wide"]
+[ext_resource type="PackedScene" uid="uid://cad26t8xas54m" path="res://assets/models/map/GLB format/corridor-transition.glb" id="11_corridor_trans"]
+[ext_resource type="PackedScene" uid="uid://cfubolfwo544e" path="res://assets/models/map/GLB format/room-small-variation.glb" id="12_room_small_var"]
+[ext_resource type="PackedScene" uid="uid://bp843ciws4is1" path="res://assets/models/map/GLB format/stairs.glb" id="13_stairs"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sky01"]
+sky_top_color = Color(0.05, 0.02, 0.08, 1)
+sky_horizon_color = Color(0.15, 0.08, 0.12, 1)
+ground_bottom_color = Color(0.02, 0.01, 0.04, 1)
+ground_horizon_color = Color(0.1, 0.06, 0.1, 1)
+
+[sub_resource type="Sky" id="Sky_sky01"]
+sky_material = SubResource("ProceduralSkyMaterial_sky01")
+
+[sub_resource type="Environment" id="Environment_env01"]
+background_mode = 2
+sky = SubResource("Sky_sky01")
+ambient_light_source = 1
+ambient_light_color = Color(0.12, 0.08, 0.15, 1)
+ambient_light_energy = 0.3
+tonemap_mode = 2
+tonemap_white = 6.0
+ssao_enabled = true
+ssao_radius = 2.0
+ssil_enabled = true
+glow_enabled = true
+glow_intensity = 0.6
+glow_bloom = 0.15
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.02
+volumetric_fog_albedo = Color(0.15, 0.1, 0.2, 1)
+volumetric_fog_emission = Color(0.08, 0.04, 0.12, 1)
+volumetric_fog_emission_energy = 0.5
+volumetric_fog_length = 40.0
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_nav01"]
+cell_size = 0.15
+cell_height = 0.1
+agent_height = 1.8
+agent_radius = 0.4
+agent_max_climb = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_floor"]
+albedo_color = Color(0.15, 0.12, 0.18, 1)
+roughness = 0.85
+metallic = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wall"]
+albedo_color = Color(0.1, 0.08, 0.14, 1)
+roughness = 0.9
+metallic = 0.05
+
+[node name="HadesMap" type="Node3D" unique_id=460105669]
+script = ExtResource("1_script")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=14140061]
+environment = SubResource("Environment_env01")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2114646755]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 15, 0)
+light_color = Color(0.75, 0.65, 0.9, 1)
+light_energy = 0.4
+shadow_enabled = true
+shadow_opacity = 0.6
+directional_shadow_max_distance = 120.0
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1077946596]
+navigation_mesh = SubResource("NavigationMesh_nav01")
+
+; ──── FLOOR (50 wide × 160 deep, centered at z=60) ──────────────────────────
+[node name="Floor" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 60)
+use_collision = true
+size = Vector3(50, 1, 160)
+material = SubResource("StandardMaterial3D_floor")
+
+; ──── WALLS (6m tall, 1m thick) ──────────────────────────────────────────────
+; North wall (z = -20)
+[node name="Wall_North" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -20)
+use_collision = true
+size = Vector3(50, 8, 1)
+material = SubResource("StandardMaterial3D_wall")
+
+; South wall (z = 140)
+[node name="Wall_South" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 140)
+use_collision = true
+size = Vector3(50, 8, 1)
+material = SubResource("StandardMaterial3D_wall")
+
+; East wall (x = 25)
+[node name="Wall_East" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 3, 60)
+use_collision = true
+size = Vector3(1, 8, 160)
+material = SubResource("StandardMaterial3D_wall")
+
+; West wall (x = -25)
+[node name="Wall_West" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 3, 60)
+use_collision = true
+size = Vector3(1, 8, 160)
+material = SubResource("StandardMaterial3D_wall")
+
+[node name="Room1_Start" type="Node3D" parent="NavigationRegion3D" unique_id=977890405]
+
+[node name="Mesh" parent="NavigationRegion3D/Room1_Start" unique_id=853109064 instance=ExtResource("3_room_small")]
+
+[node name="Light" type="OmniLight3D" parent="NavigationRegion3D/Room1_Start" unique_id=1590582385]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+light_color = Color(1, 0.85, 0.6, 1)
+light_energy = 2.5
+shadow_enabled = true
+omni_range = 12.0
+omni_attenuation = 0.8
+
+[node name="Gate1" parent="NavigationRegion3D" unique_id=615128895 instance=ExtResource("4_gate_door")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="Corridor1" parent="NavigationRegion3D" unique_id=886114919 instance=ExtResource("5_corridor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
+
+[node name="Gate2" parent="NavigationRegion3D" unique_id=287507979 instance=ExtResource("6_gate")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+
+[node name="Room2_Battle" type="Node3D" parent="NavigationRegion3D" unique_id=443915655]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 28)
+
+[node name="Mesh" parent="NavigationRegion3D/Room2_Battle" unique_id=1521096632 instance=ExtResource("7_room_large")]
+
+[node name="Light" type="OmniLight3D" parent="NavigationRegion3D/Room2_Battle" unique_id=2074939495]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+light_color = Color(0.6, 0.8, 1, 1)
+light_energy = 3.0
+shadow_enabled = true
+omni_range = 18.0
+omni_attenuation = 0.8
+
+[node name="Gate3" parent="NavigationRegion3D" unique_id=924035908 instance=ExtResource("8_gate_bars")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 44)
+
+[node name="Corridor2" parent="NavigationRegion3D" unique_id=1692585954 instance=ExtResource("11_corridor_trans")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
+
+[node name="Gate4" parent="NavigationRegion3D" unique_id=157765567 instance=ExtResource("4_gate_door")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 60)
+
+[node name="Room3_Rest" type="Node3D" parent="NavigationRegion3D" unique_id=1049066606]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 68)
+
+[node name="Mesh" parent="NavigationRegion3D/Room3_Rest" unique_id=548181194 instance=ExtResource("12_room_small_var")]
+
+[node name="Light" type="OmniLight3D" parent="NavigationRegion3D/Room3_Rest" unique_id=1479196256]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+light_color = Color(0.5, 1, 0.7, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 10.0
+omni_attenuation = 0.8
+
+[node name="Gate5" parent="NavigationRegion3D" unique_id=1466691874 instance=ExtResource("6_gate")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 78)
+
+[node name="Stairs1" parent="NavigationRegion3D" unique_id=1648044854 instance=ExtResource("13_stairs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 84)
+
+[node name="Gate6" parent="NavigationRegion3D" unique_id=220499080 instance=ExtResource("8_gate_bars")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 94)
+
+[node name="Corridor3" parent="NavigationRegion3D" unique_id=1647990915 instance=ExtResource("9_corridor_wide")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
+
+[node name="Gate7" parent="NavigationRegion3D" unique_id=524421663 instance=ExtResource("4_gate_door")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 112)
+
+[node name="Room4_Boss" type="Node3D" parent="NavigationRegion3D" unique_id=2067250748]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 120)
+
+[node name="Mesh" parent="NavigationRegion3D/Room4_Boss" unique_id=1325902237 instance=ExtResource("10_room_wide")]
+
+[node name="Light" type="OmniLight3D" parent="NavigationRegion3D/Room4_Boss" unique_id=1546271382]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+light_color = Color(1, 0.6, 0.4, 1)
+light_energy = 3.5
+shadow_enabled = true
+omni_range = 22.0
+omni_attenuation = 0.7
+
+[node name="Player" parent="." unique_id=534127317 instance=ExtResource("2_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.1712723, 0)
