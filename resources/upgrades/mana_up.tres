@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="StatUpgradeData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/upgrades/stat_upgrade_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+stat_type = 1
+increase_amount = 30.0
+id = &"mana_up_1"
+name = "Arcane Well"
+description = "Increases Max Mana by 30."
+max_level = 5
+rarity = 0
+weight = 50.0

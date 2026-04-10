@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SpellUpgradeData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/upgrades/spell_upgrade_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+target_spell_name = "fire_ball"
+damage_increase = 15.0
+level_increase = 1
+id = &"fireball_dmg_1"
+name = "Scorching Flames (Fireball)"
+description = "Increases Fireball damage by 15 and sets level +1, unlocking penetration."
+max_level = 5
+rarity = 1
+weight = 30.0

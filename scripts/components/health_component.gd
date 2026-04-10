@@ -4,7 +4,7 @@ extends Node
 signal died
 signal health_changed(new_health: float, max_health: float)
 
-@export var max_health: float = 50
+@export var max_health: float = 10
 
 var _health: float
 

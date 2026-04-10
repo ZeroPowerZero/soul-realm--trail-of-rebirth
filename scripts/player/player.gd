@@ -41,8 +41,8 @@ var tilt_speed := 6.0
 var current_tilt := 0.0
 
 func _ready():
-	health_component.set_max_health(15000)
-	health_component.set_health(15000)
+	health_component.set_max_health(150)
+	health_component.set_health(150)
 	
 	spell_draw_limit_timer.timeout.connect(trigger_toggle_spell_mode)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

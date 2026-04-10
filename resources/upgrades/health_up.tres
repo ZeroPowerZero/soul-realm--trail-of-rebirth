@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="StatUpgradeData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/upgrades/stat_upgrade_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+stat_type = 0
+increase_amount = 50.0
+id = &"health_up_1"
+name = "Vitality Surge"
+description = "Increases Max Health by 50."
+max_level = 5
+rarity = 0
+weight = 50.0

@@ -5,6 +5,7 @@ extends CanvasLayer
 
 func _ready() -> void:
 	hide()
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	if Engine.get_main_loop().root.has_node("GameManager"):
 		var gm = Engine.get_main_loop().root.get_node("GameManager")
@@ -36,6 +37,8 @@ func show_upgrade_screen(_level: int) -> void:
 		
 	get_tree().paused = true
 	show()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
 	
 	for upgrade in available_upgrades:
 		var btn = Button.new()
@@ -46,8 +49,10 @@ func show_upgrade_screen(_level: int) -> void:
 func _on_upgrade_selected(upgrade: UpgradeData, player: Node) -> void:
 	var upgrade_comp = player.get_node_or_null("UpgradeComponent")
 	if upgrade_comp:
-		upgrade_comp.add_upgrade(upgrade)
-		upgrade.apply_upgrade(player)
+		upgrade_comp.apply_upgrade(upgrade)
+
 		
 	hide()
 	get_tree().paused = false
+	if not player.get("is_drawing_spell"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
