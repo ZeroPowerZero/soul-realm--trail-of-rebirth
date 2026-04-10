@@ -43,6 +43,8 @@ var current_tilt := 0.0
 func _ready():
 	health_component.set_max_health(150)
 	health_component.set_health(150)
+	health_component.destroy_on_death = false
+	health_component.died.connect(_on_player_died)
 	
 	spell_draw_limit_timer.timeout.connect(trigger_toggle_spell_mode)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -250,6 +252,11 @@ func trigger_toggle_spell_mode():
 	release_ev.action = "toggle_spell_mode"
 	release_ev.pressed = false
 	Input.parse_input_event(release_ev)
+
+func _on_player_died() -> void:
+	var death_menu_scene = load("res://scenes/ui/death_menu.tscn")
+	var death_menu_instance = death_menu_scene.instantiate()
+	add_child(death_menu_instance)
 	
 func _exit_tree() -> void:
 	Templates.save_spells()

@@ -5,6 +5,7 @@ signal died
 signal health_changed(new_health: float, max_health: float)
 
 @export var max_health: float = 10
+@export var destroy_on_death: bool = true
 
 var _health: float
 
@@ -18,7 +19,8 @@ func take_damage(value: float) -> void:
 	if _health <= 0:
 		print("you died : bitch")
 		died.emit()
-		get_parent().queue_free()
+		if destroy_on_death:
+			get_parent().queue_free()
 
 # Getter and Setter
 func set_max_health(value: float) -> void:

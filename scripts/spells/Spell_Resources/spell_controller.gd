@@ -9,6 +9,9 @@ func create_spell(spell_driver: SpellDriver):
 	new_spell.set_controller(self)
 	new_spell.set_driver(spell_driver);
 	get_tree().current_scene.add_child(new_spell)
+	
+	if has_node("/root/AudioManager"):
+		AudioManager.play_spell_sfx()
 
 # Getter And Setter Functions
 func set_basis_node(node: Node3D):

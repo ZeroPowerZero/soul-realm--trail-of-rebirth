@@ -84,15 +84,22 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HelpUI" unique_id=1476165805]
-layout_mode = 0
-offset_left = 13.0
-offset_top = 15.0
-offset_right = 308.0
-offset_bottom = 291.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_top = 260.0
+offset_right = -10.0
+offset_bottom = 300.0
+grow_horizontal = 0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/HelpUI/VBoxContainer" unique_id=720851006]
 layout_mode = 2
-text = "Press F to Cast a Spell
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 4
+bbcode_enabled = true
+text = "[center][color=cyan][b]F to draw [/b][/color][/center]
 "
 fit_content = true
 

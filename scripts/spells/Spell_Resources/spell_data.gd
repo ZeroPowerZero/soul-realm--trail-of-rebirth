@@ -8,3 +8,4 @@ enum SpellType { FIRE, EARTH, WIND, ICE, SHIELD }
 @export var spell_scene: PackedScene
 @export var mana_cost: float = 10.0
 @export var reload_time: float = 1.0
+@export var description: String = "A mysterious spell."

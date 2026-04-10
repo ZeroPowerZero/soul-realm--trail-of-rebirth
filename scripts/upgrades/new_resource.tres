@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="SpellUpgradeData" format=3 uid="uid://b28pbfqqe0s1j"]
+
+[ext_resource type="Script" uid="uid://d3ndq56or2q5n" path="res://scripts/upgrades/spell_upgrade_data.gd" id="1_5dwat"]
+
+[resource]
+script = ExtResource("1_5dwat")
+metadata/_custom_type_script = "uid://d3ndq56or2q5n"

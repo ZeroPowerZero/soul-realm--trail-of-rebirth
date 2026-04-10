@@ -1,6 +1,40 @@
-[gd_scene format=3 uid="uid://b8ojbk8bkhfg7"]
+[gd_scene load_steps=8 format=3 uid="uid://b8ojbk8bkhfg7"]
 
 [ext_resource type="Script" uid="uid://b221y62cq1dem" path="res://scripts/ui/player_hud.gd" id="1_phud"]
+[ext_resource type="PackedScene" path="res://scenes/ui/spells_popup.tscn" id="2_spells"]
+[ext_resource type="PackedScene" path="res://scenes/ui/pause_menu.tscn" id="3_pause"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0.05, 0.05, 0.08, 0.8)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2, 0.2, 0.2, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_health"]
+bg_color = Color(0.85, 0.2, 0.3, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mana"]
+bg_color = Color(0.2, 0.5, 0.9, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xp"]
+bg_color = Color(0.9, 0.75, 0.15, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="PlayerHUD" type="CanvasLayer" unique_id=2132885046]
 script = ExtResource("1_phud")
@@ -10,29 +44,46 @@ theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1140542847]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
+theme_override_constants/separation = 5
 
 [node name="HealthLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=998182077]
 layout_mode = 2
 text = "Health"
+theme_override_font_sizes/font_size = 14
 
 [node name="HealthBar" type="ProgressBar" parent="MarginContainer/VBoxContainer" unique_id=171532462]
-custom_minimum_size = Vector2(0, 20)
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_health")
+show_percentage = false
 
 [node name="ManaLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=280400954]
 layout_mode = 2
 text = "Mana"
+theme_override_font_sizes/font_size = 14
 
 [node name="ManaBar" type="ProgressBar" parent="MarginContainer/VBoxContainer" unique_id=1965390483]
-custom_minimum_size = Vector2(0, 20)
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_mana")
+show_percentage = false
 
 [node name="XPLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=156692554]
 layout_mode = 2
 text = "XP"
+theme_override_font_sizes/font_size = 14
 
 [node name="XPBar" type="ProgressBar" parent="MarginContainer/VBoxContainer" unique_id=1856209667]
-custom_minimum_size = Vector2(0, 20)
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xp")
+show_percentage = false
+
+[node name="SpellsPopup" parent="." instance=ExtResource("2_spells")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_pause")]
