@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://bsv2timj3c3sq"]
-
-[ext_resource type="Script" path="res://scripts/world/map_generator.gd" id="1_mapgen"]
-
-[node name="DungeonWorld" type="Node3D" unique_id=970452640]
-script = ExtResource("1_mapgen")
-num_rooms = 8
-spacing = 35.0
