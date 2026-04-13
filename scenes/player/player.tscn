@@ -17,6 +17,9 @@
 [ext_resource type="Script" uid="uid://diuxkg1w3xw" path="res://scripts/player/player_state_machine/move_state.gd" id="11_ugbui"]
 [ext_resource type="Script" uid="uid://dmptsh5uta0ei" path="res://scripts/player/player_state_machine/spell_state.gd" id="12_myrg7"]
 [ext_resource type="Script" uid="uid://ddpmaxwb2kj7d" path="res://scripts/player/player_state_machine/dash_state.gd" id="13_kvlxm"]
+[ext_resource type="Script" uid="uid://ctddjn4wy2a5k" path="res://scripts/player/player_state_machine/hit_state.gd" id="14_hit"]
+[ext_resource type="Script" uid="uid://5i57a0sp0a3q" path="res://scripts/player/player_state_machine/fall_state.gd" id="15_fall"]
+[ext_resource type="Script" uid="uid://er6krk0cnbf" path="res://scripts/player/player_state_machine/death_state.gd" id="16_death"]
 [ext_resource type="Resource" uid="uid://dvhq15cd0py03" path="res://scripts/spells/Spell_Resources/instant_dash.tres" id="16_myrg7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ernxy"]
@@ -368,6 +371,10 @@ shadow_mesh = SubResource("ArrayMesh_ve020")
 [sub_resource type="ViewportTexture" id="ViewportTexture_2q354"]
 viewport_path = NodePath("DrawingCanvas/MarginContainer/SubViewportContainer/SubViewport")
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3j4b4"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_yj68g"]
+
 [sub_resource type="InputEventKey" id="InputEventKey_myrg7"]
 device = -1
 keycode = 82
@@ -592,6 +599,26 @@ script = ExtResource("12_myrg7")
 
 [node name="DashState" type="Node" parent="StateMachine" unique_id=1188467319]
 script = ExtResource("13_kvlxm")
+
+[node name="HitState" type="Node" parent="StateMachine" unique_id=1812338412]
+script = ExtResource("14_hit")
+
+[node name="FallState" type="Node" parent="StateMachine" unique_id=1764036298]
+script = ExtResource("15_fall")
+
+[node name="DeathState" type="Node" parent="StateMachine" unique_id=1196203644]
+script = ExtResource("16_death")
+
+[node name="LandingDust" type="GPUParticles3D" parent="." unique_id=1586932430]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+emitting = false
+amount = 12
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+visibility_aabb = AABB(-2, -0.5, -2, 4, 1, 4)
+process_material = SubResource("ParticleProcessMaterial_3j4b4")
+draw_pass_1 = SubResource("SphereMesh_yj68g")
 
 [node name="DrawingCanvas" type="Control" parent="." unique_id=449350108]
 layout_mode = 3
