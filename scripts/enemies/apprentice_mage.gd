@@ -23,7 +23,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = 0
 		move_and_slide()
 		return
-		
+	
 	# Update navigation target
 	nav_agent.target_position = target_player.global_position
 	
@@ -44,7 +44,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = 0
 			velocity.z = 0
-			
+		
 		move_and_slide()
 	else:
 		velocity.x = 0

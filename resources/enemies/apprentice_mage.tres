@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="NPC_RESOURCE" format=3 uid="uid://dhyqaw1fw84sw"]
+
+[ext_resource type="PackedScene" uid="uid://drfsqdfnkvntv" path="res://scenes/enemies/apprentice_mage.tscn" id="1_hsn2p"]
+[ext_resource type="Script" uid="uid://1x772kariexi" path="res://scenes/enemies/npc_resources.gd" id="1_njrpa"]
+
+[resource]
+script = ExtResource("1_njrpa")
+name = "Apprentice Mage"
+enemy_scene = ExtResource("1_hsn2p")
+metadata/_custom_type_script = "uid://1x772kariexi"

@@ -12,8 +12,8 @@ var _acceleration_vector: float = 0
 var _newyawquat: Quaternion
 
 func _ready() -> void:
-	set_physics_process(false)
 	_controller = get_parent()
+	set_physics_process(false)
 
 func go_to(new_coord: Vector3):
 	_coord = _set_vector_y(new_coord)
