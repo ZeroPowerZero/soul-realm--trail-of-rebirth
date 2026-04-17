@@ -38,7 +38,7 @@ func _ready() -> void:
 	
 	if health_component.has_signal("died"):
 		health_component.connect("died", _on_died)
-
+	
 	_setup_health_bar()
 	if health_component.has_signal("health_changed"):
 		health_component.connect("health_changed", _on_health_changed)

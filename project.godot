@@ -17,7 +17,6 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="Soul Realm: Trail of Rebirth"
 run/main_scene="res://scenes/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://icon.svg"
 
 [autoload]
 
@@ -36,13 +35,16 @@ window/stretch/mode="canvas_items"
 
 folder_colors={
 "res://assets/": "purple",
-"res://enemies/": "red",
 "res://resources/": "gray",
 "res://scenes/": "orange",
 "res://scripts/": "green",
 "res://shaders/": "blue",
 "res://texture/": "yellow"
 }
+
+[global_group]
+
+Player=""
 
 [gui]
 

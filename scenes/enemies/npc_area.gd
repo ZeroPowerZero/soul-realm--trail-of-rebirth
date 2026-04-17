@@ -9,7 +9,7 @@ extends Area3D
 @export var area_radius: float = 7:
 	set(value):
 		area_radius = value
-		#collision.shape.radius = value
+		collision.shape.radius = value
 @export var enemies: Array[NPC_RESOURCE]
 
 var instantiated_enemies: Array
@@ -18,8 +18,7 @@ var _spawn_time: float
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	
-	instantiated_enemies = []
-	set_enable(true)
+	enable()
 	
 	connect("child_exiting_tree", _on_child_exiting_tree)
 	connect("body_entered", _on_body_entered)
@@ -27,7 +26,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
-		set_enable(false)
+		disable()
 		return
 	
 	_spawn_time += delta
@@ -36,39 +35,43 @@ func _process(delta: float) -> void:
 			var enemy_resource: NPC_RESOURCE = enemies.pick_random()
 			if !enemy_resource or !enemy_resource.enemy_scene:
 				continue
-
+			
 			var new_ins := enemy_resource.enemy_scene.instantiate() as Node3D
 			if !new_ins:
 				continue
+			
 			add_child(new_ins)
 			new_ins.global_position = _get_random_spawn_position()
-
+			
 			for body in get_overlapping_bodies():
 				if body.is_in_group("Player") and new_ins.has_method("see_target"):
 					new_ins.see_target(body)
-
+			
 			instantiated_enemies.append(new_ins)
 		_spawn_time = 0
-		set_enable(false)
+		disable()
 
 func _on_child_exiting_tree(node: Node) -> void:
 	if instantiated_enemies.has(node):
 		instantiated_enemies.erase(node)
 		_spawn_time = 0
-		set_enable(true)
+		enable()
 
 func _on_body_entered(body: Node3D):
 	if body.is_in_group("Player"):
 		for enemy in instantiated_enemies:
 			enemy.see_target(body)
-	
+
 func _on_body_exited(body: Node3D):
 	if body.is_in_group("Player"):
 		for enemy in instantiated_enemies:
 			enemy.forget_target(body)
 
-func set_enable(enable: bool):
-	set_process(enable)
+func enable() -> void:
+	set_process(true)
+
+func disable() -> void:
+	set_process(false)
 
 func _get_random_spawn_position() -> Vector3:
 	var angle: float = randf() * TAU
