@@ -2,7 +2,7 @@ extends Area3D
 
 @onready var anim_player = $AnimationPlayer 
 
-@export var damage: int = 20
+@export var damage: float = 20
 @export var life_time: float = 4.0
 
 var _time: float

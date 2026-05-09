@@ -21,7 +21,7 @@ config/features=PackedStringArray("4.6", "GL Compatibility")
 [autoload]
 
 Templates="*uid://ymp36kjq4wnd"
-NpcStateMachine="*uid://cdwqop543yhsg"
+NpcStateMachine="*res://entities/enemies/base_enemy/npc_state_machine.gd"
 GameManager="*res://scripts/managers/game_manager.gd"
 UpgradeManager="*res://scripts/upgrades/upgrade_manager.gd"
 SettingsManager="*res://scripts/managers/settings_manager.gd"

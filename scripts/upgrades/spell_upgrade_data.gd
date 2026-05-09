@@ -5,7 +5,7 @@ extends UpgradeData
 @export var damage_increase: float = 10.0
 @export var level_increase: int = 1
 
-func apply_upgrade(player: Node) -> void:
+func apply_upgrade(_player: Node) -> void:
 	# Spells are managed by the global Templates.spell_manager
 	if not Templates.spell_manager:
 		push_error("Templates.spell_manager not found!")

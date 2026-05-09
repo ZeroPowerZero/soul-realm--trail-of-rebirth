@@ -16,9 +16,9 @@ func _ready() -> void:
 	bgm_player.bus = "Music"
 	add_child(bgm_player)
 	
-	var bgm_stream = load("res://assets/kenney_rpg-audio/Preview.ogg")
+	var bgm_stream = load("res://assets/kenney_rpg-audio/luis_humanoide-dark-ruins-exploration-cinematic-mystery-332074.mp3")
 	if bgm_stream:
-		if bgm_stream is AudioStreamOggVorbis:
+		if bgm_stream is AudioStreamMP3 or bgm_stream is AudioStreamOggVorbis:
 			bgm_stream.loop = true
 		bgm_player.stream = bgm_stream
 		bgm_player.play()

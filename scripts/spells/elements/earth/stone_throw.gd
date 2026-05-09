@@ -11,7 +11,7 @@ var _velocity: Vector3 = Vector3.ZERO
 var _time: float = 0.0
 
 var _level: int = 1
-var _hit_count: int = 0
+#var _hit_count: int = 0
 var _max_hits: int = 1
 var _explosion_radius: float = 0.0
 

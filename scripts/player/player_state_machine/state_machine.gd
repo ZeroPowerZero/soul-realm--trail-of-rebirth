@@ -57,11 +57,12 @@ func change_state(new_state_name: String) -> void:
 		current_state.exit()
 		previous_state = current_state
 
-	var old_name = current_state.name if current_state else ""
+	var old_name = current_state.name.validate_node_name() if current_state else ""
 	current_state = new_state
 	current_state.enter()
 
 	state_changed.emit(old_name, new_state_name)
+	
 
 # Returns the name of the previous state (useful for "return to what I was doing")
 func get_previous_state_name() -> String:

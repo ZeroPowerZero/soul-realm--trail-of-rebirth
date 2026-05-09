@@ -310,7 +310,7 @@ func _on_health_changed(new_health: float, _max_health: float) -> void:
 	# Trigger hit state when taking damage (not healing)
 	if new_health < _last_health and new_health > 0:
 		# Only stagger if not already in HitState, DashState, or DeathState
-		var current = state_machine.current_state.name if state_machine.current_state else ""
+		var current = state_machine.current_state.name.validate_node_name() if state_machine.current_state else ""
 		if current != "HitState" and current != "DashState" and current != "DeathState":
 			state_machine.change_state("HitState")
 
