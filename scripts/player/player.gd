@@ -148,9 +148,12 @@ func cast_active_spell():
 			spell_controller.create_spell(active_spell_driver)
 
 		can_shoot_spell = false
-		get_tree().create_timer(r_time).timeout.connect(func(): can_shoot_spell = true)
+		get_tree().create_timer(r_time).timeout.connect(_reset_spell_cooldown)
 	else:
 		print("Not enough mana!")
+
+func _reset_spell_cooldown():
+	can_shoot_spell = true
 
 func execute_dash():
 	# 1. Get WASD input (2D Vector)

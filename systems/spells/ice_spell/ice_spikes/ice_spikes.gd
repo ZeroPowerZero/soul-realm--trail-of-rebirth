@@ -69,7 +69,7 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 
 func _on_body_entered(body: Node3D) -> void:
-	var caster = _controller.get_basis_node() if _controller else null
+	var caster = _controller
 	var is_caster_enemy = caster and caster.is_in_group("Enemy")
 	var is_caster_player = caster and caster.is_in_group("Player")
 	
@@ -88,12 +88,18 @@ func _on_body_entered(body: Node3D) -> void:
 			queue_free()
 
 func apply_damage(body: Node3D):
-	# Lower damage than fireball
-	var damage = _driver.get_damage() * 0.7
-	if body.get("health_component") and body.health_component.has_method("take_damage"):
-		body.health_component.take_damage(damage)
-	#elif body.has_method("take_damage"):
-		#body.take_damage(damage)
+	var damage = _driver.get_damage()
+	print("Damage ", damage)
+	
+	# Robust check for HealthComponent
+	var hc = body.get("health_component")
+	if not hc and body.has_node("HealthComponent"):
+		hc = body.get_node("HealthComponent")
+	
+	if hc and hc.has_method("take_damage"):
+		hc.take_damage(damage)
+	elif body.has_method("take_damage"):
+		body.take_damage(damage)
 
 func apply_slow(body: Node3D):
 	# Assuming enemies have a movement_speed property
@@ -104,13 +110,14 @@ func apply_slow(body: Node3D):
 		
 		# Reset speed after duration
 		var timer = get_tree().create_timer(slow_duration)
-		timer.timeout.connect(func():
-			if is_instance_valid(body):
-				if "movement_speed" in body:
-					body.movement_speed = original_speed
-				if body.has_meta("is_slowed"):
-					body.remove_meta("is_slowed")
-		)
+		timer.timeout.connect(_reset_slow.bind(body, original_speed))
+
+func _reset_slow(target: Node3D, speed: float):
+	if is_instance_valid(target):
+		if "movement_speed" in target:
+			target.movement_speed = speed
+		if target.has_meta("is_slowed"):
+			target.remove_meta("is_slowed")
 
 func check_multi_cast():
 	if _driver.get_level() >= 4 and not _is_extra:

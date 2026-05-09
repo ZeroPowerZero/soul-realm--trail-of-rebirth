@@ -21,6 +21,8 @@ func get_data() -> SpellData:
 func get_coords() -> Array[Vector2]:
 	return _coords
 func get_damage() -> float:
-	return _damage
+	# Base damage + 20% increase for every level above 1
+	var multiplier = 1.0 + ((_level - 1) * 0.2)
+	return _damage * multiplier
 func get_level() -> int:
 	return _level

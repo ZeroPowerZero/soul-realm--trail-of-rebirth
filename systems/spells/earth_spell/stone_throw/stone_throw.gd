@@ -136,8 +136,16 @@ func trigger_impact(direct_hit_body: Node3D = null):
 	
 	if is_instance_valid(direct_hit_body):
 		var damage = _driver.get_damage() if (_driver and _driver.has_method("get_damage")) else 30.0
-		if direct_hit_body.get("health_component") and direct_hit_body.health_component.has_method("take_damage"):
-			direct_hit_body.health_component.take_damage(damage)
+		
+		# Robust check for HealthComponent
+		var hc = direct_hit_body.get("health_component")
+		if not hc and direct_hit_body.has_node("HealthComponent"):
+			hc = direct_hit_body.get_node("HealthComponent")
+		
+		if hc and hc.has_method("take_damage"):
+			hc.take_damage(damage)
+		elif direct_hit_body.has_method("take_damage"):
+			direct_hit_body.take_damage(damage)
 	
 	if _level >= 2:
 		print("Triggering Splinter Explosion (AoE: ", _explosion_radius, ")")

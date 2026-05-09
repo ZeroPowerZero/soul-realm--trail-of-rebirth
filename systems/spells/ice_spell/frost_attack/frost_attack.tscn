@@ -73,3 +73,6 @@ draw_pass_1 = SubResource("QuadMesh_206n4")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1927361176]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.09347057, 1.01975004e-07, -2.710435)
 shape = SubResource("CapsuleShape3D_wkpkc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

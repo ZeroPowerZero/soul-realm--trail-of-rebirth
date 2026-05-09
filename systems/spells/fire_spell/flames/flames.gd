@@ -15,7 +15,7 @@ var _victims: Array = []
 func set_controller(who):
 	_controller = who
 
-func set_driver(d : SpellDriver, _is_extra := false):
+func set_driver(d: SpellDriver, _is_extra := false):
 	_driver = d
 
 func _ready() -> void:
@@ -25,7 +25,7 @@ func _ready() -> void:
 	setup_roguelike_level()
 
 	var end_timer = get_tree().create_timer(_duration)
-	end_timer.timeout.connect(func(): queue_free())
+	end_timer.timeout.connect(queue_free)
 	
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
@@ -91,9 +91,17 @@ func apply_tick_damage():
 			continue
 		print("Flame tick damaged ", body.name)
 		
-		if body.get("health_component") and body.health_component.has_method("take_damage"):
+		# Robust check for HealthComponent
+		var hc = body.get("health_component")
+		if not hc and body.has_node("HealthComponent"):
+			hc = body.get_node("HealthComponent")
+		
+		if hc and hc.has_method("take_damage"):
 			var damage = _driver.get_damage() if (_driver and _driver.has_method("get_damage")) else 10.0
-			body.health_component.take_damage(damage)
+			hc.take_damage(damage)
+		elif body.has_method("take_damage"):
+			var damage = _driver.get_damage() if (_driver and _driver.has_method("get_damage")) else 10.0
+			body.take_damage(damage)
 		
 		# Example logic:
 		# if _level >= 4 and body is dead: trigger_explosion()

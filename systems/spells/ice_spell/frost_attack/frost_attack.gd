@@ -75,8 +75,16 @@ func apply_frost_effect(body: Node3D):
 	print("Frost Nova hit ", body.name, "!")
 	
 	var damage = _driver.get_damage() if (_driver and _driver.has_method("get_damage")) else 20.0
-	if body.get("health_component") and body.health_component.has_method("take_damage"):
-		body.health_component.take_damage(damage)
+	
+	# Robust check for HealthComponent
+	var hc = body.get("health_component")
+	if not hc and body.has_node("HealthComponent"):
+		hc = body.get_node("HealthComponent")
+	
+	if hc and hc.has_method("take_damage"):
+		hc.take_damage(damage)
+	elif body.has_method("take_damage"):
+		body.take_damage(damage)
 	
 	if _level >= 2:
 		print("Applying DEEP FREEZE to ", body.name)
