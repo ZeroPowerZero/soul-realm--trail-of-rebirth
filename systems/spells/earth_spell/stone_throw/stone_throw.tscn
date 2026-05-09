@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://np5v2n65d2wc"]
+[gd_scene format=3 uid="uid://ciqv0emp2y1qy"]
 
-[ext_resource type="Script" path="res://scripts/spells/elements/earth/stone_throw.gd" id="1_2gtd1"]
+[ext_resource type="Script" path="res://systems/spells/earth_spell/stone_throw/stone_throw.gd" id="1_2gtd1"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_khwhd"]
 

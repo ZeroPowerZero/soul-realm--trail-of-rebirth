@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SpellData" format=3 uid="uid://dvhq15cd0py03"]
 
-[ext_resource type="Script" uid="uid://ds2evghd4d04i" path="res://scripts/spells/Spell_Resources/spell_data.gd" id="1_p7vlr"]
+[ext_resource type="Script" path="res://systems/spells/spell_manager/spell_data.gd" id="1_p7vlr"]
 
 [resource]
 script = ExtResource("1_p7vlr")

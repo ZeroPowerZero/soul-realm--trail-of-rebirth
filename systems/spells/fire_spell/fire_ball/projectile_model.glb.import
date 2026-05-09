@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cg56y7vcqaal4"
-path="res://.godot/imported/projectile_model.glb-e41a98c15be1034f3a1d318bf925d8a9.scn"
+path="res://.godot/imported/projectile_model.glb-a2d5da4cff210c7404da9af76f6eb154.scn"
 
 [deps]
 
-source_file="res://scenes/spells/fire_ball/projectile_model.glb"
-dest_files=["res://.godot/imported/projectile_model.glb-e41a98c15be1034f3a1d318bf925d8a9.scn"]
+source_file="res://systems/spells/fire_spell/fire_ball/projectile_model.glb"
+dest_files=["res://.godot/imported/projectile_model.glb-a2d5da4cff210c7404da9af76f6eb154.scn"]
 
 [params]
 

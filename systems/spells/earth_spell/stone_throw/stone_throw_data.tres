@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SpellData" format=3 uid="uid://vufydxedrjtu"]
 
-[ext_resource type="Script" uid="uid://ds2evghd4d04i" path="res://scripts/spells/Spell_Resources/spell_data.gd" id="1_m6gym"]
-[ext_resource type="PackedScene" uid="uid://ciqv0emp2y1qy" path="res://scenes/spells/elements/earth/stone_throw.tscn" id="2_w108e"]
+[ext_resource type="Script" path="res://systems/spells/spell_manager/spell_data.gd" id="1_m6gym"]
+[ext_resource type="PackedScene" path="res://systems/spells/earth_spell/stone_throw/stone_throw.tscn" id="2_w108e"]
 
 [resource]
 script = ExtResource("1_m6gym")

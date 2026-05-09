@@ -1,7 +1,7 @@
 class_name ApprenticeMage
 extends MageBase
 
-@export var spells_to_use: Array[String] = ["FireBall", "Ice Spikes"]
+@export var spells_to_use: Array[String] = ["FireBall", "IceSpikes"]
 
 var attack_cooldown: float = 3.0
 var time_since_last_attack: float = 0.0

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SpellData" format=3 uid="uid://ctijqh57il6c6"]
+
+[ext_resource type="Script" path="res://systems/spells/spell_manager/spell_data.gd" id="1_m6gym"]
+[ext_resource type="PackedScene" path="res://systems/spells/fire_spell/flames/flames.tscn" id="2_tgphp"]
+
+[resource]
+script = ExtResource("1_m6gym")
+name = "Flames"
+spell_scene = ExtResource("2_tgphp")
+metadata/_custom_type_script = "uid://ds2evghd4d04i"

@@ -1,6 +1,6 @@
-[gd_scene format=4 uid="uid://bjcrs425oe6ga"]
+[gd_scene format=4 uid="uid://c17gmxvjanqjt"]
 
-[ext_resource type="Script" path="res://scripts/spells/elements/ice/ice_spikes.gd" id="1_d1iiv"]
+[ext_resource type="Script" path="res://systems/spells/ice_spell/ice_spikes/ice_spikes.gd" id="1_d1iiv"]
 [ext_resource type="Texture2D" uid="uid://cp3xxgxhjpoeh" path="res://assets/Earth Bending - Tutorial/texture/ice_cluster2_free_2.png" id="2_h7pny"]
 [ext_resource type="Material" uid="uid://bu5acir2aq0ft" path="res://assets/Earth Bending - Tutorial/model/m_rocks.tres" id="3_toodk"]
 

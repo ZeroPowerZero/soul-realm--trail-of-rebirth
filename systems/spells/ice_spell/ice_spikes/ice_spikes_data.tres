@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SpellData" format=3 uid="uid://cj6t2dthog6pf"]
+
+[ext_resource type="Script" path="res://systems/spells/spell_manager/spell_data.gd" id="1_m6gym"]
+[ext_resource type="PackedScene" uid="uid://c17gmxvjanqjt" path="res://systems/spells/ice_spell/ice_spikes/ice_spikes.tscn" id="2_iuyrv"]
+
+[resource]
+script = ExtResource("1_m6gym")
+name = "IceSpikes"
+spell_type = 3
+spell_scene = ExtResource("2_iuyrv")
+metadata/_custom_type_script = "uid://ds2evghd4d04i"

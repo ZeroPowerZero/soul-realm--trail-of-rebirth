@@ -1,8 +1,8 @@
-[gd_scene format=4 uid="uid://cb63d3yoysr2q"]
+[gd_scene format=4 uid="uid://ba7wjkme2r5v1"]
 
-[ext_resource type="Script" path="res://scripts/spells/Spell_Resources/fire_ball.gd" id="1_ev0nb"]
-[ext_resource type="Script" path="res://scripts/spells/Spell_Resources/throw_ball.gd" id="2_7kqhp"]
-[ext_resource type="Shader" path="res://scenes/spells/fire_ball/projectile.gdshader" id="3_dd5tk"]
+[ext_resource type="Script" path="res://systems/spells/fire_spell/fire_ball/fire_ball.gd" id="1_ev0nb"]
+[ext_resource type="Script" path="res://systems/spells/spell_manager/throw_ball.gd" id="2_7kqhp"]
+[ext_resource type="Shader" path="res://systems/spells/fire_spell/fire_ball/projectile.gdshader" id="3_dd5tk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rhtut"]
 render_priority = 0

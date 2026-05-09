@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://dt2notrln2fij"]
+[gd_scene format=3 uid="uid://dxj47c6dgbj75"]
 
-[ext_resource type="Script" path="res://scripts/spells/elements/ice/frost_attack.gd" id="1_ccm1x"]
+[ext_resource type="Script" path="res://systems/spells/ice_spell/frost_attack/frost_attack.gd" id="1_ccm1x"]
 [ext_resource type="Texture2D" uid="uid://bsovrp2x1mijd" path="res://texture/fire/T_fire01.png" id="2_dwiw8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4vr1w"]

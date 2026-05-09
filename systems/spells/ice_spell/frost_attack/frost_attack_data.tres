@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SpellData" format=3 uid="uid://dq25pnni6wew1"]
 
-[ext_resource type="Script" uid="uid://ds2evghd4d04i" path="res://scripts/spells/Spell_Resources/spell_data.gd" id="1_m6gym"]
-[ext_resource type="PackedScene" uid="uid://dxj47c6dgbj75" path="res://scenes/spells/elements/ice/frost_attack.tscn" id="2_svncd"]
+[ext_resource type="Script" path="res://systems/spells/spell_manager/spell_data.gd" id="1_m6gym"]
+[ext_resource type="PackedScene" path="res://systems/spells/ice_spell/frost_attack/frost_attack.tscn" id="2_svncd"]
 
 [resource]
 script = ExtResource("1_m6gym")
