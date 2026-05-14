@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cuubljcb553na" path="res://assets/sketchFab_imported_map/D1_forgotten_dungeon/forgotten_dungeon_4.png" id="5_p2b37"]
 [ext_resource type="Texture2D" uid="uid://cnt0gdfmstiur" path="res://assets/sketchFab_imported_map/D1_forgotten_dungeon/forgotten_dungeon_5.png" id="6_pmm7y"]
 [ext_resource type="Texture2D" uid="uid://d3ac3vdwneuc8" path="res://assets/sketchFab_imported_map/D1_forgotten_dungeon/forgotten_dungeon_6.png" id="7_g4d7f"]
+[ext_resource type="Material" path="res://texture/stylized_theme/stone_material.tres" id="8_863un"]
 [ext_resource type="Texture2D" uid="uid://0gsdrg3tqbq0" path="res://assets/sketchFab_imported_map/D1_forgotten_dungeon/forgotten_dungeon_7.png" id="8_gtg52"]
 [ext_resource type="Texture2D" uid="uid://cc7r1plmqa24v" path="res://assets/sketchFab_imported_map/D1_forgotten_dungeon/forgotten_dungeon_8.png" id="9_3jf5h"]
 [ext_resource type="Texture2D" uid="uid://dum10wp53ist0" path="res://assets/sketchFab_imported_map/D1_forgotten_dungeon/forgotten_dungeon_9.png" id="10_hr7d8"]
@@ -516,6 +517,7 @@ skin = SubResource("Skin_u2ait")
 shape = SubResource("ConcavePolygonShape3D_qjnli")
 
 [node name="Forgotten Dungeon_7" type="MeshInstance3D" parent="Forgotten Dungeon_Arm/Skeleton3D" unique_id=683188833]
+material_override = ExtResource("8_863un")
 mesh = SubResource("ArrayMesh_yfqqn")
 skin = SubResource("Skin_u2ait")
 

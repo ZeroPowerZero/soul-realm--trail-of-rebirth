@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://catshjosknr2v" path="res://assets/sketchFab_imported_map/B1_modular_dungeon/modular_dungeon_6.png" id="7_dllxw"]
 [ext_resource type="Texture2D" uid="uid://dqgylu2vkacm7" path="res://assets/sketchFab_imported_map/B1_modular_dungeon/modular_dungeon_7.png" id="8_kkj5i"]
 [ext_resource type="Texture2D" uid="uid://bctodplpccf8k" path="res://assets/sketchFab_imported_map/B1_modular_dungeon/modular_dungeon_8.png" id="9_h10sc"]
+[ext_resource type="PackedScene" uid="uid://3v50xo6wlir3" path="res://scenes/player/player.tscn" id="10_1jiyy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rq6pt"]
 resource_name = "brickwall1"
@@ -1326,7 +1327,6 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_lyx0u")
 
 [node name="B2LvlDesign" type="Node3D" unique_id=1994446601]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1445999, 0)
 
 [node name="Sketchfab_Scene" type="Node3D" parent="." unique_id=20732993]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14252472, -0.26869202, 0.34785652)
@@ -1539,3 +1539,6 @@ skeleton = NodePath("")
 [node name="Hallsingle_stonefloor_0" type="MeshInstance3D" parent="Sketchfab_Scene/Sketchfab_model/c36bb00570ad4f8aacf95129c9b8cd88_fbx/RootNode/Hallsingle" unique_id=440900114]
 mesh = SubResource("ArrayMesh_xeulk")
 skeleton = NodePath("")
+
+[node name="player" parent="." unique_id=978608411 instance=ExtResource("10_1jiyy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.648932, 1.4851067, 0.5106511)
